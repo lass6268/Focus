@@ -10,25 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProjektMenu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProjektMenu:Window
     {
-        public MainWindow()
+        public ProjektMenu()
         {
             InitializeComponent();
         }
 
-        private void Projects_btn_Click(object sender,RoutedEventArgs e)
+
+        private void Return_btn_Click(object sender,RoutedEventArgs e)
         {
-            ProjektMenu projektMenu = new ProjektMenu();
-            projektMenu.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+
+        private void CreateProject_btn_Click(object sender,RoutedEventArgs e)
+        {
+            OpretProjektMenu opretProjektMenu = new OpretProjektMenu();
+            opretProjektMenu.Show();
             this.Close();
         }
     }
