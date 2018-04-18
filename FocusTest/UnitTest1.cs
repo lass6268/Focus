@@ -9,6 +9,7 @@ namespace FocusTest
     [TestClass]
     public class UnitTest1
     {
+        Projektcheck projektcheck;
         DbConcection dbConcection;
         DateTime startdate;
         DateTime finaldate;
@@ -16,6 +17,7 @@ namespace FocusTest
         public void TestInitialize()
         {
             dbConcection = new DbConcection();
+            projektcheck = new Projektcheck();
 
             startdate = new DateTime(2018, 01, 01);
 
@@ -29,7 +31,7 @@ namespace FocusTest
 
 
 
-            Assert.AreEqual(true, dbConcection.AddProject("Danske", 10, 100, startdate, finaldate));
+            Assert.AreEqual(false, dbConcection.AddProject("Danske", 10, 100, startdate, finaldate));
             Assert.AreEqual(false,dbConcection.AddProject("Nordea Odense", 10,100, startdate,finaldate));
             
         }
@@ -45,6 +47,22 @@ namespace FocusTest
 
             Assert.AreEqual(false, project1.AddProjectToDatabase());
             Assert.AreEqual(false, project.AddProjectToDatabase());
+
+        }
+        [TestMethod]
+        public void Testprojekttest()
+        {
+
+           
+            Projektcheck projectcheck = new Projektcheck();
+            Assert.AreEqual("Final date is earlier than start date", projektcheck.Makeprojekt("Nordea Odense", 10, 100,  finaldate ,startdate));
+            Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
+            Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
+            Assert.AreEqual("Min is Bigger then Max", projektcheck.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
+
+
+
+
 
         }
 

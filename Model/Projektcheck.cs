@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Projektcheck
+    public class Projektcheck
     {
         public string Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final)
         {
-            
-            if (_final > DateTime.Now)
-            {
-                return "Sorry, Final Date has past, try again";
-            }
-            else if (_final> _start)
-            {
-                return "Final Date is before Starting date";
-            }
+
+
+            int result = DateTime.Compare(_start, _final);
+            if (result > 0)
+                return "Final date is earlier than start date";
+        
+           
             else if (_min > _max && _max != 0)
             {
                 return "Min is Bigger then Max";
