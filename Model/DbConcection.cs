@@ -30,9 +30,10 @@ namespace Model
                     cmd.Parameters.Add(new SqlParameter("@Finishdate",finishDate));
 
                     cmd.ExecuteNonQuery();
+
                     return true;
                 }
-                catch(SqlException e)
+                catch(SqlException)
                 {
 
                     return false;

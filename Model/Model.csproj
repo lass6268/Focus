@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DbConcection.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="Projektcheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
