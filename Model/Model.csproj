@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Budget.cs" />
     <Compile Include="DbConcection.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Projektcheck.cs" />
