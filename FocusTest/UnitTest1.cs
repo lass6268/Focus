@@ -59,11 +59,11 @@ namespace FocusTest
             Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
             Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
             Assert.AreEqual("Min is Bigger then Max", projektcheck.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
-
-
-
-
-
+        }
+        [TestMethod]
+        public void TestArchiveProject()
+        {
+            Assert.AreEqual(false,dbConcection.ArchiveProject("Danske",10,100,startdate,finaldate));
         }
 
     }

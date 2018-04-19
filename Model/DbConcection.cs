@@ -40,6 +40,33 @@ namespace Model
                 }
             }
         }
+        public bool ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived)
+        {
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_ArchiveProject",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ProjectName_Archived",nameArchived));
+                    cmd.Parameters.Add(new SqlParameter("@minBudget_Archived",minBudgetArchived));
+                    cmd.Parameters.Add(new SqlParameter("@maxBudget_Archived",maxbudgetArchived));
+                    cmd.Parameters.Add(new SqlParameter("@Startdate_Archived",startDateArchived));
+                    cmd.Parameters.Add(new SqlParameter("@Finishdate_Archived",finishDateArchived));
+
+                    cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch(SqlException)
+                {
+
+                    return false;
+                }
+            }
+        }
 
     }
 }
