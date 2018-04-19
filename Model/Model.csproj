@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Budget.cs" />
+    <Compile Include="Budgetcheck.cs" />
     <Compile Include="DbConcection.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Projektcheck.cs" />

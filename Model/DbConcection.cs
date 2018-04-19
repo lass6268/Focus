@@ -68,7 +68,7 @@ namespace Model
             }
         }
 
-        public bool AddBudget(int BudgetAntal, int NuvæendeBudget, DateTime NuværendeDato)
+        public bool AddBudget(int BudgetTotal, int CurrentBudget, DateTime BudgetStartdate, DateTime BudgetFinishDate)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -76,13 +76,12 @@ namespace Model
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("Spu_Focus_InvalidProject", con);
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjectName", name));
-                    cmd.Parameters.Add(new SqlParameter("@minBudget", minBudget));
-                    cmd.Parameters.Add(new SqlParameter("@maxBudget", maxbudget));
-                    cmd.Parameters.Add(new SqlParameter("@Startdate", startDate));
-                    cmd.Parameters.Add(new SqlParameter("@Finishdate", finishDate));
+                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget", CurrentBudget));
+                    cmd.Parameters.Add(new SqlParameter("@TotalBudget", BudgetTotal ));
+                    cmd.Parameters.Add(new SqlParameter("@BudgetStartdate", BudgetStartdate ));
+                    cmd.Parameters.Add(new SqlParameter("@BudgetFinishdate", BudgetFinishDate));
 
                     cmd.ExecuteNonQuery();
 
