@@ -27,8 +27,6 @@ namespace Model
                 return "projekt has been made";
             }
 
-
-           
         }
 
     }
