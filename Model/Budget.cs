@@ -8,7 +8,7 @@ namespace Model
 {
     public class Budget
     {
-        DbConcection dbConcection = new DbConcection();
+        
 
         public int BudgetTotal { get; set; }
         public int CurrentBudget { get; set; }
@@ -24,11 +24,7 @@ namespace Model
             BudgetStartdate = _BudgetFinishdate;
             Medarbejder = medarbejder;
         }
-        public bool AddBudgetToDatabase()
-        {
-            bool BudgetAdd = dbConcection.AddBudget(BudgetTotal, CurrentBudget, BudgetStartdate, BudgetFinishdate);
-            return BudgetAdd;
-        }
+     
 
     }
 }

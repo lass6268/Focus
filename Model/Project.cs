@@ -8,7 +8,7 @@ namespace Model
 {
     public class Project
     {
-        DbConcection dbConcection = new DbConcection();
+       
         public string ProjectName { get; set; }
         public int MinBudget { get; set; }
         public int MaxBudget { get; set; }
@@ -28,18 +28,7 @@ namespace Model
       
 
 
-        public bool AddProjectToDatabase()
-        {
-            bool bo = dbConcection.AddProject(ProjectName, MinBudget, MaxBudget, StartDate, FinalDate);
-            return bo;
-        }
-
-        public bool ArchiveProjectToDatabase()
-        {
-            bool ArchiveProject = dbConcection.ArchiveProject(ProjectName,MinBudget,MaxBudget,StartDate,FinalDate);
-            return ArchiveProject;
-        }
-
+      
 
 
 

@@ -13,7 +13,7 @@ namespace Model
         private static string connectionstring =
                "Server=EALSQL1.eal.local; Database = DB2017_C09; User Id = user_C09; PassWord=SesamLukOp_09;";
 
-        public bool AddProject(string name,int minBudget,int maxbudget,DateTime startDate,DateTime finishDate)
+        public void AddProject(string name,int minBudget,int maxbudget,DateTime startDate,DateTime finishDate)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -31,16 +31,16 @@ namespace Model
 
                     cmd.ExecuteNonQuery();
 
-                    return true;
+                    
                 }
-                catch(SqlException)
+                catch(SqlException e)
                 {
 
-                    return false;
+                    throw e;
                 }
             }
         }
-        public bool ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived)
+        public void ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -58,12 +58,12 @@ namespace Model
 
                     cmd.ExecuteNonQuery();
 
-                    return true;
+                    
                 }
-                catch(SqlException)
+                catch(SqlException e)
                 {
 
-                    return false;
+                    throw e;
                 }
             }
         }
