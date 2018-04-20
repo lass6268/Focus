@@ -13,17 +13,17 @@ namespace Model
         public int MinBudget { get; set; }
         public int MaxBudget { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime FinalDate { get; set; }
+        public DateTime FinishDate { get; set; }
 
 
 
-        public Project(string _name, int _min, int _max, DateTime _start, DateTime _final)
+        public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
             ProjectName = _name;
             MinBudget = _min;
             MaxBudget = _max;
             StartDate = _start;
-            FinalDate = _final;
+            FinishDate = _finish;
         }
       
 

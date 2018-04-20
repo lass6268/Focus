@@ -78,10 +78,8 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget", CurrentBudget));
-                    cmd.Parameters.Add(new SqlParameter("@TotalBudget", BudgetTotal ));
-                    cmd.Parameters.Add(new SqlParameter("@BudgetStartdate", BudgetStartdate ));
-                    cmd.Parameters.Add(new SqlParameter("@BudgetFinishdate", BudgetFinishDate));
+                    cmd.Parameters.Add(new SqlParameter("@BudgetMin", BudgetStartdate ));
+                    cmd.Parameters.Add(new SqlParameter("@BudgetMax", BudgetFinishDate));
 
                     cmd.ExecuteNonQuery();
 
