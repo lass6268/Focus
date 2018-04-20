@@ -9,11 +9,11 @@ namespace Model
     public class Budget
     { 
         public int CurrentBudget { get; set; }
-        public DateTime BudgetMin { get; set; }
-        public DateTime BudgetMax { get; set; }
+        public int BudgetMin { get; set; }
+        public int BudgetMax { get; set; }
         public Employee Employee { get; set; }
 
-        public Budget(int _CurrentBudget, DateTime _BudgetMin, DateTime _BudgetMax, Employee _Employee)
+        public Budget(int _CurrentBudget, int _BudgetMin, int _BudgetMax, Employee _Employee)
         {
             CurrentBudget = _CurrentBudget;
             BudgetMin = _BudgetMin;
