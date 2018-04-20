@@ -30,5 +30,9 @@ namespace ViewModel
           
         }
 
+        public List<String> ListOfProjectsToDatabase()
+        {
+            return dbConcection.OverviewOverProjects();
+        }
     }
 }

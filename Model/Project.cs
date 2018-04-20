@@ -8,7 +8,6 @@ namespace Model
 {
     public class Project
     {
-       
         public string ProjectName { get; set; }
         public int MinBudget { get; set; }
         public int MaxBudget { get; set; }
