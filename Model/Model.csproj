@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Budget.cs" />
     <Compile Include="DbConcection.cs" />
-    <Compile Include="Medarbejder.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

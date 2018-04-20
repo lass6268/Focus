@@ -31,7 +31,7 @@ namespace ViewModel
 
         }
 
-        public string Makebudget(int _BudgetTotal, int _CurrentBudget, DateTime _BudgetStartdate, DateTime _BudgetFinishdate, Medarbejder medarbejder)
+        public string Makebudget(int _BudgetTotal, int _CurrentBudget, DateTime _BudgetStartdate, DateTime _BudgetFinishdate, Employee medarbejder)
         {
 
 
