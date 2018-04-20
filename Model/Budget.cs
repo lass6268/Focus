@@ -12,7 +12,7 @@ namespace Model
         public int BudgetMin { get; set; }
         public int BudgetMax { get; set; }
         public Employee Employee { get; set; }
-        public Project project { get; set; }
+        public Project Project { get; set; }
 
         public Budget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
         {
@@ -20,7 +20,7 @@ namespace Model
             BudgetMin = _BudgetMin;
             BudgetMax = _BudgetMax;
             Employee = _Employee;
-            project = _project;
+            Project = _project;
         }
     }
 }
