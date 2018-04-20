@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Medarbejder
+    public class Medarbejder
     {
 
         public String Name { get; set; }

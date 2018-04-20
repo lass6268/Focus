@@ -43,11 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Budget.cs" />
-    <Compile Include="Budgetcheck.cs" />
     <Compile Include="DbConcection.cs" />
     <Compile Include="Medarbejder.cs" />
     <Compile Include="Project.cs" />
-    <Compile Include="Projektcheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

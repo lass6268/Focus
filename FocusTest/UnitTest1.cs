@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
+using ViewModel;
 
 
 
@@ -9,20 +10,21 @@ namespace FocusTest
     [TestClass]
     public class UnitTest1
     {
-        Projektcheck projektcheck;
-        Budgetcheck budgetcheck;
+        Checks checks;
         DbConcection dbConcection;
         DateTime startdate;
         DateTime finaldate;
-      [TestInitialize]
+        Medarbejder medarbejder;
+        [TestInitialize]
         public void TestInitialize()
         {
             dbConcection = new DbConcection();
-            projektcheck = new Projektcheck();
+            checks = new Checks();
 
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
+            medarbejder = new Medarbejder();
 
         }
 
@@ -65,8 +67,8 @@ namespace FocusTest
         {
             //Startdate og finaldate i DB skal fixes før den funker.
 
-            Budget budget = new Budget(100, 0, startdate, finaldate);
-            Budget budget1 = new Budget(100, 0, startdate, finaldate);
+            Budget budget = new Budget(100, 0, startdate, finaldate,medarbejder);
+            Budget budget1 = new Budget(100, 0, startdate, finaldate,medarbejder);
 
 
             Assert.AreEqual(false, budget1.AddBudgetToDatabase());
@@ -78,22 +80,22 @@ namespace FocusTest
         public void Testprojekttest()
         {
 
-            Projektcheck projectcheck = new Projektcheck();
-            Assert.AreEqual("Final date is earlier than start date", projektcheck.Makeprojekt("Nordea Odense", 10, 100,  finaldate ,startdate));
-            Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
-            Assert.AreEqual("projekt has been made", projektcheck.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
-            Assert.AreEqual("Min is Bigger then Max", projektcheck.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
+            
+            Assert.AreEqual("Final date is earlier than start date", checks.Makeprojekt("Nordea Odense", 10, 100,  finaldate ,startdate));
+            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
+            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
+            Assert.AreEqual("Min is Bigger then Max", checks.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
         }
 
         [TestMethod]
         public void Testbudgettest()
         {
             
-            Budgetcheck budgetcheck = new Budgetcheck();
-            Assert.AreEqual("Final date is earlier than start date", budgetcheck.Makebudget(100, 0, finaldate, startdate));
-            Assert.AreEqual("Budget has been made", budgetcheck.Makebudget(100, 0, startdate, finaldate));
-            Assert.AreEqual("Budget has been made", budgetcheck.Makebudget(100, 50, startdate, finaldate));
-            Assert.AreEqual("Current Budget must be smaller than total budget", budgetcheck.Makebudget(100, 100, startdate, finaldate));
+           
+            Assert.AreEqual("Final date is earlier than start date", checks.Makebudget(100, 0, finaldate, startdate, medarbejder));
+            Assert.AreEqual("Budget has been made", checks.Makebudget(100, 0, startdate, finaldate, medarbejder));
+            Assert.AreEqual("Budget has been made", checks.Makebudget(100, 50, startdate, finaldate, medarbejder));
+            Assert.AreEqual("Current Budget must be smaller than total budget", checks.Makebudget(100, 100, startdate, finaldate, medarbejder));
         }
 
         [TestMethod]
