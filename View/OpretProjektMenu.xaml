@@ -10,8 +10,8 @@
         <Label Name="lbl_navn" Content="Navn" HorizontalAlignment="Left" Margin="110,125,0,0" VerticalAlignment="Top"/>
         <Label Name="lbl_min" Content="Minimum" HorizontalAlignment="Left" Margin="110,174,0,0" VerticalAlignment="Top"/>
         <Label Name="lbl_max" Content="Maximum" HorizontalAlignment="Left" Margin="110,229,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_startdate" Content="Start dato" HorizontalAlignment="Left" Margin="110,280,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_finishdate" Content="Slut dato" HorizontalAlignment="Left" Margin="332,125,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_startdate" Content="Start dato (DD-MM-YYYY)" HorizontalAlignment="Left" Margin="110,280,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_finishdate" Content="Slut dato (DD-MM-YYYY)" HorizontalAlignment="Left" Margin="332,125,0,0" VerticalAlignment="Top"/>
         <TextBox Name="Name_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Min_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Max_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
