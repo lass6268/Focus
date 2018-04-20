@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 using ViewModel;
@@ -15,12 +16,13 @@ namespace FocusTest
         DateTime startdate;
         DateTime finaldate;
         Employee medarbejder;
+        DBcommunicator dBcommunicator;
         [TestInitialize]
         public void TestInitialize()
         {
             dbConcection = new DbConcection();
             checks = new Checks();
-
+            dBcommunicator = new DBcommunicator();
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
@@ -66,8 +68,18 @@ namespace FocusTest
             Assert.AreEqual("Current Budget must be smaller than total budget", checks.Makebudget(100, 100, startdate, finaldate, medarbejder));*/
         }
 
-      
-      
+        [TestMethod]
+        public void TestOverviewOverProjects()
+        {
+
+            List<string> testlist = dBcommunicator.ListOfProjectsToDatabase();
+            Assert.AreEqual(2, testlist.Count);
+            Assert.AreEqual("2 Nordea Odense 10 100 01-01-2018 00:00:00 01-05-2018 00:00:00", testlist[1]);
+            Assert.AreEqual(true, testlist[1].Contains("Nordea"));
+        }
+
+
+
 
     }
 }

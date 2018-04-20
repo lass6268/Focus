@@ -7,7 +7,7 @@ using Model;
 
 namespace ViewModel
 {
-    class DBcommunicator
+    public class DBcommunicator
     {
         DbConcection dbConcection = new DbConcection();
         public string AddProjectToDatabase(Project project)
