@@ -14,6 +14,7 @@ namespace Model
         public int CurrentBudget { get; set; }
         public DateTime BudgetStartdate { get; set; }
         public DateTime BudgetFinishdate { get; set; }
+        public Object Medarbejder { get; set; }
 
         public Budget(int _BudgetTotal,int _CurrentBudget, DateTime _BudgetStartdate, DateTime _BudgetFinishdate)
         {
