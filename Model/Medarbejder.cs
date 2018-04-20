@@ -8,15 +8,8 @@ namespace Model
 {
     class Medarbejder
     {
-        public string Name { get; set; }
+
+        public String Name { get; set; }
         public int ID { get; set; }
-
-
-
-        public Medarbejder(string name, int id)
-        {
-            Name = name;
-            ID = id;
-        }
     }
 }
