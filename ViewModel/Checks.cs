@@ -9,6 +9,7 @@ namespace ViewModel
 {
     public class Checks
     {
+        DBcommunicator dBcommunicator = new DBcommunicator();
         public string Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final)
         {
 
@@ -26,6 +27,8 @@ namespace ViewModel
             {
                 
                 Project projekt = new Project(_name, _min, _max, _start, _final);
+
+                dBcommunicator.AddProjectToDatabase(projekt);
                 return "projekt has been made";
             }
 
@@ -47,6 +50,7 @@ namespace ViewModel
             else
             {
                 Budget budget = new Budget(_BudgetTotal, _CurrentBudget, _BudgetStartdate, _BudgetFinishdate, medarbejder);
+                dBcommunicator.AddBudgetToDatabase(budget);
                 return "Budget has been made";
             }
 

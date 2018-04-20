@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
+
 
 namespace View
 {
@@ -29,10 +32,13 @@ namespace View
             string projectName = Name_txtbox.Text;
             int minimum = int.Parse(Min_txtbox.Text);
             int maximum = int.Parse(Max_txtbox.Text);
-            string startDate = StartDate_txtbox.Text;
-            string finishDate = FinishDate_txtbox.Text;
-            
-             
+            DateTime startDate = DateTime.Parse(StartDate_txtbox.Text);
+            DateTime finishDate = DateTime.Parse(FinishDate_txtbox.Text);
+
+            Checks checks = new Checks();
+            string s = checks.Makeprojekt(projectName,minimum,maximum,startDate,finishDate);
+            MessageBox.Show(s);
+          
         }
 
        
