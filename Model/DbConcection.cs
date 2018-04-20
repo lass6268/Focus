@@ -24,8 +24,8 @@ namespace Model
                     SqlCommand cmd = new SqlCommand("Spu_Focus_InvalidProject",con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ProjectName",name));
-                    cmd.Parameters.Add(new SqlParameter("@minBudget",minBudget));
-                    cmd.Parameters.Add(new SqlParameter("@maxBudget",maxbudget));
+                    cmd.Parameters.Add(new SqlParameter("@MinBudget",minBudget));
+                    cmd.Parameters.Add(new SqlParameter("@MaxBudget",maxbudget));
                     cmd.Parameters.Add(new SqlParameter("@Startdate",startDate));
                     cmd.Parameters.Add(new SqlParameter("@Finishdate",finishDate));
 
