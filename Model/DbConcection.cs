@@ -93,5 +93,42 @@ namespace Model
             }
         }
 
+        public List<string> OverviewOverProjects()
+        {
+            List<string> projectList = new List<string>();
+            string ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate; 
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand ProjectOverview = new SqlCommand("Spu_Focus_ProjectOverview", con);
+                    ProjectOverview.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader showProjects = ProjectOverview.ExecuteReader();
+
+                    if (showProjects.HasRows)
+                    {
+                        while (showProjects.Read())
+                        {
+                            ProjektID = showProjects["ProjektID"].ToString();
+                            ProjektName = showProjects["ProjektName"].ToString();
+                            minBudget = showProjects["minBudget"].ToString();
+                            maxBudget = showProjects["maxBudget"].ToString();
+                            StartDate = showProjects["StartDate"].ToString();
+                            FinishDate = showProjects["FinishDate"].ToString();
+                            projectList.Add(ProjektID + " " + ProjektName + " " + minBudget + " " + maxBudget + " " + StartDate + " " + FinishDate);
+                            
+                        }
+                    } return projectList;
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+
+            }
+        }
+
     }
 }
