@@ -7,24 +7,18 @@ using System.Threading.Tasks;
 namespace Model
 {
     public class Budget
-    {
-        
-
-        public int BudgetTotal { get; set; }
+    { 
         public int CurrentBudget { get; set; }
-        public DateTime BudgetStartdate { get; set; }
-        public DateTime BudgetFinishdate { get; set; }
+        public DateTime BudgetMin { get; set; }
+        public DateTime BudgetMax { get; set; }
         public Employee Employee { get; set; }
 
-        public Budget(int _BudgetTotal,int _CurrentBudget, DateTime _BudgetStartdate, DateTime _BudgetFinishdate, Employee medarbejder)
+        public Budget(int _CurrentBudget, DateTime _BudgetMin, DateTime _BudgetMax, Employee _Employee)
         {
-            BudgetTotal = _BudgetTotal;
             CurrentBudget = _CurrentBudget;
-            BudgetStartdate = _BudgetStartdate;
-            BudgetStartdate = _BudgetFinishdate;
-            Employee = medarbejder;
+            BudgetMin = _BudgetMin;
+            BudgetMax = _BudgetMax;
+            Employee = _Employee;
         }
-     
-
     }
 }
