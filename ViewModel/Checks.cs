@@ -16,7 +16,14 @@ namespace ViewModel
 
             int result = DateTime.Compare(_start, _final);
             if (result > 0)
+            {
                 return "Final date is earlier than start date";
+            }
+            result = DateTime.Compare(_final, DateTime.Now);
+            if (result < 0)
+            {
+                return "Final date has past";
+            }
 
 
             else if (_min > _max && _max != 0)
@@ -25,11 +32,11 @@ namespace ViewModel
             }
             else
             {
-                
+
                 Project projekt = new Project(_name, _min, _max, _start, _final);
 
-                dBcommunicator.AddProjectToDatabase(projekt);
-                return "projekt has been made";
+                String display = dBcommunicator.AddProjectToDatabase(projekt);
+                return display;
             }
 
         }

@@ -13,7 +13,7 @@ namespace Model
         private static string connectionstring =
                "Server=EALSQL1.eal.local; Database = DB2017_C09; User Id = user_C09; PassWord=SesamLukOp_09;";
 
-        public void AddProject(string name,int minBudget,int maxbudget,DateTime startDate,DateTime finishDate)
+        public string AddProject(string name,int minBudget,int maxbudget,DateTime startDate,DateTime finishDate)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -23,7 +23,7 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_InvalidProject",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjektName",name));
+                    cmd.Parameters.Add(new SqlParameter("@ProjectName",name));
                     cmd.Parameters.Add(new SqlParameter("@minBudget",minBudget));
                     cmd.Parameters.Add(new SqlParameter("@maxBudget",maxbudget));
                     cmd.Parameters.Add(new SqlParameter("@Startdate",startDate));
@@ -31,12 +31,14 @@ namespace Model
 
                     cmd.ExecuteNonQuery();
 
-                    
+                    return "projekt has been made";
                 }
                 catch(SqlException e)
                 {
+                    
+                        
 
-                    throw e;
+                    return e.Message;      
                 }
             }
         }

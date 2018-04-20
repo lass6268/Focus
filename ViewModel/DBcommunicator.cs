@@ -10,9 +10,9 @@ namespace ViewModel
     class DBcommunicator
     {
         DbConcection dbConcection = new DbConcection();
-        public void AddProjectToDatabase(Project project)
+        public string AddProjectToDatabase(Project project)
         {
-            dbConcection.AddProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate, project.FinishDate);
+            return dbConcection.AddProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate, project.FinishDate);
 
         }
 
