@@ -8,13 +8,10 @@ namespace ViewModel
 {
     class Class1
     {
-
-        class TestClass
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                
-            }
+            // Display the number of command line arguments:
+           
         }
     }
 }

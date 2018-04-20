@@ -9,6 +9,7 @@ namespace ViewModel
 {
     public class Checks
     {
+        DBcommunicator dBcommunicator = new DBcommunicator();
         public string Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final)
         {
 
@@ -26,27 +27,24 @@ namespace ViewModel
             {
                 
                 Project projekt = new Project(_name, _min, _max, _start, _final);
+
+                dBcommunicator.AddProjectToDatabase(projekt);
                 return "projekt has been made";
             }
 
         }
 
-        public string Makebudget(int _BudgetTotal, int _CurrentBudget, DateTime _BudgetStartdate, DateTime _BudgetFinishdate, Employee medarbejder)
+        public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
         {
 
-
-            int result = DateTime.Compare(_BudgetStartdate, _BudgetFinishdate);
-            if (result > 0)
-                return "Final date is earlier than start date";
-
-
-            else if (_CurrentBudget >= _BudgetTotal)
+            if (_BudgetMin >= _BudgetMax)
             {
                 return "Current Budget must be smaller than total budget";
             }
             else
             {
-                Budget budget = new Budget(_BudgetTotal, _CurrentBudget, _BudgetStartdate, _BudgetFinishdate, medarbejder);
+                Budget budget = new Budget(_BudgetMin, _BudgetMax, _Employee,  _project);
+                dBcommunicator.AddBudgetToDatabase(budget);
                 return "Budget has been made";
             }
 

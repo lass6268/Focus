@@ -18,7 +18,7 @@
         <TextBox Name="StartDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="FinishDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="332,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Name="FinalCreateProjekt_btn" Content="Opret projekt" HorizontalAlignment="Left" Margin="345,311,0,0" VerticalAlignment="Top" Width="135" Height="39" Click="FinalCreateProjekt_btn_Click"/>
-
+        
 
     </Grid>
 </Window>

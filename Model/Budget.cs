@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Budget
+    public class Budget 
     { 
         public int CurrentBudget { get; set; }
         public int BudgetMin { get; set; }
         public int BudgetMax { get; set; }
         public Employee Employee { get; set; }
+        public Project project { get; set; }
 
-        public Budget(int _CurrentBudget, int _BudgetMin, int _BudgetMax, Employee _Employee)
+        public Budget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
         {
-            CurrentBudget = _CurrentBudget;
+           
             BudgetMin = _BudgetMin;
             BudgetMax = _BudgetMax;
             Employee = _Employee;
+            project = _project;
         }
     }
 }
