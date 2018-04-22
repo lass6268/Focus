@@ -10,11 +10,10 @@ namespace Model
 {
     public class DbConcection
     {
-        //please don't hardcode connections strings!!, what do you do if you switch database ?!?
         private static string connectionstring =
                "Server=EALSQL1.eal.local; Database = DB2017_C09; User Id = user_C09; PassWord=SesamLukOp_09;";
 
-        //use config files :)
+        //config fil til database connection
         public string ConStr
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["dbcon"]; }
