@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProjectOverviewMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProjektMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +82,9 @@
   <ItemGroup>
     <Compile Include="OpretProjektMenu.xaml.cs">
       <DependentUpon>OpretProjektMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectOverviewMenu.xaml.cs">
+      <DependentUpon>ProjectOverviewMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProjektMenu.xaml.cs">
       <DependentUpon>ProjektMenu.xaml</DependentUpon>
