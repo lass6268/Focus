@@ -10,9 +10,15 @@ namespace Model
 {
     public class DbConcection
     {
+        //please don't hardcode connections strings!!, what do you do if you switch database ?!?
         private static string connectionstring =
                "Server=EALSQL1.eal.local; Database = DB2017_C09; User Id = user_C09; PassWord=SesamLukOp_09;";
 
+        //use config files :)
+        public string ConStr
+        {
+            get { return System.Configuration.ConfigurationManager.AppSettings["dbcon"]; }
+        }
         public string AddProject(string name,int minBudget,int maxbudget,DateTime startDate,DateTime finishDate)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -42,7 +48,7 @@ namespace Model
                 }
             }
         }
-        public void ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived)
+        public void ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived, int obtainedBudget)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -57,6 +63,8 @@ namespace Model
                     cmd.Parameters.Add(new SqlParameter("@maxBudget_Archived",maxbudgetArchived));
                     cmd.Parameters.Add(new SqlParameter("@Startdate_Archived",startDateArchived));
                     cmd.Parameters.Add(new SqlParameter("@Finishdate_Archived",finishDateArchived));
+                    cmd.Parameters.Add(new SqlParameter("@ObtainedBudget",obtainedBudget));
+
 
                     cmd.ExecuteNonQuery();
 
@@ -98,7 +106,7 @@ namespace Model
         public List<string> OverviewOverProjects()
         {
             List<string> projectList = new List<string>();
-            string ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate; 
+            string ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate,IsArchived; 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
@@ -119,6 +127,9 @@ namespace Model
                             maxBudget = showProjects["maxBudget"].ToString();
                             StartDate = showProjects["StartDate"].ToString();
                             FinishDate = showProjects["FinishDate"].ToString();
+                            //use this value to indicate if a project has been archived or not.
+                            //so if value = False, show in UI.
+                            IsArchived = showProjects["IsArchived"].ToString();
                             projectList.Add(ProjektID + " " + ProjektName + " " + minBudget + " " + maxBudget + " " + StartDate + " " + FinishDate);
                             
                         }

@@ -13,6 +13,7 @@ namespace Model
         public int MaxBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
+        public bool IsArchived { get; set; }
 
 
 
