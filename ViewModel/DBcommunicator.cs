@@ -23,7 +23,7 @@ namespace ViewModel
 
         public int ArchiveProjectToDatabase()
         {
-           
+            return 1;
         }
 
 

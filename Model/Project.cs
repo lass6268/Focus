@@ -16,7 +16,6 @@ namespace Model
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); }  }
-        public int CurrentBudget { get; set; }
 
 
         //public Project()
