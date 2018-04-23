@@ -26,6 +26,11 @@ namespace View
             DataContext = new ProjektCollection();
         }
 
-       
+        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ProjektMenu projektMenu = new ProjektMenu();
+            projektMenu.Show();
+            this.Close();
+        }
     }
 }
