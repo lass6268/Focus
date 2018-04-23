@@ -218,6 +218,33 @@ namespace Model
 
 
         }
+        public string UpdateProject(Project updateProject)
+        {
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UdateProject", con);
+                    updatesEmployee.CommandType = CommandType.StoredProcedure;
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektName", updateProject.ProjectName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@minBudget", updateProject.MinBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@maxBudget", updateProject.MaxBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Startdate", updateProject.StartDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Finishdate", updateProject.FinishDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
+
+                    updatesEmployee.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+            }
+            //projektcollection
+            //return updateProject.FullName;
+        }
 
     }
 }

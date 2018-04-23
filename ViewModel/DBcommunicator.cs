@@ -12,13 +12,18 @@ namespace ViewModel
 
        
         DbConcection dbConcection = new DbConcection();
-      
+        ProjektCollection projektCollection = new ProjektCollection();
 
         public string AddProjectToDatabase(Project project)
         {
             return dbConcection.AddProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate, project.FinishDate);
 
         }
+
+        //public void EditProject()
+        //{
+        //    projektCollection.Projekts
+        //}
 
 
        
