@@ -10,13 +10,10 @@ namespace ViewModel
     public class DBcommunicator
     {
 
-        public List<Project> Projektlist { get { return Projektlist; }
-            set
-            {
-                Projektlist = ListOfProjectsToDatabase();
-            } }
-        private List<Project> projects = new List<Project>();
+       
         DbConcection dbConcection = new DbConcection();
+      
+
         public string AddProjectToDatabase(Project project)
         {
             return dbConcection.AddProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate, project.FinishDate);

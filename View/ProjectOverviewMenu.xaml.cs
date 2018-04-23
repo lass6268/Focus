@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -22,6 +23,14 @@ namespace View
         public ProjectOverviewMenu()
         {
             InitializeComponent();
+            DataContext = new ProjektCollection();
+        }
+
+        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ProjektMenu projektMenu = new ProjektMenu();
+            projektMenu.Show();
+            this.Close();
         }
     }
 }

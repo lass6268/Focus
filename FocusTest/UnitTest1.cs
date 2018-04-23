@@ -17,12 +17,14 @@ namespace FocusTest
         DateTime finaldate;
         Employee medarbejder;
         DBcommunicator dBcommunicator;
+        ProjektCollection projektCollection;
         [TestInitialize]
         public void TestInitialize()
         {
             dbConcection = new DbConcection();
             checks = new Checks();
             dBcommunicator = new DBcommunicator();
+            projektCollection = new ProjektCollection();
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
@@ -77,7 +79,7 @@ namespace FocusTest
             Assert.AreEqual(4, testlist.Count);
             Assert.AreEqual("Nordea", testlist[0].ProjectName);
 
-            Assert.AreEqual("Nordea, ", dBcommunicator.Projektlist[0].ProjectName);
+            Assert.AreEqual("Nordea", projektCollection.Projekts[0].ProjectName);
         }
         [TestMethod]
         public void TestArchiveProject()
