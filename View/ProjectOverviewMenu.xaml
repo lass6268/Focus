@@ -8,18 +8,23 @@
         Title="ProjectOverviewMenu" Height="450" Width="800">
         
     <Grid>
-        <ListBox ItemsSource="{Binding Projekts}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="0 0 0 5">
-                        <TextBlock Text="{Binding ProjectID}"/>
-                        <TextBlock Text="{Binding ProjectName}"/>
-                        <TextBlock Text="{Binding MinBudget}"/>
-                        <TextBlock  Text="{Binding MaxBudget}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView ItemsSource="{Binding Projekts}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Projekt ID" DisplayMemberBinding="{Binding ProjectID}"/>
+                    <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName}"/>
+                    <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget}"/>
+                    <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget}"/>
+                    <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate}"/>
+                    
+
+
+
+                </GridView>
+               
+            </ListView.View>
+        </ListView>
     </Grid>
     
 </Window>
