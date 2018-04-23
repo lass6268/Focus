@@ -21,10 +21,7 @@ namespace ViewModel
         }
 
 
-        public int ArchiveProjectToDatabase()
-        {
-           
-        }
+       
 
 
         public void AddBudgetToDatabase(Budget budget)
