@@ -18,12 +18,6 @@ namespace Model
         public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); }  }
 
 
-        //public Project()
-        //{
-
-        //}
-
-
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
             ProjectName = _name;

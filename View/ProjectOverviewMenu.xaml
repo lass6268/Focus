@@ -17,7 +17,7 @@
                     <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget}"/>
                     <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate}"/>
-                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Obtainedbudget}"/>
+                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
 
 
 

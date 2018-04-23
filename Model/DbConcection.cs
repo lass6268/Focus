@@ -194,7 +194,7 @@ namespace Model
                     con.Open();
                     SqlCommand cmd = new SqlCommand("[Spu_Focus_TotalBudget]",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@projId", projectID));
+                    cmd.Parameters.Add(new SqlParameter("@ProjektId", projectID));
                     SqlDataReader showProjects = cmd.ExecuteReader();
 
                     if(showProjects.HasRows)
@@ -202,7 +202,7 @@ namespace Model
                         while(showProjects.Read())
                         {
 
-                            int ProjectID = (int)showProjects["ProjektID_Archived"];
+                            int ProjectID = int.Parse(showProjects["TotalBudget"].ToString());
 
                         }
 
