@@ -77,11 +77,12 @@ namespace FocusTest
             Assert.AreEqual("2 Nordea Odense 10 100 01-01-2018 00:00:00 01-05-2018 00:00:00", testlist[2]);
             Assert.AreEqual(true, testlist[2].Contains("Nordea"));
         }
-
+        [TestMethod]
         public void TestArchiveProject()
         {
-            Assert.AreEqual(dbConcection.ArchiveProject("Nordea",0,1000,startdate,finaldate,1));
-
+            dbConcection.ArchiveProject(2);
+            List<Project> list = dbConcection.GetArchivedProjects(2);
+            Assert.AreEqual(list[0].ProjectID,2);            
         }
 
 

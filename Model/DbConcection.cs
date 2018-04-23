@@ -40,14 +40,55 @@ namespace Model
                 }
                 catch(SqlException e)
                 {
-                    
-                        
 
-                    return e.Message;      
+
+
+                    return e.Message;
                 }
             }
         }
-        public void ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived, int obtainedBudget)
+
+        public List<Project> GetArchivedProjects(int projId)
+        {
+
+            List<Project> plst = new List<Project>();
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand("[Spu_Get_Focus_ArchiveProject]",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@projId",projId));
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+                    if(showProjects.HasRows)
+                    {
+                        while(showProjects.Read())
+                        {
+                            Project p = new Project();
+                            p.ProjectID = (int)showProjects["ProjektID_Archived"];
+                            p.ProjectName = showProjects["ProjektName_Archived"].ToString();
+                            p.MaxBudget = (int)showProjects["maxBudget_Archived"];
+                            p.MinBudget = (int)showProjects["minBudget_Archived"];
+                            //p.StartDate = showProjects["Startdate_Archived"];
+                            //p.FinishDate = showProjects["Finishdate_Archived"];
+                            //p.= showProjects["BudgetObtained"].ToString();
+                            plst.Add(p);
+                        }
+                    }
+                }
+                catch(SqlException e)
+                {
+
+                    throw;
+                }
+                return plst;
+            }
+           
+        }
+        public void ArchiveProject(int projectID)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -57,17 +98,8 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_ArchiveProject",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjectName_Archived",nameArchived));
-                    cmd.Parameters.Add(new SqlParameter("@minBudget_Archived",minBudgetArchived));
-                    cmd.Parameters.Add(new SqlParameter("@maxBudget_Archived",maxbudgetArchived));
-                    cmd.Parameters.Add(new SqlParameter("@Startdate_Archived",startDateArchived));
-                    cmd.Parameters.Add(new SqlParameter("@Finishdate_Archived",finishDateArchived));
-                    cmd.Parameters.Add(new SqlParameter("@ObtainedBudget",obtainedBudget));
-
-
+                    cmd.Parameters.Add(new SqlParameter("@projId",projectID));
                     cmd.ExecuteNonQuery();
-
-                    
                 }
                 catch(SqlException e)
                 {
@@ -136,7 +168,7 @@ namespace Model
                 }
                 catch (SqlException e)
                 {
-                    throw e;
+                    throw; 
                 }
 
             }

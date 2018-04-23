@@ -19,7 +19,7 @@ namespace ViewModel
 
         public void ArchiveProjectToDatabase(Project project, Budget budget)
         {
-            dbConcection.ArchiveProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate,project.FinishDate, budget.CurrentBudget);
+            dbConcection.ArchiveProject(project.ProjectID);
 
         }
 

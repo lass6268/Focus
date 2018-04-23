@@ -8,6 +8,7 @@ namespace Model
 {
     public class Project
     {
+        public int ProjectID { get; set; }
         public string ProjectName { get; set; }
         public int MinBudget { get; set; }
         public int MaxBudget { get; set; }
@@ -15,6 +16,10 @@ namespace Model
         public DateTime FinishDate { get; set; }
         public bool IsArchived { get; set; }
 
+        public Project()
+        {
+
+        }
 
 
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
