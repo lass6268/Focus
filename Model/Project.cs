@@ -8,18 +8,21 @@ namespace Model
 {
     public class Project : IComparable<Project>
     {
+        DbConcection db = new DbConcection();
         public int ProjectID { get; set; }
         public string ProjectName { get; set; }
         public int MinBudget { get; set; }
         public int MaxBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
-        public int Optainedbudget { get; set; }
+        public int Optainedbudget { get { return db.getObtainedBudget(ProjectID); }  }
+        public int CurrentBudget { get; set; }
 
-        public Project()
-        {
 
-        }
+        //public Project()
+        //{
+
+        //}
 
 
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)

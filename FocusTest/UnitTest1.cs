@@ -28,6 +28,7 @@ namespace FocusTest
             finaldate = new DateTime(2018, 05, 01);
             medarbejder = new Employee();
 
+
         }
 
         
@@ -86,7 +87,13 @@ namespace FocusTest
             Assert.AreEqual(list[0].ProjectID,2);            
         }
 
+        [TestMethod]
+        public void TestTotalBudget()
+        {
+            Project project = new Project();
 
+            Assert.AreEqual();
+        }
 
     }
 }
