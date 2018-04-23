@@ -10,16 +10,26 @@ namespace ViewModel
 {
     public class ProjektCollection
     {
-        public ObservableCollection<Project> Projekts { get; private set; }
+        
+        public List<Project> Projekts { get; private set; }
+        public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
+        private Project _selectedItem { get; set; }
+
         public ProjektCollection()
         {
             List<Project> projects = new List<Project>();
             DbConcection dbConcection = new DbConcection();
             projects = dbConcection.OverviewOverProjects();
             projects.Sort();
-            ObservableCollection<Project> myCollection = new ObservableCollection<Project>(projects);
-            Projekts = myCollection;
+            Projekts = projects;
         }
+        public Project FindProjekt(int ID)
+        {
+            
+            return Projekts.Find(x => x.ProjectID == ID);
+            
+        }
+
 
 
     }

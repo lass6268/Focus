@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml;
+ 
 using ViewModel;
 
 namespace View
@@ -34,10 +34,7 @@ namespace View
             this.Close();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            XmlElement book = ((ListViewItem)sender).Content as XmlElement;
-           
-        }
+       
+        
     }
 }

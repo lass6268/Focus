@@ -8,7 +8,7 @@
         Title="ProjectOverviewMenu" Height="450" Width="800">
 
     <Grid>
-        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,10,73" SelectionChanged="ListView_SelectionChanged">
+        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,10,73"  >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Projekt ID" DisplayMemberBinding="{Binding ProjectID}"/>
