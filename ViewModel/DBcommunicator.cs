@@ -9,6 +9,13 @@ namespace ViewModel
 {
     public class DBcommunicator
     {
+
+        public List<Project> Projektlist { get { return Projektlist; }
+            set
+            {
+                Projektlist = ListOfProjectsToDatabase();
+            } }
+        private List<Project> projects = new List<Project>();
         DbConcection dbConcection = new DbConcection();
         public string AddProjectToDatabase(Project project)
         {
@@ -30,9 +37,13 @@ namespace ViewModel
           
         }
 
-        public List<String> ListOfProjectsToDatabase()
+        public List<Project> ListOfProjectsToDatabase()
         {
-            return dbConcection.OverviewOverProjects();
+            
+            List<Project> projects = new List<Project>();
+            projects= dbConcection.OverviewOverProjects();
+            projects.Sort();
+            return projects;
         }
     }
 }
