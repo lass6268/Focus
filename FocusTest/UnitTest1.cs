@@ -88,13 +88,7 @@ namespace FocusTest
             Assert.AreEqual(list[0].ProjectID,2);            
         }
 
-        /*[TestMethod]
-        public void TestTotalBudget()
-        {
-            Project project = new Project();
-
-            Assert.AreEqual();
-        }*/
+        
 
     }
 }
