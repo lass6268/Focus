@@ -187,14 +187,15 @@ namespace Model
         }
         public int GetObtainedBudget(int projectID)
         {
-            using(SqlConnection con = new SqlConnection(connectionstring))
+            int CurrentBudget = 0;
+            using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("[Spu_Focus_TotalBudget]",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjektId", projectID));
+                    cmd.Parameters.Add(new SqlParameter("@ProjektID", projectID));
                     SqlDataReader showProjects = cmd.ExecuteReader();
 
                     if(showProjects.HasRows)
@@ -202,12 +203,17 @@ namespace Model
                         while(showProjects.Read())
                         {
 
-                            int ProjectID = int.Parse(showProjects["TotalBudget"].ToString());
+                             
+                           
+                                int budget = int.Parse((showProjects["CurrentBudget"].ToString()));
+                                CurrentBudget += budget;
+                            
+                          
 
                         }
 
                     }
-                    return projectID;
+                    return CurrentBudget;
                 } 
                 catch(SqlException e)
                 {
