@@ -45,6 +45,7 @@
     <Compile Include="Checks.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DBcommunicator.cs" />
+    <Compile Include="ProjektCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

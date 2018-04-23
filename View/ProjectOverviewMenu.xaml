@@ -6,14 +6,20 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="ProjectOverviewMenu" Height="450" Width="800">
+        
     <Grid>
-        <ListView ItemsSource="{Binding Projectlist}" HorizontalAlignment="Left" Height="388" VerticalAlignment="Top" Width="658">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
+        <ListBox ItemsSource="{Binding Projekts}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0 0 0 5">
+                        <TextBlock Text="{Binding ProjectID}"/>
+                        <TextBlock Text="{Binding ProjectName}"/>
+                        <TextBlock Text="{Binding MinBudget}"/>
+                        <TextBlock  Text="{Binding MaxBudget}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
+    
 </Window>
