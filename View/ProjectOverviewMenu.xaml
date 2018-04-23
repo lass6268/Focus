@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="ProjectOverviewMenu" Height="450" Width="800">
     <Grid>
-        
+        <ListView ItemsSource="{Binding Projectlist}" HorizontalAlignment="Left" Height="388" VerticalAlignment="Top" Width="658">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
