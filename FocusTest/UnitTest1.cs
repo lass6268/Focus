@@ -51,11 +51,10 @@ namespace FocusTest
         [TestMethod]
         public void Testprojekttest()
         {
-
-            
+           
             Assert.AreEqual("Final date is earlier than start date", checks.Makeprojekt("Nordea Odense", 10, 100,  finaldate ,startdate));
-            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
-            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
+            Assert.AreEqual("Project navn allerede i brug", checks.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
+            Assert.AreEqual("Project navn allerede i brug", checks.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
             Assert.AreEqual("Min is Bigger then Max", checks.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
         }
 
