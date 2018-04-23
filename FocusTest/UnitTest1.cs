@@ -75,6 +75,8 @@ namespace FocusTest
             List<Project> testlist = dBcommunicator.ListOfProjectsToDatabase();
             Assert.AreEqual(4, testlist.Count);
             Assert.AreEqual("Nordea", testlist[0].ProjectName);
+
+            Assert.AreEqual("Nordea, ", dBcommunicator.Projektlist[0].ProjectName);
         }
         [TestMethod]
         public void TestArchiveProject()
