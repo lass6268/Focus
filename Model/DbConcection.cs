@@ -82,7 +82,7 @@ namespace Model
                 catch(SqlException e)
                 {
 
-                    throw;
+                    throw e;
                 }
                 return plst;
             }
