@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Model
 {
     public class Budget 
-    { 
+    {
+        DbConcection dbConcection = new DbConcection();
         public int CurrentBudget { get; set; }
         public int BudgetMin { get; set; }
         public int BudgetMax { get; set; }

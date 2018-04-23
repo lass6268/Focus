@@ -23,10 +23,7 @@ namespace ViewModel
 
         public int ArchiveProjectToDatabase()
         {
-            Project project = new Project();
-            projects = dbConcection.GetObtainedBudget();
-            projects.Sort();
-            return projectID;
+           
         }
 
 
