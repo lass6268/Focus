@@ -14,6 +14,7 @@ namespace Model
         public Employee Employee { get; set; }
         public Project Project { get; set; }
 
+
         public Budget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
         {
            
