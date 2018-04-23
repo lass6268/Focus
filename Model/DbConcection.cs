@@ -134,10 +134,12 @@ namespace Model
             }
         }
 
-        public List<string> OverviewOverProjects()
+        public List<Project> OverviewOverProjects()
         {
-            List<string> projectList = new List<string>();
-            string ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate,IsArchived; 
+            List<Project> projectList = new List<Project>();
+            int ProjektID, minBudget, maxBudget;
+            string ProjektName;
+            DateTime StartDate, FinishDate; 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
@@ -152,17 +154,21 @@ namespace Model
                     {
                         while (showProjects.Read())
                         {
-                            ProjektID = showProjects["ProjektID"].ToString();
+                            ProjektID = int.Parse(showProjects["ProjektID"].ToString());
                             ProjektName = showProjects["ProjektName"].ToString();
-                            minBudget = showProjects["minBudget"].ToString();
-                            maxBudget = showProjects["maxBudget"].ToString();
-                            StartDate = showProjects["StartDate"].ToString();
-                            FinishDate = showProjects["FinishDate"].ToString();
+                            minBudget = int.Parse(showProjects["minBudget"].ToString());
+                            
+
+                            maxBudget = int.Parse(showProjects["maxBudget"].ToString());
+                            StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
+                            FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
                             //use this value to indicate if a project has been archived or not.
                             //so if value = False, show in UI.
-                            IsArchived = showProjects["IsArchived"].ToString();
-                            projectList.Add(ProjektID + " " + ProjektName + " " + minBudget + " " + maxBudget + " " + StartDate + " " + FinishDate);
+                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+                            //IsArchived = showProjects["IsArchived"].ToString();
+                            projectList.Add(project);
                             
+                            //Lav det om til en Projektlist, mere end en StringList
                         }
                     } return projectList;
                 }
