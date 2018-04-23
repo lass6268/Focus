@@ -72,10 +72,9 @@ namespace FocusTest
         public void TestOverviewOverProjects()
         {
 
-            List<string> testlist = dBcommunicator.ListOfProjectsToDatabase();
-            Assert.AreEqual(3, testlist.Count);
-            Assert.AreEqual("2 Nordea Odense 10 100 01-01-2018 00:00:00 01-05-2018 00:00:00", testlist[2]);
-            Assert.AreEqual(true, testlist[2].Contains("Nordea"));
+            List<Project> testlist = dBcommunicator.ListOfProjectsToDatabase();
+            Assert.AreEqual(4, testlist.Count);
+            Assert.AreEqual("Nordea", testlist[0].ProjectName);
         }
         [TestMethod]
         public void TestArchiveProject()

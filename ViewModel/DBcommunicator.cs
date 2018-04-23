@@ -30,9 +30,13 @@ namespace ViewModel
           
         }
 
-        public List<String> ListOfProjectsToDatabase()
+        public List<Project> ListOfProjectsToDatabase()
         {
-            return dbConcection.OverviewOverProjects();
+
+            List<Project> projects = new List<Project>();
+            projects= dbConcection.OverviewOverProjects();
+            projects.Sort();
+            return projects;
         }
     }
 }
