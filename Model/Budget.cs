@@ -13,6 +13,7 @@ namespace Model
         public int BudgetMax { get; set; }
         public Employee Employee { get; set; }
         public Project Project { get; set; }
+        public int Optainedbudget { get; set; }
 
 
         public Budget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
