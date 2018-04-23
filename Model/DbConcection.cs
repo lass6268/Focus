@@ -52,6 +52,9 @@ namespace Model
         {
 
             List<Project> plst = new List<Project>();
+            int ProjektID, minBudget, maxBudget;
+            string ProjektName;
+            DateTime StartDate, FinishDate;
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
@@ -67,15 +70,18 @@ namespace Model
                     {
                         while(showProjects.Read())
                         {
-                            Project p = new Project();
-                            p.ProjectID = (int)showProjects["ProjektID_Archived"];
-                            p.ProjectName = showProjects["ProjektName_Archived"].ToString();
-                            p.MaxBudget = (int)showProjects["maxBudget_Archived"];
-                            p.MinBudget = (int)showProjects["minBudget_Archived"];
-                            //p.StartDate = showProjects["Startdate_Archived"];
-                            //p.FinishDate = showProjects["Finishdate_Archived"];
-                            //p.= showProjects["BudgetObtained"].ToString();
-                            plst.Add(p);
+
+                            ProjektID = int.Parse(showProjects["ProjektID"].ToString());
+                            ProjektName = showProjects["ProjektName"].ToString();
+                            minBudget = int.Parse(showProjects["minBudget"].ToString());
+
+
+                            maxBudget = int.Parse(showProjects["maxBudget"].ToString());
+                            StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
+                            FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
+                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+
+                            plst.Add(project);
                         }
                     }
                 }
@@ -178,6 +184,38 @@ namespace Model
                 }
 
             }
+        }
+        public int GetObtainedBudget(int projectID)
+        {
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("[Spu_Focus_TotalBudget]",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+                    if(showProjects.HasRows)
+                    {
+                        while(showProjects.Read())
+                        {
+
+                            int ProjectID = (int)showProjects["ProjektID_Archived"];
+
+                        }
+
+                    }
+                    return projectID;
+                } 
+                catch(SqlException e)
+                {
+
+                    throw e;
+                }
+            }
+
+
         }
 
     }

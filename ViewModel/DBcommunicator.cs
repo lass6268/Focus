@@ -21,10 +21,12 @@ namespace ViewModel
         }
 
 
-        public void ArchiveProjectToDatabase(Project project, Budget budget)
+        public int ArchiveProjectToDatabase()
         {
-            dbConcection.ArchiveProject(project.ProjectID);
-
+            Project project = new Project();
+            projects = dbConcection.GetObtainedBudget();
+            projects.Sort();
+            return projectID;
         }
 
 
