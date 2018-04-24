@@ -24,9 +24,10 @@ namespace ViewModel
             projects.Sort();
             Projekts = projects;
         }
-        public void FindProjekt(int ID)
+        public void FindProjekt(int index)
         {
-            SelectedItem = Projekts.Find(x => x.ProjectID == ID);
+            
+            SelectedItem = Projekts[index];
            // return SelectedItem;
             
         }

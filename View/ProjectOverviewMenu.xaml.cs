@@ -37,8 +37,8 @@ namespace View
         private void Projektview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-            int id = Projektview.SelectedIndex + 1;
-            ProjektCollection._instance.FindProjekt(id);
+            int index = Projektview.SelectedIndex;
+            ProjektCollection._instance.FindProjekt(index);
             SelectedProjekt selectedProjekt = new SelectedProjekt();
             selectedProjekt.Show();
             selectedProjekt.Topmost = true;
