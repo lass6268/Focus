@@ -44,6 +44,15 @@ namespace ViewModel
             }
 
        }
+        public string ArchiveProject()
+        {
+            DbConcection dbConcection = new DbConcection();
+            dbConcection.ArchiveProject(SelectedItem.ProjectID);
+
+            return SelectedItem.ProjectName + " er nu arkiveret";
+
+
+        }
 
 
     }

@@ -8,7 +8,7 @@
         Title="SelectedProjekt" Height="450" Width="800">
     <Grid>
 
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="137,297,0,0"/>
+        <Button Name="ArchiveProject_btn" Content="Archive this project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="137,297,0,0" Click="ArchiveProject_btn_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding SelectedItem}">
             <TextBox Text="{Binding ProjectID}"/>
             <TextBox Text="{Binding ProjectName, Mode=TwoWay}"/>
@@ -29,7 +29,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Start Dato" VerticalAlignment="Top" Margin="50,180,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Slut Dato" VerticalAlignment="Top" Margin="50,196,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nuværende  budget" VerticalAlignment="Top" Margin="26,211,0,0"/>
-        <Button Content="Edit Projekt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="251,297,0,0" Click="Button_Click"/>
+        <Button Content="Edit Projekt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="281,297,0,0" Click="Button_Click"/>
 
     </Grid>
 </Window>

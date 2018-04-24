@@ -32,5 +32,22 @@ namespace View
             string s = ProjektCollection._instance.EditProjekt();
             MessageBox.Show(s);
         }
+
+        private void ArchiveProject_btn_Click(object sender,RoutedEventArgs e)
+        {
+            string archiveProject =ProjektCollection._instance.ArchiveProject();
+            if(MessageBox.Show("Arkiver projekt", "Vil du arkivere dette projekt?", MessageBoxButton.YesNo, MessageBoxImage.Warning)==MessageBoxResult.No)
+            {
+                MessageBox.Show("Projektet blev ikke arkiveret");
+
+            }
+            else
+            {
+                MessageBox.Show(archiveProject);
+
+            }
+
+        }
+       
     }
 }

@@ -84,8 +84,8 @@ namespace FocusTest
         public void TestArchiveProject()
         {
             dbConcection.ArchiveProject(2);
-            List<Project> list = dbConcection.GetArchivedProjects(2);
-            Assert.AreEqual(list[0].ProjectID,2);            
+            List<Project> list = dbConcection.GetArchivedProjects(3);
+            Assert.AreEqual(list[0].ProjectID,3);            
         }
 
         
