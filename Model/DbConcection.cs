@@ -224,7 +224,7 @@ namespace Model
 
 
         }
-        public string UpdateProject(Project updateProject)
+        public bool UpdateProject(Project updateProject)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -249,9 +249,9 @@ namespace Model
                     throw e;
                     return "Hej";
                 }
+                return true;
             }
-            //projektcollection
-            //return updateProject.FullName;
+            
         }
 
     }
