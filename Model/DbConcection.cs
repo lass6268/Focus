@@ -242,14 +242,14 @@ namespace Model
                     updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
 
                     updatesEmployee.ExecuteNonQuery();
-                    return "Hej";
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     throw e;
-                    return "Hej";
+                    
                 }
-                return true;
+                
             }
             
         }
