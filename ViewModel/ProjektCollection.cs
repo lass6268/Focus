@@ -32,15 +32,15 @@ namespace ViewModel
        public string EditProjekt()
        {
             DbConcection dbConcection = new DbConcection();
-            bool connected = dbConcection.UpdateProject(SelectedItem);
+            string connected = dbConcection.UpdateProject(SelectedItem);
 
-            if(connected == true )
+            if(connected !=string.Empty )
             {
-                return (SelectedItem.ProjectName + " er nu opdateret!");
+                return (connected);
             }
             else
             {
-                return "Der er noget der gik galt, prøv igen";
+                return (SelectedItem.ProjectName + " er nu updateret");
             }
 
        }

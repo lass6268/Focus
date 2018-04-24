@@ -225,7 +225,7 @@ namespace Model
 
 
         }
-        public bool UpdateProject(Project updateProject)
+        public string UpdateProject(Project updateProject)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -243,11 +243,11 @@ namespace Model
                     updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
 
                     updatesEmployee.ExecuteNonQuery();
-                    return true;
+                    return string.Empty;
                 }
                 catch (SqlException e)
                 {
-                    return false;
+                    return e.Message;
                     
                 }
                 
