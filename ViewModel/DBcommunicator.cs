@@ -25,11 +25,7 @@ namespace ViewModel
         //    projektCollection.Projekts
         //}
 
-        public void ArchiveProject(Project project)
-        {
-            dbConcection.ArchiveProject(project.ProjectID);
-
-        }
+        
        
 
 

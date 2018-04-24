@@ -31,7 +31,12 @@ namespace ViewModel
             
         }
 
+        public void ArchiveProject()
+        {
+            DbConcection dbConcection = new DbConcection();
+            dbConcection.ArchiveProject(SelectedItem.ProjectID);
 
+        }
 
     }
 }

@@ -26,5 +26,15 @@ namespace View
             
             DataContext = ProjektCollection._instance;
         }
+
+        private void ArchiveProject_btn_Click(object sender,RoutedEventArgs e)
+        {
+            ProjektCollection._instance.ArchiveProject();
+            MessageBox.Show("");
+
+
+
+            
+        }
     }
 }
