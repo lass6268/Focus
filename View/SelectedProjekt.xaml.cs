@@ -26,5 +26,11 @@ namespace View
             
             DataContext = ProjektCollection._instance;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string s = ProjektCollection._instance.EditProjekt();
+            MessageBox.Show(s);
+        }
     }
 }

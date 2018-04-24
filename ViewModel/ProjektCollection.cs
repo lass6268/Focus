@@ -26,12 +26,24 @@ namespace ViewModel
         }
         public void FindProjekt(int index)
         {
-            
             SelectedItem = Projekts[index];
-           // return SelectedItem;
-            
         }
 
+       public string EditProjekt()
+       {
+            DbConcection dbConcection = new DbConcection();
+            bool connected = dbConcection.UpdateProject(SelectedItem);
+
+            if(connected == true )
+            {
+                return (SelectedItem.ProjectName + " er nu opdateret!");
+            }
+            else
+            {
+                return "Der er noget der gik galt, prøv igen";
+            }
+
+       }
 
 
     }

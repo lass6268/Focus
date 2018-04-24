@@ -232,7 +232,7 @@ namespace Model
                 {
                     con.Open();
 
-                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UdateProject", con);
+                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UpdateProject", con);
                     updatesEmployee.CommandType = CommandType.StoredProcedure;
                     updatesEmployee.Parameters.Add(new SqlParameter("@ProjektName", updateProject.ProjectName));
                     updatesEmployee.Parameters.Add(new SqlParameter("@minBudget", updateProject.MinBudget));
@@ -246,7 +246,7 @@ namespace Model
                 }
                 catch (SqlException e)
                 {
-                    throw e;
+                    return false;
                     
                 }
                 
