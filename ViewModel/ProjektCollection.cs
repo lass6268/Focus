@@ -14,6 +14,7 @@ namespace ViewModel
         public List<Project> Projekts { get; private set; }
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }
+        public static readonly ProjektCollection _instance = new ProjektCollection();
 
         public ProjektCollection()
         {
@@ -23,10 +24,10 @@ namespace ViewModel
             projects.Sort();
             Projekts = projects;
         }
-        public Project FindProjekt(int ID)
+        public void FindProjekt(int ID)
         {
-            
-            return Projekts.Find(x => x.ProjectID == ID);
+            SelectedItem = Projekts.Find(x => x.ProjectID == ID);
+           // return SelectedItem;
             
         }
 

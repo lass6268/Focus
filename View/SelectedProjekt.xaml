@@ -1,0 +1,24 @@
+﻿<Window x:Class="View.SelectedProjekt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="SelectedProjekt" Height="450" Width="800">
+    <Grid>
+
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="137,297,0,0"/>
+        <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding SelectedItem}">
+            <TextBox Text="{Binding ProjectID}"/>
+            <TextBox Text="{Binding ProjectName}"/>
+            <TextBox Text="{Binding MinBudget}"/>
+            <TextBox Text="{Binding MaxBudget}"/>
+            <TextBox Text="{Binding StartDate}"/>
+            <TextBox Text="{Binding FinishDate}"/>
+            <TextBlock Text="{Binding Optainedbudget}"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
