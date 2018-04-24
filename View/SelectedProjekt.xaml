@@ -16,9 +16,19 @@
             <TextBox Text="{Binding MaxBudget}"/>
             <TextBox Text="{Binding StartDate}"/>
             <TextBox Text="{Binding FinishDate}"/>
-            <TextBlock Text="{Binding Optainedbudget}"/>
+            <Border BorderThickness="0.5" BorderBrush="Black">
+                <TextBlock Text="{Binding Optainedbudget}"/>
+            </Border>
+            
 
         </StackPanel>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Projekt ID" VerticalAlignment="Top" Margin="50,104,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Projekt Navn" VerticalAlignment="Top" Margin="50,123,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Min Budget" VerticalAlignment="Top" Margin="50,143,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Max Budget" VerticalAlignment="Top" Margin="50,161,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Start Dato" VerticalAlignment="Top" Margin="50,180,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Slut Dato" VerticalAlignment="Top" Margin="50,196,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nuværende  budget" VerticalAlignment="Top" Margin="26,211,0,0"/>
 
     </Grid>
 </Window>
