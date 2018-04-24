@@ -24,7 +24,7 @@ namespace View
         public ProjectOverviewMenu()
         {
             InitializeComponent();
-            DataContext = new ProjektCollection();
+            DataContext = ProjektCollection._instance;
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
@@ -34,7 +34,15 @@ namespace View
             this.Close();
         }
 
-       
-        
+        private void Projektview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            int id = Projektview.SelectedIndex + 1;
+            ProjektCollection._instance.FindProjekt(id);
+            SelectedProjekt selectedProjekt = new SelectedProjekt();
+            selectedProjekt.Show();
+            selectedProjekt.Topmost = true;
+  
+        }
     }
 }
