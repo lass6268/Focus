@@ -85,7 +85,7 @@ namespace View
                     s = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate);
                 if (checks.ProjektGoneToDB == false)
                 {
-                    throw new Exception();
+                    throw new Exception(s); 
                 }
                     check = true;
                 }
@@ -99,5 +99,6 @@ namespace View
                 return check;
             
         }
+        
     }
 }
