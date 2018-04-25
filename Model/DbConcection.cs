@@ -114,7 +114,7 @@ namespace Model
             }
         }
 
-        public bool AddBudget(int BudgetTotal, int CurrentBudget, DateTime BudgetStartdate, DateTime BudgetFinishDate)
+        public bool AddBudget( int CurrentBudget)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -124,8 +124,7 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@BudgetMin", BudgetStartdate ));
-                    cmd.Parameters.Add(new SqlParameter("@BudgetMax", BudgetFinishDate));
+                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget", CurrentBudget ));
 
                     cmd.ExecuteNonQuery();
 

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
+using System.Text.RegularExpressions;
 
 
 namespace View
@@ -65,6 +66,13 @@ namespace View
 
             projectOverviewMenu.Show();
             this.Close();
+        }
+
+        private void NumberValidationTextBox(object sender,TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
         }
     }
 }
