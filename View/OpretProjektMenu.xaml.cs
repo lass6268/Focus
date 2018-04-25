@@ -30,23 +30,15 @@ namespace View
 
         private void FinalCreateProjekt_btn_Click(object sender,RoutedEventArgs e)
         {
-            string projectName = string.Empty;
-            int minimum = 0;
-            int maximum = 0;
-            DateTime startDate = DateTime.Now;
-            DateTime finishDate = DateTime.MaxValue;
+            bool check = false;
 
-            projectName = Name_txtbox.Text;
-            minimum = int.Parse(Min_txtbox.Text);
-            maximum = int.Parse(Max_txtbox.Text);
-            startDate = DateTime.Parse(StartDate_txtbox.Text);
-            finishDate = DateTime.Parse(FinishDate_txtbox.Text);
+            check = Tryinputs();
 
-            Checks checks = new Checks();
-            string s = checks.Makeprojekt(projectName,minimum,maximum,startDate,finishDate);
+            if (check == true)
+            {
+                openotherwindow();
+            }
             
-            MessageBox.Show(s);
-            openotherwindow();
             
             
           
@@ -73,6 +65,35 @@ namespace View
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
 
+        }
+        private bool Tryinputs()
+        {
+            bool check = false;
+
+            string s = string.Empty;
+            Checks checks = new Checks();
+            
+                try
+                {
+                    string projectName = Name_txtbox.Text;
+                    int minimum = int.Parse(Min_txtbox.Text);
+                    int maximum = int.Parse(Max_txtbox.Text);
+                    DateTime startDate = DateTime.Parse(StartDate_txtbox.Text);
+                    DateTime finishDate = DateTime.Parse(FinishDate_txtbox.Text);
+
+
+                    s = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate);
+                    check = true;
+                }
+                catch (Exception e)
+                {
+
+                s = e.Message;
+                    check =  false;
+                }
+                MessageBox.Show(s);
+                return check;
+            
         }
     }
 }
