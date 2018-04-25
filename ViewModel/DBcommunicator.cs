@@ -20,9 +20,9 @@ namespace ViewModel
 
         }
 
-        //public void EditProject()
+        //public string AddBudget(Budget budget)
         //{
-        //    projektCollection.Projekts
+            
         //}
 
         

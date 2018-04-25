@@ -114,7 +114,7 @@ namespace Model
             }
         }
 
-        public bool AddBudget( int CurrentBudget)
+        public bool CreateBudget( int CurrentBudget)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {

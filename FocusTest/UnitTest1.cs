@@ -37,11 +37,11 @@ namespace FocusTest
       
 
         [TestMethod]
-        public void TestAddBudget()
+        public void TestCreateBudget()
         {
             
-            Assert.AreEqual(false, dbConcection.AddBudget(100, 0, startdate, finaldate));
-            Assert.AreEqual(false, dbConcection.AddBudget(100, 0, startdate, finaldate));
+            Assert.AreEqual(false, dbConcection.CreateBudget(100));
+            Assert.AreEqual(false, dbConcection.CreateBudget(100));
 
         }
             
