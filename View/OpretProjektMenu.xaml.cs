@@ -44,8 +44,10 @@ namespace View
         private void Return_btn_Click(object sender, RoutedEventArgs e)
         {
             ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
+            
             projectOverviewMenu.Show();
             this.Close();
         }
+        
     }
 }

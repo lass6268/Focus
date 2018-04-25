@@ -25,7 +25,7 @@ namespace View
         {
             InitializeComponent();
             DataContext = ProjektCollection._instance;
-            //Projektview.Items.Refresh();
+           
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
