@@ -83,12 +83,16 @@ namespace View
 
 
                     s = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate);
+                if (checks.ProjektGoneToDB == false)
+                {
+                    throw new Exception();
+                }
                     check = true;
                 }
                 catch (Exception e)
                 {
 
-                s = e.Message;
+                    s = e.Message;
                     check =  false;
                 }
                 MessageBox.Show(s);
