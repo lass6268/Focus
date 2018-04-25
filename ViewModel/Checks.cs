@@ -15,30 +15,30 @@ namespace ViewModel
         {
             string display = string.Empty;
             ProjektGoneToDB = false;
-               
+            int result1 = DateTime.Compare(_final, DateTime.Now);
             int result = DateTime.Compare(_start, _final);
             if (result > 0)
             {
                 display =  "Slut dato er tidligere end Start Dato";
                 
             }
-            result = DateTime.Compare(_final, DateTime.Now);
-            if (result < 0)
+            
+            else if (result1 < 0)
             {
                 display = "Slut dato er overstået";
                 
             }
-            if (_name == string.Empty)
+            else if (_name == string.Empty)
             {
                 display = "Projekt Navn er tomt";
                 
             }
-            if (_min == 0 && _max == 0)
+            else if (_min == 0 && _max == 0)
             {
                 display = "Min- og max budget er begge 0";
               
             }
-            if (_final == DateTime.MaxValue)
+            else if (_final == DateTime.MaxValue)
             {
                 display = "Venligst sæt Slut Dato";
           
