@@ -10,55 +10,62 @@ namespace ViewModel
     public class Checks
     {
         DBcommunicator dBcommunicator = new DBcommunicator();
-        public bool ProjektGoneToDB { get; set; }
-        public string Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final)
+        public string Display { get; set; }
+        public bool Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newprojekt)
         {
-            string display = string.Empty;
-            ProjektGoneToDB = false;
-            int result1 = DateTime.Compare(_final, DateTime.Now);
+            
+            bool ProjektGoneToDB = false;
             int result = DateTime.Compare(_start, _final);
+            int result1 = DateTime.Compare(_final, DateTime.Now);
+           
             if (result > 0)
             {
-                display =  "Slut dato er tidligere end Start Dato";
+                Display =  "Slut dato er tidligere end Start Dato";
                 
             }
             
             else if (result1 < 0)
             {
-                display = "Slut dato er overstået";
+                Display = "Slut dato er overstået";
                 
             }
             else if (_name == string.Empty)
             {
-                display = "Projekt Navn er tomt";
+                Display = "Projekt Navn er tomt";
                 
             }
             else if (_min == 0 && _max == 0)
             {
-                display = "Min- og max budget er begge 0";
+                Display = "Min- og max budget er begge 0";
               
             }
             else if (_final == DateTime.MaxValue)
             {
-                display = "Venligst sæt Slut Dato";
+                Display = "Venligst sæt Slut Dato";
           
             }
 
             else if (_min > _max && _max != 0)
             {
-                display = "Minimums Budget er større end Maksimums Budget";
+                Display = "Minimums Budget er større end Maksimums Budget";
                
             }
-            else
+
+            else if(newprojekt == true)
             {
 
                 Project projekt = new Project(_name, _min, _max, _start, _final);
 
-                display =  dBcommunicator.AddProjectToDatabase(projekt);
+                Display =  dBcommunicator.AddProjectToDatabase(projekt);
                 ProjektGoneToDB = true;
 
             }
-                return display;
+            else if (newprojekt == false)
+            {
+                ProjektGoneToDB = true;
+               
+            }
+            return ProjektGoneToDB;
         }
 
         public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)

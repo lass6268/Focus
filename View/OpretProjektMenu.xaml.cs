@@ -30,11 +30,11 @@ namespace View
 
         private void FinalCreateProjekt_btn_Click(object sender,RoutedEventArgs e)
         {
-            bool check = false;
+            bool oprettetprojekt = false;
 
-            check = Tryinputs();
+            oprettetprojekt = Tryinputs();
 
-            if (check == true)
+            if (oprettetprojekt == true)
             {
                 openotherwindow();
             }
@@ -68,7 +68,7 @@ namespace View
         }
         private bool Tryinputs()
         {
-            bool check = false;
+            bool Returnvalue = false;
 
             string s = string.Empty;
             Checks checks = new Checks();
@@ -82,21 +82,26 @@ namespace View
                     DateTime finishDate = DateTime.Parse(FinishDate_txtbox.Text);
 
 
-                    s = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate);
-                    if (checks.ProjektGoneToDB == false)
+                    
+                    if (checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, true) == false)
                     {
-                        throw new Exception(s); 
+                        throw new Exception(checks.Display); 
                     }
-                    check = true;
+                    else
+                    {
+                    s = checks.Display;
+                    Returnvalue = true;
+                    }
+               
                 }
                 catch (Exception e)
                 {
 
                     s = e.Message;
-                    check =  false;
+                    Returnvalue =  false;
                 }
                 MessageBox.Show(s);
-                return check;
+                return Returnvalue;
             
         }
         

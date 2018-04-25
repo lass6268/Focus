@@ -32,9 +32,14 @@ namespace ViewModel
 
        public string EditProjekt()
        {
+            Checks checks = new Checks();
+            string connected = string.Empty;
+            checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate,false);
             DbConcection dbConcection = new DbConcection();
-            string connected = dbConcection.UpdateProject(SelectedItem);
-
+            if (checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
+            {
+                 connected = dbConcection.UpdateProject(SelectedItem);
+            }
             if(connected !=string.Empty )
             {
                 return (connected);

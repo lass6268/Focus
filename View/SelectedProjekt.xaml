@@ -10,12 +10,12 @@
 
         <Button Name="ArchiveProject_btn" Content="Archive this project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="137,297,0,0" Click="ArchiveProject_btn_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding SelectedItem}">
-            <TextBox Text="{Binding ProjectID}"/>
-            <TextBox Text="{Binding ProjectName, Mode=TwoWay}"/>
-            <TextBox Text="{Binding MinBudget, Mode=TwoWay}"/>
-            <TextBox Text="{Binding MaxBudget, Mode=TwoWay}"/>
-            <TextBox Text="{Binding StartDate, Mode=TwoWay}"/>
-            <TextBox Text="{Binding FinishDate, Mode=TwoWay}"/>
+            <TextBox Text="{Binding ProjectID}" />
+            <TextBox Text="{Binding ProjectName, Mode=TwoWay}" Name="Sel_Name_txtbox"/>
+            <TextBox Text="{Binding MinBudget, Mode=TwoWay}" Name="Sel_Min_txtbox"/>
+            <TextBox Text="{Binding MaxBudget, Mode=TwoWay}" Name="Sel_Max_txtbox"/>
+            <TextBox Text="{Binding StartDate, Mode=TwoWay}" Name="Sel_StartDate_txtbox"/>
+            <TextBox Text="{Binding FinishDate, Mode=TwoWay}" Name="Sel_FinishDate_txtbox"/>
             <Border BorderThickness="0.5" BorderBrush="Black">
                 <TextBlock Text="{Binding Optainedbudget}"/>
             </Border>
