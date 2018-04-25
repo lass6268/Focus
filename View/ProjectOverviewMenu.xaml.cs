@@ -25,13 +25,14 @@ namespace View
         {
             InitializeComponent();
             DataContext = ProjektCollection._instance;
-           
+            ProjektCollection._instance.UpdateProjekts();
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
         {
             OpretProjektMenu opretProjekt = new OpretProjektMenu();
             opretProjekt.Show();
+            opretProjekt.Topmost = true;
             this.Close();
         }
 

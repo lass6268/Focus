@@ -15,14 +15,15 @@ namespace ViewModel
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }
         public static readonly ProjektCollection _instance = new ProjektCollection();
+        DbConcection dbConcection = new DbConcection();
 
         public ProjektCollection()
         {
             List<Project> projects = new List<Project>();
-            DbConcection dbConcection = new DbConcection();
-            projects = dbConcection.OverviewOverProjects();
-            projects.Sort();
-            Projekts = projects;
+            
+            Projekts = dbConcection.OverviewOverProjects();
+            Projekts.Sort();
+            
         }
         public void FindProjekt(int index)
         {
@@ -51,6 +52,12 @@ namespace ViewModel
 
             return SelectedItem.ProjectName + " er nu arkiveret";
 
+
+        }
+        public void UpdateProjekts()
+        {
+            Projekts = dbConcection.OverviewOverProjects();
+            Projekts.Sort();
 
         }
 

@@ -24,7 +24,18 @@ namespace ViewModel
             {
                 return "Final date has past";
             }
-
+            if (_name == string.Empty)
+            {
+                return "Name is Empty";
+            }
+            if (_min == 0 && _max == 0)
+            {
+                return "Min- and max budget is both 0";
+            }
+            if (_final == DateTime.MaxValue)
+            {
+                return "Please inset a Final Date";
+            }
 
             else if (_min > _max && _max != 0)
             {

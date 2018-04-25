@@ -29,25 +29,42 @@ namespace View
 
         private void FinalCreateProjekt_btn_Click(object sender,RoutedEventArgs e)
         {
-            string projectName = Name_txtbox.Text;
-            int minimum = int.Parse(Min_txtbox.Text);
-            int maximum = int.Parse(Max_txtbox.Text);
-            DateTime startDate = DateTime.Parse(StartDate_txtbox.Text);
-            DateTime finishDate = DateTime.Parse(FinishDate_txtbox.Text);
+            string projectName = string.Empty;
+            int minimum = 0;
+            int maximum = 0;
+            DateTime startDate = DateTime.Now;
+            DateTime finishDate = DateTime.MaxValue;
+
+            projectName = Name_txtbox.Text;
+            minimum = int.Parse(Min_txtbox.Text);
+            maximum = int.Parse(Max_txtbox.Text);
+            startDate = DateTime.Parse(StartDate_txtbox.Text);
+            finishDate = DateTime.Parse(FinishDate_txtbox.Text);
 
             Checks checks = new Checks();
             string s = checks.Makeprojekt(projectName,minimum,maximum,startDate,finishDate);
+            
             MessageBox.Show(s);
+            openotherwindow();
+            
+            
           
         }
 
-        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        private void openotherwindow()
         {
             ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
             
             projectOverviewMenu.Show();
             this.Close();
         }
-        
+
+        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
+
+            projectOverviewMenu.Show();
+            this.Close();
+        }
     }
 }
