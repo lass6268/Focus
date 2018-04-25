@@ -40,8 +40,8 @@ namespace FocusTest
         public void TestAddBudget()
         {
             
-            Assert.AreEqual(false, dbConcection.AddBudget(100, 0, startdate, finaldate));
-            Assert.AreEqual(false, dbConcection.AddBudget(100, 0, startdate, finaldate));
+            Assert.AreEqual(false, dbConcection.AddBudget(4, 3, 3, 3));
+            Assert.AreEqual(false, dbConcection.AddBudget(5, 4, 4, 4));
 
         }
             

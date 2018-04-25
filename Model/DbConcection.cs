@@ -114,7 +114,7 @@ namespace Model
             }
         }
 
-        public bool AddBudget( int CurrentBudget)
+        public bool AddBudget(int CurrentBudgetID, int CurrentBudget, int ProjektID, int EmployeeID)
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -124,6 +124,9 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@CurrentBudgetID", CurrentBudgetID));
+                    cmd.Parameters.Add(new SqlParameter("@ProjektID", ProjektID));
+                    cmd.Parameters.Add(new SqlParameter("@EmployeeID", EmployeeID));
                     cmd.Parameters.Add(new SqlParameter("@CurrentBudget", CurrentBudget ));
 
                     cmd.ExecuteNonQuery();
