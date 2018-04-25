@@ -25,12 +25,13 @@ namespace View
         {
             InitializeComponent();
             DataContext = ProjektCollection._instance;
+            //Projektview.Items.Refresh();
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
         {
-            ProjektMenu projektMenu = new ProjektMenu();
-            projektMenu.Show();
+            OpretProjektMenu opretProjekt = new OpretProjektMenu();
+            opretProjekt.Show();
             this.Close();
         }
 

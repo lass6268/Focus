@@ -41,8 +41,6 @@ namespace Model
                 catch(SqlException e)
                 {
 
-
-
                     return e.Message;
                 }
             }
