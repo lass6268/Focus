@@ -41,10 +41,10 @@ namespace FocusTest
             Assert.AreEqual(false, dbConcection.AddBudget(100, 0, startdate, finaldate));
 
         }
-
-       
+            
 
       
+
 
         [TestMethod]
         public void Testprojekttest()
