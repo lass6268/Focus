@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data;
-using System.Data.SqlClient;
+ 
+using ViewModel;
 
 namespace View
 {
@@ -24,7 +24,25 @@ namespace View
         public ProjectOverviewMenu()
         {
             InitializeComponent();
+            DataContext = ProjektCollection._instance;
         }
 
+        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ProjektMenu projektMenu = new ProjektMenu();
+            projektMenu.Show();
+            this.Close();
+        }
+
+        private void Projektview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            int index = Projektview.SelectedIndex;
+            ProjektCollection._instance.FindProjekt(index);
+            SelectedProjekt selectedProjekt = new SelectedProjekt();
+            selectedProjekt.Show();
+            selectedProjekt.Topmost = true;
+  
+        }
     }
 }

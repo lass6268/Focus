@@ -40,14 +40,61 @@ namespace Model
                 }
                 catch(SqlException e)
                 {
-                    
-                        
 
-                    return e.Message;      
+
+
+                    return e.Message;
                 }
             }
         }
-        public void ArchiveProject(string nameArchived,int minBudgetArchived,int maxbudgetArchived,DateTime startDateArchived,DateTime finishDateArchived, int obtainedBudget)
+
+        public List<Project> GetArchivedProjects(int projId)
+        {
+
+            List<Project> plst = new List<Project>();
+            int ProjektID, minBudget, maxBudget;
+            string ProjektName;
+            DateTime StartDate, FinishDate;
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand("[Spu_Get_Focus_ArchiveProject]",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@projId",projId));
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+                    if(showProjects.HasRows)
+                    {
+                        while(showProjects.Read())
+                        {
+
+                            ProjektID = int.Parse(showProjects["ProjektID"].ToString());
+                            ProjektName = showProjects["ProjektName"].ToString();
+                            minBudget = int.Parse(showProjects["minBudget"].ToString());
+
+
+                            maxBudget = int.Parse(showProjects["maxBudget"].ToString());
+                            StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
+                            FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
+                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+
+                            plst.Add(project);
+                        }
+                    }
+                }
+                catch(SqlException e)
+                {
+
+                    throw e;
+                }
+                return plst;
+            }
+           
+        }
+        public void ArchiveProject(int projectID)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -57,23 +104,15 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_ArchiveProject",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjectName_Archived",nameArchived));
-                    cmd.Parameters.Add(new SqlParameter("@minBudget_Archived",minBudgetArchived));
-                    cmd.Parameters.Add(new SqlParameter("@maxBudget_Archived",maxbudgetArchived));
-                    cmd.Parameters.Add(new SqlParameter("@Startdate_Archived",startDateArchived));
-                    cmd.Parameters.Add(new SqlParameter("@Finishdate_Archived",finishDateArchived));
-                    cmd.Parameters.Add(new SqlParameter("@ObtainedBudget",obtainedBudget));
-
-
+                    cmd.Parameters.Add(new SqlParameter("@projId",projectID));
                     cmd.ExecuteNonQuery();
-
-                    
                 }
                 catch(SqlException e)
                 {
 
                     throw e;
                 }
+
             }
         }
 
@@ -102,10 +141,12 @@ namespace Model
             }
         }
 
-        public List<string> OverviewOverProjects()
+        public List<Project> OverviewOverProjects()
         {
-            List<string> projectList = new List<string>();
-            string ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate,IsArchived; 
+            List<Project> projectList = new List<Project>();
+            int ProjektID, minBudget, maxBudget;
+            string ProjektName;
+            DateTime StartDate, FinishDate; 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
@@ -120,26 +161,98 @@ namespace Model
                     {
                         while (showProjects.Read())
                         {
-                            ProjektID = showProjects["ProjektID"].ToString();
+                            ProjektID = int.Parse(showProjects["ProjektID"].ToString());
                             ProjektName = showProjects["ProjektName"].ToString();
-                            minBudget = showProjects["minBudget"].ToString();
-                            maxBudget = showProjects["maxBudget"].ToString();
-                            StartDate = showProjects["StartDate"].ToString();
-                            FinishDate = showProjects["FinishDate"].ToString();
+                            minBudget = int.Parse(showProjects["minBudget"].ToString());
+                            
+
+                            maxBudget = int.Parse(showProjects["maxBudget"].ToString());
+                            StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
+                            FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
                             //use this value to indicate if a project has been archived or not.
                             //so if value = False, show in UI.
-                            IsArchived = showProjects["IsArchived"].ToString();
-                            projectList.Add(ProjektID + " " + ProjektName + " " + minBudget + " " + maxBudget + " " + StartDate + " " + FinishDate);
+                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+                            //IsArchived = showProjects["IsArchived"].ToString();
+                            projectList.Add(project);
                             
+                            //Lav det om til en Projektlist, mere end en StringList
                         }
                     } return projectList;
                 }
                 catch (SqlException e)
                 {
-                    throw e;
+                    throw e; 
                 }
 
             }
+        }
+        public int GetObtainedBudget(int projectID)
+        {
+            int CurrentBudget = 0;
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("[Spu_Focus_TotalBudget]",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ProjektID", projectID));
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+                    if(showProjects.HasRows)
+                    {
+                        while(showProjects.Read())
+                        {
+
+                             
+                           
+                                int budget = int.Parse((showProjects["CurrentBudget"].ToString()));
+                                CurrentBudget += budget;
+                            
+                          
+
+                        }
+
+                    }
+                    return CurrentBudget;
+                } 
+                catch(SqlException e)
+                {
+
+                    throw e;
+                }
+            }
+
+
+        }
+        public string UpdateProject(Project updateProject)
+        {
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UpdateProject", con);
+                    updatesEmployee.CommandType = CommandType.StoredProcedure;
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektName", updateProject.ProjectName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@minBudget", updateProject.MinBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@maxBudget", updateProject.MaxBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Startdate", updateProject.StartDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Finishdate", updateProject.FinishDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
+
+                    updatesEmployee.ExecuteNonQuery();
+                    return string.Empty;
+                }
+                catch (SqlException e)
+                {
+                    return e.Message;
+                    
+                }
+                
+            }
+            
         }
 
     }

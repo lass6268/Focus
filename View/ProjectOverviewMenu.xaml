@@ -6,7 +6,40 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="ProjectOverviewMenu" Height="450" Width="800">
+
     <Grid>
         
+        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,10,73" SelectionChanged="Projektview_SelectionChanged"  >
+            
+            <ListView.View>
+                
+                <GridView>
+                    <GridViewColumn Header="Projekt ID" DisplayMemberBinding="{Binding ProjectID}"/>
+                    <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName}"/>
+                    <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget}"/>
+                    <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget}"/>
+                    <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate}"/>
+                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
+                    <GridViewColumn Header="Progress">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Name="fremgang" Value="{Binding Optainedbudget, Mode=OneWay}" Minimum="0" Maximum="{Binding MaxBudget}" Width="100" Height="10"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    
+
+
+                </GridView>
+
+            </ListView.View>
+            
+
+
+        </ListView>
+        <Button Name="Return_btn" Content="Tilbage" HorizontalAlignment="Left" Margin="355,370,0,0" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
     </Grid>
+
 </Window>

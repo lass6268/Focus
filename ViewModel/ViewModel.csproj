@@ -45,10 +45,11 @@
     <Compile Include="Checks.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DBcommunicator.cs" />
+    <Compile Include="ProjektCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Properties\App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

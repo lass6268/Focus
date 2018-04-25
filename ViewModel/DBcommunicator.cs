@@ -9,19 +9,24 @@ namespace ViewModel
 {
     public class DBcommunicator
     {
+
+       
         DbConcection dbConcection = new DbConcection();
+        ProjektCollection projektCollection = new ProjektCollection();
+
         public string AddProjectToDatabase(Project project)
         {
             return dbConcection.AddProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate, project.FinishDate);
 
         }
 
+        //public void EditProject()
+        //{
+        //    projektCollection.Projekts
+        //}
 
-        public void ArchiveProjectToDatabase(Project project, Budget budget)
-        {
-            dbConcection.ArchiveProject(project.ProjectName, project.MinBudget, project.MaxBudget, project.StartDate,project.FinishDate, budget.CurrentBudget);
-
-        }
+        
+       
 
 
         public void AddBudgetToDatabase(Budget budget)
@@ -30,9 +35,13 @@ namespace ViewModel
           
         }
 
-        public List<String> ListOfProjectsToDatabase()
+        public List<Project> ListOfProjectsToDatabase()
         {
-            return dbConcection.OverviewOverProjects();
+            
+            List<Project> projects = new List<Project>();
+            projects= dbConcection.OverviewOverProjects();
+            projects.Sort();
+            return projects;
         }
     }
 }

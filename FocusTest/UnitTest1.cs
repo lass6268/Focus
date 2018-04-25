@@ -17,16 +17,19 @@ namespace FocusTest
         DateTime finaldate;
         Employee medarbejder;
         DBcommunicator dBcommunicator;
+        ProjektCollection projektCollection;
         [TestInitialize]
         public void TestInitialize()
         {
             dbConcection = new DbConcection();
             checks = new Checks();
             dBcommunicator = new DBcommunicator();
+            projektCollection = new ProjektCollection();
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
             medarbejder = new Employee();
+
 
         }
 
@@ -49,11 +52,10 @@ namespace FocusTest
         [TestMethod]
         public void Testprojekttest()
         {
-
-            
+           
             Assert.AreEqual("Final date is earlier than start date", checks.Makeprojekt("Nordea Odense", 10, 100,  finaldate ,startdate));
-            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
-            Assert.AreEqual("projekt has been made", checks.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
+            Assert.AreEqual("Project navn allerede i brug", checks.Makeprojekt("Nordea Odense", 10, 100,startdate, finaldate));
+            Assert.AreEqual("Project navn allerede i brug", checks.Makeprojekt("Nordea Odense", 10, 0, startdate, finaldate));
             Assert.AreEqual("Min is Bigger then Max", checks.Makeprojekt("Nordea Odense", 10, 1, startdate, finaldate));
         }
 
@@ -72,19 +74,21 @@ namespace FocusTest
         public void TestOverviewOverProjects()
         {
 
-            List<string> testlist = dBcommunicator.ListOfProjectsToDatabase();
-            Assert.AreEqual(3, testlist.Count);
-            Assert.AreEqual("2 Nordea Odense 10 100 01-01-2018 00:00:00 01-05-2018 00:00:00", testlist[2]);
-            Assert.AreEqual(true, testlist[2].Contains("Nordea"));
-        }
+            List<Project> testlist = dBcommunicator.ListOfProjectsToDatabase();
+            Assert.AreEqual(4, testlist.Count);
+            Assert.AreEqual("Nordea", testlist[0].ProjectName);
 
+            Assert.AreEqual("Nordea", projektCollection.Projekts[0].ProjectName);
+        }
+        [TestMethod]
         public void TestArchiveProject()
         {
-            Assert.AreEqual(dbConcection.ArchiveProject("Nordea",0,1000,startdate,finaldate,1));
-
+            dbConcection.ArchiveProject(2);
+            List<Project> list = dbConcection.GetArchivedProjects(3);
+            Assert.AreEqual(list[0].ProjectID,3);            
         }
 
-
+        
 
     }
 }
