@@ -15,8 +15,8 @@
         <TextBox Name="Name_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Min_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox Name="Max_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox Name="StartDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="FinishDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="332,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="StartDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="110,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox Name="FinishDate_txtbox" HorizontalAlignment="Left" Height="23" Margin="332,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
         <Button Name="FinalCreateProjekt_btn" Content="Opret projekt" HorizontalAlignment="Left" Margin="355,295,0,0" VerticalAlignment="Top" Width="135" Height="39" Click="FinalCreateProjekt_btn_Click"/>
         <Button Name="Return_btn" Content="Tilbage" HorizontalAlignment="Left" Margin="355,370,0,0" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
 
