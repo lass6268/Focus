@@ -46,11 +46,11 @@ namespace Model
             }
         }
 
-        public List<Project> GetArchivedProjects(int projId)
+        public List<Project> GetArchivedProjects()
         {
 
-            List<Project> plst = new List<Project>();
-            int ProjektID, minBudget, maxBudget;
+            List<Project> archivedProjects = new List<Project>();
+            int ProjektID, minBudget, maxBudget, BudgetObtained;
             string ProjektName;
             DateTime StartDate, FinishDate;
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -59,36 +59,34 @@ namespace Model
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("[Spu_Get_Focus_ArchiveProject]",con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@projId",projId));
-                    SqlDataReader showProjects = cmd.ExecuteReader();
+                    SqlCommand showArchivedProjects = new SqlCommand("[Spu_Get_Focus_ArchiveProject]",con);
+                    showArchivedProjects.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader showProjects = showArchivedProjects.ExecuteReader();
 
                     if(showProjects.HasRows)
                     {
                         while(showProjects.Read())
                         {
 
-                            ProjektID = int.Parse(showProjects["ProjektID"].ToString());
-                            ProjektName = showProjects["ProjektName"].ToString();
-                            minBudget = int.Parse(showProjects["minBudget"].ToString());
-
-
-                            maxBudget = int.Parse(showProjects["maxBudget"].ToString());
-                            StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
-                            FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
+                            ProjektID = int.Parse(showProjects["ProjektID_Archived"].ToString());
+                            ProjektName = showProjects["ProjektName_Archived"].ToString();
+                            minBudget = int.Parse(showProjects["minBudget_Archived"].ToString());
+                            maxBudget = int.Parse(showProjects["maxBudget_Archived"].ToString());
+                            StartDate = DateTime.Parse(showProjects["StartDate_Archived"].ToString());
+                            FinishDate = DateTime.Parse(showProjects["FinishDate_Archived"].ToString());
+                            BudgetObtained = int.Parse(showProjects["BudgetObtained"].ToString());
                             Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
 
-                            plst.Add(project);
+                            archivedProjects.Add(project);
                         }
-                    }
+                    }return archivedProjects;
                 }
                 catch(SqlException e)
                 {
 
                     throw e;
                 }
-                return plst;
+                
             }
            
         }
@@ -168,13 +166,10 @@ namespace Model
                             maxBudget = int.Parse(showProjects["maxBudget"].ToString());
                             StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
                             FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
-                            //use this value to indicate if a project has been archived or not.
-                            //so if value = False, show in UI.
                             Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
                             //IsArchived = showProjects["IsArchived"].ToString();
                             projectList.Add(project);
-                            
-                            //Lav det om til en Projektlist, mere end en StringList
+                           
                         }
                     } return projectList;
                 }
