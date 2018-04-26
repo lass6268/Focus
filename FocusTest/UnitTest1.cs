@@ -75,17 +75,26 @@ namespace FocusTest
         {
 
             List<Project> testlist = dBcommunicator.ListOfProjectsToDatabase();
-            Assert.AreEqual(4, testlist.Count);
-            Assert.AreEqual("Nordea", testlist[0].ProjectName);
+            Assert.AreEqual(20, testlist.Count);
+            Assert.AreEqual("Ikea", testlist[0].ProjectName);
 
-            Assert.AreEqual("Nordea", projektCollection.Projekts[0].ProjectName);
+            Assert.AreEqual("Ikea", projektCollection.Projekts[0].ProjectName);
         }
         [TestMethod]
         public void TestArchiveProject()
         {
-            dbConcection.ArchiveProject(2);
-            List<Project> list = dbConcection.GetArchivedProjects(3);
-            Assert.AreEqual(list[0].ProjectID,3);            
+            dbConcection.ArchiveProject(1);
+            //List<Project> list = dbConcection.GetArchivedProjects(1);
+           // Assert.AreEqual(list[0].ProjectID,1);            
+        }
+
+        [TestMethod]
+        public void TestOverviewOverArchivedProjects()
+        {
+            List<Project> archivedTestlist = dBcommunicator.ListOfArchivedProjectsToDatabase();
+            Assert.AreEqual(4, archivedTestlist.Count);
+            Assert.AreEqual("Google2", archivedTestlist[2].ProjectName);
+            Assert.AreEqual(0, archivedTestlist[3].Optainedbudget);
         }
 
         

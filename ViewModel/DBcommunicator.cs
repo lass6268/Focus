@@ -20,15 +20,6 @@ namespace ViewModel
 
         }
 
-        //public string AddBudget(Budget budget)
-        //{
-            
-        //}
-
-        
-       
-
-
         public void AddBudgetToDatabase(Budget budget)
         {
            //dbConcection.AddBudget(budget.BudgetTotal, budget.CurrentBudget, budget.BudgetStartdate, budget.BudgetFinishdate);
@@ -42,6 +33,14 @@ namespace ViewModel
             projects= dbConcection.OverviewOverProjects();
             projects.Sort();
             return projects;
+        }
+
+        public List<Project> ListOfArchivedProjectsToDatabase()
+        {
+            List<Project> archivedProjects = new List<Project>();
+            archivedProjects = dbConcection.GetArchivedProjects();
+            archivedProjects.Sort();
+            return archivedProjects;
         }
     }
 }

@@ -17,8 +17,7 @@ namespace Model
         public int MaxBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
-        public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); }  }
-
+        public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); } }
 
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
@@ -28,7 +27,7 @@ namespace Model
             StartDate = _start;
             FinishDate = _finish;
         }
-        public Project(int _projektid,string _name, int _min, int _max, DateTime _start, DateTime _finish)
+        public Project(int _projektid, string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
             ProjectID = _projektid;
             ProjectName = _name;
@@ -42,14 +41,9 @@ namespace Model
 
         public class TestClass
         {
-            public static void Main(string[] args)
+            static void Main(string[] args)
             {
-                CultureInfo enGB = new CultureInfo("en-GB");
-                string dateString;
-                DateTime dateValue;
-
-                dateString = "26/01/2011 00:14:00";
-                DateTime.TryParseExact(dateString, "g", enGB, DateTimeStyles.None, out dateValue);
+            
             }
         }
 
