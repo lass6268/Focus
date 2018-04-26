@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
 
 namespace Model
 {
@@ -38,11 +40,16 @@ namespace Model
 
         
 
-        class TestClass
+        public class TestClass
         {
-            static void Main(string[] args)
+            public static void Main(string[] args)
             {
-               
+                CultureInfo enGB = new CultureInfo("en-GB");
+                string dateString;
+                DateTime dateValue;
+
+                dateString = "26/01/2011 00:14:00";
+                DateTime.TryParseExact(dateString, "g", enGB, DateTimeStyles.None, out dateValue);
             }
         }
 
