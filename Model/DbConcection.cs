@@ -226,6 +226,7 @@ namespace Model
                 try
                 {
                     con.Open();
+                    
 
                     SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UpdateProject", con);
                     updatesEmployee.CommandType = CommandType.StoredProcedure;

@@ -14,8 +14,8 @@
             <TextBox Text="{Binding ProjectName, Mode=TwoWay}" Name="Sel_Name_txtbox"/>
             <TextBox Text="{Binding MinBudget, Mode=TwoWay}" Name="Sel_Min_txtbox" />
             <TextBox Text="{Binding MaxBudget, Mode=TwoWay}" Name="Sel_Max_txtbox"/>
-            <TextBox Text="{Binding StartDate, Mode=TwoWay}" Name="Sel_StartDate_txtbox"/>
-            <TextBox Text="{Binding FinishDate, Mode=TwoWay}" Name="Sel_FinishDate_txtbox"/>
+            <TextBox Text="{Binding StartDate, Mode =TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE}" Name="Sel_StartDate_txtbox"/>
+            <TextBox Text="{Binding FinishDate, Mode=TwoWay, StringFormat=dd-MM-yyyy, ConverterCulture=de-DE}" Name="Sel_FinishDate_txtbox"/>
             <Border BorderThickness="0.5" BorderBrush="Black">
                 <TextBlock Text="{Binding Optainedbudget}"/>
             </Border>

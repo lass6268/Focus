@@ -31,7 +31,8 @@ namespace View
         {
 
             //ProjektCollection._instance.EditProjekt();
-            Tryinputs();
+            
+            Tryinputs(Sel_Name_txtbox.Text, Sel_Min_txtbox.Text, Sel_Max_txtbox.Text, Sel_StartDate_txtbox.Text, Sel_FinishDate_txtbox.Text);
            
         }
 
@@ -60,22 +61,23 @@ namespace View
             this.Close();
         }
 
-        private bool Tryinputs()
+        private void Tryinputs(string name,string min, string max,string startdate, string Finishdate)
         {
-            bool check = false;
+            
 
             string s = string.Empty;
             Checks checks = new Checks();
 
             try
             {
-                string projectName = Sel_Name_txtbox.Text;
-                int minimum = int.Parse(Sel_Min_txtbox.Text);
-                int maximum = int.Parse(Sel_Max_txtbox.Text);
-                DateTime startDate = DateTime.Parse(Sel_StartDate_txtbox.Text);
-                DateTime finishDate = DateTime.Parse(Sel_FinishDate_txtbox.Text);
+               
+                string projectName = name;
+                int minimum = int.Parse(min);
+                int maximum = int.Parse(max);
+                DateTime startDate = DateTime.Parse(startdate);
+                DateTime finishDate = DateTime.Parse(Finishdate);
                 bool checker = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
-
+                MessageBox.Show(startdate.ToString());
 
                 if (checker == false)
                 {
@@ -84,20 +86,22 @@ namespace View
                 }
                 else
                 {
-
-                    s = ProjektCollection._instance.EditProjekt();
-                    check = true;
+                    
+                    s = ProjektCollection._instance.EditProjekt(startDate,finishDate);
+                   
                 }
                 }
              catch (Exception e)
             {
 
                 s = e.Message;
-                check = false;
+                
             }
             MessageBox.Show(s);
-            return check;
+            
 
         }
+       
+        
     }
 }
