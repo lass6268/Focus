@@ -78,7 +78,7 @@ namespace View
                 DateTime startDate = DateTime.Parse(startdate);
                 DateTime finishDate = DateTime.Parse(Finishdate);
                 bool checker = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
-                MessageBox.Show(startdate.ToString());
+                
 
                 if (checker == false)
                 {
