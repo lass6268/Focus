@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BudgetContrainer.cs" />
     <Compile Include="Checks.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DBcommunicator.cs" />

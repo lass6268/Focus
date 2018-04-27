@@ -10,18 +10,15 @@ namespace Model
     {
         DbConcection dbConcection = new DbConcection();
         public int CurrentBudget { get; set; }
-        public int BudgetMin { get; set; }
-        public int BudgetMax { get; set; }
         public Employee Employee { get; set; }
         public Project Project { get; set; }
-        public int Optainedbudget { get; set; }
+        
 
 
-        public Budget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
+        public Budget(Employee _Employee, Project _project, int _currentBudget)
         {
-           
-            BudgetMin = _BudgetMin;
-            BudgetMax = _BudgetMax;
+
+            CurrentBudget = _currentBudget;
             Employee = _Employee;
             Project = _project;
         }

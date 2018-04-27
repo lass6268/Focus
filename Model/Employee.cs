@@ -11,5 +11,12 @@ namespace Model
 
         public String Name { get; set; }
         public int ID { get; set; }
+
+        public Employee(string _name,int _id)
+        {
+            Name = _name;
+            ID = _id;
+
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace ViewModel
             return ProjektGoneToDB;
         }
 
-        public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
+       /* public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
         {
 
             if (_BudgetMin >= _BudgetMax)
@@ -82,6 +82,6 @@ namespace ViewModel
                 return "Budget er oprettet!";
             }
 
-        }
+        }*/
     }
 }

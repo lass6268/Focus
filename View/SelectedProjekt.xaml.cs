@@ -26,6 +26,8 @@ namespace View
             InitializeComponent();
             
             DataContext = ProjektCollection._instance;
+            BudgetContrainer budgetContrainer = new BudgetContrainer();
+            BudgetListview.DataContext = budgetContrainer;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

@@ -137,6 +137,53 @@ namespace Model
                 }
             }
         }
+        public List<Budget> GetBudgetForProjekt(Project project)
+        {
+            List<Budget> budgets = new List<Budget>();
+            int Budgetid, EmployeeID, CurrentBudget;
+            string EmployeeName;
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                   
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_GetBudgetForPID", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ProjectID", project.ProjectID));
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+
+                   
+
+                    if (showProjects.HasRows)
+                    {
+                        while (showProjects.Read())
+                        {
+                            Budgetid = int.Parse(showProjects["CurrentBudgetID"].ToString());
+                            EmployeeID = int.Parse(showProjects["EmployeeID"].ToString());
+                            CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
+                            EmployeeName = showProjects["EmployeeName"].ToString();
+                            Employee employee = new Employee(EmployeeName,EmployeeID);
+                            Budget budget = new Budget(employee,project,CurrentBudget);
+                            budgets.Add(budget);
+
+
+                        }
+
+                    }
+                }
+
+                catch (SqlException e)
+                {
+                    throw e;
+
+                }
+
+
+            }
+            return budgets;
+        }
 
         public List<Project> OverviewOverProjects()
         {
@@ -171,14 +218,15 @@ namespace Model
                             projectList.Add(project);
                            
                         }
-                    } return projectList;
+                    } 
                 }
                 catch (SqlException e)
                 {
                     throw e; 
                 }
-
+               
             }
+            return projectList;
         }
         public int GetObtainedBudget(int projectID)
         {

@@ -28,7 +28,7 @@ namespace FocusTest
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
-            medarbejder = new Employee();
+            medarbejder = new Employee("Erik",2);
 
 
         }
@@ -44,9 +44,19 @@ namespace FocusTest
             Assert.AreEqual(false, dbConcection.CreateBudget(1, 1, 100));
 
         }
+        [TestMethod]
+        public void TestBudgetListforProjekt()
+        {
             
+            Project project8 = new Project(8,"Virksomhed",1,1000,startdate,finaldate);
+            List<Budget> budgets = dbConcection.GetBudgetForProjekt(project8);
+            Assert.AreEqual(7, budgets.Count);
+            Assert.AreEqual(1,budgets[1].CurrentBudget);
 
-      
+        }
+
+
+
 
 
         [TestMethod]

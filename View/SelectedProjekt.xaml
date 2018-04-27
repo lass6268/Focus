@@ -19,7 +19,7 @@
             <Border BorderThickness="0.5" BorderBrush="Black">
                 <TextBlock Text="{Binding Optainedbudget}"/>
             </Border>
-            
+
 
         </StackPanel>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Projekt ID" VerticalAlignment="Top" Margin="50,104,0,0"/>
@@ -31,6 +31,17 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nuværende  budget" VerticalAlignment="Top" Margin="26,211,0,0"/>
         <Button Content="Rediger Projekt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="281,297,0,0" Click="Edit_Click"/>
         <Button Name="Return_btn" Content="Tilbage" HorizontalAlignment="Left" Margin="355,370,0,0" VerticalAlignment="Top" Width="75" Click="Selected_Return_btn_Click"/>
+        <ListView Name="BudgetListview" HorizontalAlignment="Left" Height="156" VerticalAlignment="Top" Width="370" Margin="400,106,0,0" ItemsSource="{Binding Budgets}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding Employee.ID}"/>
+                    <GridViewColumn Header="Employee Name" DisplayMemberBinding="{Binding Employee.Name}"/>
+                    <GridViewColumn Header="Current Budget Optained" DisplayMemberBinding="{Binding CurrentBudget}"/>
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>
