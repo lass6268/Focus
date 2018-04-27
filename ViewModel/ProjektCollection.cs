@@ -26,6 +26,15 @@ namespace ViewModel
             Projekts.Sort();
             
         }
+
+        /*public ArchivedProjektCollection()
+        {
+            List<Project> archivedProjects = new List<Project>();
+
+            archivedProjects = dbConcection.GetArchivedProjects();
+            archivedProjects.Sort();
+
+        }*/
         public void FindProjekt(int index)
         {
             SelectedItem = Projekts[index];

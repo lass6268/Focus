@@ -56,5 +56,13 @@ namespace View
             budgetMenu.Topmost = true;
             this.Close();
         }
+
+        private void Archived_Projekt_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
+            archivedProjectsMenu.Show();
+            archivedProjectsMenu.Topmost = true;
+            this.Close();
+        }
     }
 }
