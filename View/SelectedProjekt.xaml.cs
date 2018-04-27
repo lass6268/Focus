@@ -30,14 +30,14 @@ namespace View
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
-            ProjektCollection._instance.EditProjekt();
+            //ProjektCollection._instance.EditProjekt();
             Tryinputs();
            
         }
 
         private void ArchiveProject_btn_Click(object sender,RoutedEventArgs e)
         {
-            string archiveProject =ProjektCollection._instance.ArchiveProject();
+            string archiveProject = ProjektCollection._instance.ArchiveProject();
             if(MessageBox.Show("Arkiver projekt", "Vil du arkivere dette projekt?", MessageBoxButton.YesNo, MessageBoxImage.Warning)==MessageBoxResult.No)
             {
                 MessageBox.Show("Projektet blev ikke arkiveret");
@@ -46,6 +46,8 @@ namespace View
             else
             {
                 MessageBox.Show(archiveProject);
+                
+                this.Close();
 
             }
 
@@ -53,6 +55,8 @@ namespace View
 
         private void Selected_Return_btn_Click(object sender, RoutedEventArgs e)
         {
+          
+            
             this.Close();
         }
 
@@ -70,18 +74,22 @@ namespace View
                 int maximum = int.Parse(Sel_Max_txtbox.Text);
                 DateTime startDate = DateTime.Parse(Sel_StartDate_txtbox.Text);
                 DateTime finishDate = DateTime.Parse(Sel_FinishDate_txtbox.Text);
+                bool checker = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
 
 
-                
-                if (checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false) == false)
+                if (checker == false)
                 {
                     throw new Exception(checks.Display);
-                    
+
                 }
-                s = ProjektCollection._instance.EditProjekt();
-                check = true;
-            }
-            catch (Exception e)
+                else
+                {
+
+                    s = ProjektCollection._instance.EditProjekt();
+                    check = true;
+                }
+                }
+             catch (Exception e)
             {
 
                 s = e.Message;

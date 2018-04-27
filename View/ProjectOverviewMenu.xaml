@@ -15,11 +15,11 @@
                 
                 <GridView>
                     <GridViewColumn Header="Projekt ID" DisplayMemberBinding="{Binding ProjectID}"/>
-                    <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName}"/>
-                    <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget}"/>
-                    <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget}"/>
-                    <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate}"/>
-                    <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate}"/>
+                    <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
+                    <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
+                    <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
+                    <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay}"/>
+                    <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate, Mode=TwoWay}"/>
                     <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
                     <GridViewColumn Header="Progress">
                         <GridViewColumn.CellTemplate>

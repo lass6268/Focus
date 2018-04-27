@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,20 +35,20 @@ namespace ViewModel
        {
             Checks checks = new Checks();
             string connected = string.Empty;
-            checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate,false);
+            
+            //checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate,false);
             DbConcection dbConcection = new DbConcection();
+            
             if (checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
             {
                  connected = dbConcection.UpdateProject(SelectedItem);
             }
-            if(connected !=string.Empty )
-            {
-                return (connected);
-            }
+            
             else
             {
-                return (SelectedItem.ProjectName + " er nu updateret");
+                return (checks.Display);
             }
+            return connected;
 
        }
         public string ArchiveProject()
@@ -66,6 +67,7 @@ namespace ViewModel
 
         }
 
+      
 
     }
 }
