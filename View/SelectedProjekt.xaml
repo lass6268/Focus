@@ -12,7 +12,7 @@
         <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding SelectedItem}">
             <TextBox Text="{Binding ProjectID}" />
             <TextBox Text="{Binding ProjectName, Mode=TwoWay}" Name="Sel_Name_txtbox"/>
-            <TextBox Text="{Binding MinBudget, Mode=TwoWay}" Name="Sel_Min_txtbox"/>
+            <TextBox Text="{Binding MinBudget, Mode=TwoWay}" Name="Sel_Min_txtbox" />
             <TextBox Text="{Binding MaxBudget, Mode=TwoWay}" Name="Sel_Max_txtbox"/>
             <TextBox Text="{Binding StartDate, Mode=TwoWay}" Name="Sel_StartDate_txtbox"/>
             <TextBox Text="{Binding FinishDate, Mode=TwoWay}" Name="Sel_FinishDate_txtbox"/>

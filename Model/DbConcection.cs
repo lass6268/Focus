@@ -237,7 +237,7 @@ namespace Model
                     updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
 
                     updatesEmployee.ExecuteNonQuery();
-                    return string.Empty;
+                    return updateProject.ProjectName + " Er nu opdateret";
                 }
                 catch (SqlException e)
                 {
