@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BudgetMenu.xaml.cs">
+      <DependentUpon>BudgetMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectedProjekt.xaml.cs">
       <DependentUpon>SelectedProjekt.xaml</DependentUpon>
     </Compile>
@@ -61,6 +64,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="BudgetMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OpretProjektMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

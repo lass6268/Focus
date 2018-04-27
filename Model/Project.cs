@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
 
 namespace Model
 {
@@ -15,8 +17,7 @@ namespace Model
         public int MaxBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
-        public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); }  }
-
+        public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); } }
 
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
@@ -26,7 +27,7 @@ namespace Model
             StartDate = _start;
             FinishDate = _finish;
         }
-        public Project(int _projektid,string _name, int _min, int _max, DateTime _start, DateTime _finish)
+        public Project(int _projektid, string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
             ProjectID = _projektid;
             ProjectName = _name;
@@ -38,11 +39,11 @@ namespace Model
 
         
 
-        class TestClass
+        public class TestClass
         {
             static void Main(string[] args)
             {
-               
+            
             }
         }
 

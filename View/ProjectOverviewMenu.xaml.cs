@@ -48,5 +48,13 @@ namespace View
             selectedProjekt.Topmost = true;
   
         }
+
+        private void Budget_btn_Click(object sender, RoutedEventArgs e)
+        {
+            BudgetMenu budgetMenu = new BudgetMenu();
+            budgetMenu.Show();
+            budgetMenu.Topmost = true;
+            this.Close();
+        }
     }
 }
