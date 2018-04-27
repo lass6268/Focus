@@ -74,12 +74,21 @@ namespace FocusTest
         public void TestOverviewOverProjects()
         {
 
-            List<Project> testlist = dBcommunicator.ListOfProjectsToDatabase();
+            DateTime date = DateTime.Parse("30 - 01 - 2018 00:00:00");
+            List<Project> testlist = dbConcection.OverviewOverProjects();
             Assert.AreEqual(21, testlist.Count);
-            Assert.AreEqual("Ikea", testlist[0].ProjectName);
+            Assert.AreEqual(date, testlist[16].StartDate);
+            
+            Assert.AreEqual(date, ProjektCollection._instance.Projekts[20].StartDate);
+            Assert.AreEqual(30, ProjektCollection._instance.Projekts[20].StartDate.Day);
+            ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[20];
+            Assert.AreEqual(date, ProjektCollection._instance.SelectedItem.StartDate);
+            Assert.AreEqual(30, ProjektCollection._instance.SelectedItem.StartDate.Day);
+            Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Month);
+           
 
-            Assert.AreEqual("Ikea", projektCollection.Projekts[0].ProjectName);
-        }
+           
+         }
         [TestMethod]
         public void TestArchiveProject()
         {
@@ -91,7 +100,9 @@ namespace FocusTest
         [TestMethod]
         public void TestOverviewOverArchivedProjects()
         {
-            List<Project> archivedTestlist = dBcommunicator.ListOfArchivedProjectsToDatabase();
+
+            List<Project> archivedTestlist = dbConcection.GetArchivedProjects();
+                
             Assert.AreEqual(5, archivedTestlist.Count);
             Assert.AreEqual("Ikea", archivedTestlist[2].ProjectName);
             Assert.AreEqual(0, archivedTestlist[3].MinBudget);
