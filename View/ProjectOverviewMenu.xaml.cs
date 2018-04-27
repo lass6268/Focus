@@ -26,6 +26,7 @@ namespace View
             InitializeComponent();
             DataContext = ProjektCollection._instance;
             ProjektCollection._instance.UpdateProjekts();
+            
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,7 @@ namespace View
             ProjektCollection._instance.FindProjekt(index);
             SelectedProjekt selectedProjekt = new SelectedProjekt();
             selectedProjekt.Show();
+          
             selectedProjekt.Topmost = true;
   
         }
