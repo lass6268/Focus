@@ -102,9 +102,9 @@ namespace FocusTest
         [TestMethod]
         public void TestArchiveProject()
         {
-            dbConcection.ArchiveProject(1);
-            //List<Project> list = dbConcection.GetArchivedProjects(1);
-           // Assert.AreEqual(list[0].ProjectID,1);            
+            dbConcection.ArchiveProject(11);
+            List<Project> list = dbConcection.GetArchivedProjects();
+            Assert.AreEqual(list[0].ProjectID,11);
         }
 
         [TestMethod]
