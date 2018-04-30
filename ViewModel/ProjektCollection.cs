@@ -11,13 +11,42 @@ namespace ViewModel
 {
     public class ProjektCollection
     {
-        
+        int i = 0;   
         public List<Project> Projekts { get; private set; }
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }
         public static readonly ProjektCollection _instance = new ProjektCollection();
         DbConcection dbConcection = new DbConcection();
+        private int _totalCurrent = 0;
+        public int TotalCurrent
+        {
+            get
+            {
+                
+                foreach (var item in Projekts)
+                {
+                    _totalCurrent += item.Optainedbudget;
 
+                }
+                return _totalCurrent;
+            }
+                set {
+
+                foreach (var item in Projekts)
+                {
+                    _totalCurrent += item.Optainedbudget;
+
+                }
+            } }
+
+        public int TotalMax { get {
+                i = 0;
+                foreach (var item in Projekts)
+                {
+                    i += item.MaxBudget;
+                }
+                return i;
+                    } }
         public ProjektCollection()
         {
             List<Project> projects = new List<Project>();

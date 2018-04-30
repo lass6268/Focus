@@ -118,7 +118,16 @@ namespace FocusTest
             Assert.AreEqual(0, archivedTestlist[3].MinBudget);
         }
 
-        
+        [TestMethod]
+        public void Totalcurrent()
+        {
+
+            Assert.AreEqual(ProjektCollection._instance.TotalCurrent, 227);
+            Assert.AreEqual(ProjektCollection._instance.TotalMax, 1000);
+        }
+
+
+
 
     }
 }

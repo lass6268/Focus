@@ -42,6 +42,8 @@
         <Button Name="Projekt_btn" Content="Opret Projekt" HorizontalAlignment="Left" Margin="355,370,0,0" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
         <Button Name="Archived_Projekt_btn" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="216,370,0,0" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click"/>
         <Button Name="Budget_btn" Content="Budgetter" HorizontalAlignment="Left" Margin="497,370,0,0" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click"/>
+        <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="137" Margin="33,370,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
+        
     </Grid>
 
 </Window>
