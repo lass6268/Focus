@@ -14,8 +14,18 @@ namespace ViewModel
 
         public BudgetContrainer()
         {
-            Budgets  = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
+            if (ProjektCollection._instance.SelectedItem == null)
+            {
+                Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.Projekts[0]);
+            }
+            else
+            {
 
+
+                Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
+            }
         }
+      
+        
     }
 }

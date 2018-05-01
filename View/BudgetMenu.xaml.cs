@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -22,6 +23,8 @@ namespace View
         public BudgetMenu()
         {
             InitializeComponent();
+            BudgetContrainer budgetContrainer = new BudgetContrainer();
+            BudgetDataGrid.DataContext = budgetContrainer;
         }
     }
 }

@@ -68,20 +68,61 @@ namespace ViewModel
             return ProjektGoneToDB;
         }
 
-       /* public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
+        /* public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
+         {
+
+             if (_BudgetMin >= _BudgetMax)
+             {
+                 return "Nuværende Budget skal være mindre end det Totale Budget";
+             }
+             else
+             {
+                 Budget budget = new Budget(_BudgetMin, _BudgetMax, _Employee,  _project);
+                 dBcommunicator.AddBudgetToDatabase(budget);
+                 return "Budget er oprettet!";
+             }
+
+         }*/
+
+        public string Tryinputs(string name, string min, string max, string startdate, string Finishdate)
         {
 
-            if (_BudgetMin >= _BudgetMax)
-            {
-                return "Nuværende Budget skal være mindre end det Totale Budget";
-            }
-            else
-            {
-                Budget budget = new Budget(_BudgetMin, _BudgetMax, _Employee,  _project);
-                dBcommunicator.AddBudgetToDatabase(budget);
-                return "Budget er oprettet!";
-            }
 
-        }*/
+            string s = string.Empty;
+            
+
+            try
+            {
+
+                string projectName = name;
+                int minimum = int.Parse(min);
+                int maximum = int.Parse(max);
+                DateTime startDate = DateTime.Parse(startdate);
+                DateTime finishDate = DateTime.Parse(Finishdate);
+                bool checker = Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
+
+
+                if (checker == false)
+                {
+                    throw new Exception(Display);
+
+                }
+                else
+                {
+
+                    s = ProjektCollection._instance.EditProjekt();
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                s = e.Message;
+
+            }
+            return s;
+
+
+        }
     }
 }

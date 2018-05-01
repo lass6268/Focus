@@ -37,6 +37,8 @@
                     <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding Employee.ID}"/>
                     <GridViewColumn Header="Employee Name" DisplayMemberBinding="{Binding Employee.Name}"/>
                     <GridViewColumn Header="Current Budget Optained" DisplayMemberBinding="{Binding CurrentBudget}"/>
+                    <GridViewColumn Header="Min" DisplayMemberBinding="{Binding MinBudget}"/>
+                    <GridViewColumn Header="Min" DisplayMemberBinding="{Binding MaxBudget}"/>
 
 
                 </GridView>

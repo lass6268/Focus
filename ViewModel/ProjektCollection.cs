@@ -11,7 +11,7 @@ namespace ViewModel
 {
     public class ProjektCollection
     {
-        int i = 0;   
+        private int i = 0;   
         public List<Project> Projekts { get; private set; }
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }

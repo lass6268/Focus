@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="BudgetMenu" Height="450" Width="800">
     <Grid>
+        <DataGrid Name="BudgetDataGrid" HorizontalAlignment="Left" Height="375" VerticalAlignment="Top" Width="518" ItemsSource="{Binding Budgets}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Medarbejder Navn" Binding="{Binding Employee.Name}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Min Budget" Binding="{Binding MinBudget}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Mix Budget" Binding="{Binding MaxBudget}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Current" Binding="{Binding CurrentBudget}" IsReadOnly="False"/>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
         
     </Grid>
 </Window>

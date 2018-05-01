@@ -86,7 +86,7 @@ namespace FocusTest
 
             DateTime date = DateTime.Parse("30 - 01 - 2018 00:00:00");
             List<Project> testlist = dbConcection.OverviewOverProjects();
-            Assert.AreEqual(21, testlist.Count);
+            Assert.AreEqual(20, testlist.Count);
             Assert.AreEqual(date, testlist[16].StartDate);
 
             Assert.AreEqual(date, ProjektCollection._instance.Projekts[20].StartDate);
@@ -94,7 +94,7 @@ namespace FocusTest
             ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[20];
             Assert.AreEqual(date, ProjektCollection._instance.SelectedItem.StartDate);
             Assert.AreEqual(30, ProjektCollection._instance.SelectedItem.StartDate.Day);
-            Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Month);
+            Assert.AreEqual(10, ProjektCollection._instance.SelectedItem.StartDate.Month);
                        
 
            
@@ -123,7 +123,15 @@ namespace FocusTest
         {
 
             Assert.AreEqual(ProjektCollection._instance.TotalCurrent, 227);
-            Assert.AreEqual(ProjektCollection._instance.TotalMax, 1000);
+            Assert.AreEqual(ProjektCollection._instance.TotalMax, 996);
+        }
+
+        [TestMethod]
+        public void BudgetList()
+        {
+            Project project8 = new Project(8, "Virksomhed", 1, 1000, startdate, finaldate);
+            Assert.AreEqual(1,dbConcection.GetBudgetForProjekt(project8).Count);
+
         }
 
 

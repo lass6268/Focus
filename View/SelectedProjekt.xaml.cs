@@ -63,7 +63,7 @@ namespace View
             
             this.Close();
         }
-
+        //Skal i Viewmodel
         private void Tryinputs(string name,string min, string max,string startdate, string Finishdate)
         {
             
