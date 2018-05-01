@@ -14,7 +14,7 @@
             <ListView.View>
 
                 <GridView>
-                    <GridViewColumn Header="Projekt ID" DisplayMemberBinding="{Binding ProjectID}"/>
+                   
                     <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
                     <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
                     <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
