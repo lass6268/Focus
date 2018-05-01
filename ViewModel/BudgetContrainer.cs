@@ -25,6 +25,10 @@ namespace ViewModel
                 Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
             }
         }
+        public void UpdateBudgetList()
+        {
+            Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
+        }
       
         
     }

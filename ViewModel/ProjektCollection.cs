@@ -22,7 +22,7 @@ namespace ViewModel
         {
             get
             {
-                
+                _totalCurrent = 0;
                 foreach (var item in Projekts)
                 {
                     _totalCurrent += item.Optainedbudget;
