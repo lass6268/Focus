@@ -29,6 +29,8 @@ namespace View
            
             BudgetDataGrid.DataContext = budgetContrainer;
             Project_ComboBox.DataContext = ProjektCollection._instance;
+            Selected_item_Maxbudget.DataContext = ProjektCollection._instance;
+            
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)

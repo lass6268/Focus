@@ -11,6 +11,7 @@ namespace ViewModel
     {
         DbConcection dbConcection = new DbConcection();
         public List<Budget> Budgets { get; private set; }
+        
 
         public BudgetContrainer()
         {
@@ -36,28 +37,48 @@ namespace ViewModel
             Checks checks = new Checks();
             string s = string.Empty;
             List<Budget> dblist = new List<Budget>();
-
-            foreach (Budget budget in Budgets)
+            if (Currenttotal() > ProjektCollection._instance.SelectedItem.MaxBudget)
             {
-                switch (checks.Checkbudgets(budget))
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        return "Felj, Databasen blev ikke opdateret da der er en felj i indtastningen";
-                    case 2:
-                        dblist.Add(budget);
-                        break;
-
-                    default:
-                        break;
-                }
-  
+                return "Intastet total max budget er søttere end Projektets Max budget";
             }
-            dbConcection.UpdateBudget(dblist);
-            s = dbConcection.UpdateBudget(dblist);
-            return s;
+
+            else
+            {
+
+
+                foreach (Budget budget in Budgets)
+                {
+                    switch (checks.Checkbudgets(budget))
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            return "Felj, Databasen blev ikke opdateret da der er en felj i indtastningen";
+                        case 2:
+                            dblist.Add(budget);
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                }
+                dbConcection.UpdateBudget(dblist);
+                s = dbConcection.UpdateBudget(dblist);
+                return s;
+            }
         }
+        int Currenttotal()
+        {
+            int total = 0;
+            foreach (var item in Budgets)
+            {
+                total += item.MaxBudget;
+            }
+
+            return total;
+        }
+
       
         
     }
