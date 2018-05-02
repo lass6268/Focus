@@ -15,11 +15,21 @@
                 <DataGridTextColumn Header="Current" Binding="{Binding CurrentBudget, Mode=TwoWay}" IsReadOnly="False" />
 
             </DataGrid.Columns>
-            
+
         </DataGrid>
         <Button Name="UpdateBudget_Button" Content="Update" HorizontalAlignment="Left" Margin="674,323,0,0" VerticalAlignment="Top" Width="75" Click="UpdateBudget_Button_Click"/>
         <Button Name="Back_Button" Content="Back" HorizontalAlignment="Left" Margin="682,205,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="629,63,0,0" VerticalAlignment="Top" Width="120" Name="Project_ComboBox" ItemsSource="{Binding Projekts}"  SelectedValue="{Binding SelectedItem, Mode=TwoWay}" DisplayMemberPath="ProjectName" SelectionChanged="Project_ComboBox_SelectionChanged" />
+        <TextBlock Name="Selected_item_Maxbudget" HorizontalAlignment="Left" Margin="526,146,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.MaxBudget, StringFormat='Projektets MaxBudget er: {0}'}" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.209,-2.165">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.077"/>
+                    <TranslateTransform X="0.062" Y="-0.02"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
 
 
