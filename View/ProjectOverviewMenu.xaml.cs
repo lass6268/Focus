@@ -64,7 +64,6 @@ namespace View
             ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
             archivedProjectsMenu.Show();
             archivedProjectsMenu.Topmost = true;
-            this.Close();
         }
       
     }
