@@ -68,21 +68,25 @@ namespace ViewModel
             return ProjektGoneToDB;
         }
 
-        /* public string Makebudget(int _BudgetMin, int _BudgetMax, Employee _Employee, Project _project)
-         {
+      public int Checkbudgets(Budget budget)
+        {
+            if (budget.MinBudget == 0 && budget.MaxBudget == 0)
+            {
+                return 0;
+            }
+            else if (budget.MaxBudget == 0)
+            {
+                return 2;
+            }
+            else if (budget.MinBudget > budget.MaxBudget)
+            {
+                return 1;
 
-             if (_BudgetMin >= _BudgetMax)
-             {
-                 return "Nuværende Budget skal være mindre end det Totale Budget";
-             }
-             else
-             {
-                 Budget budget = new Budget(_BudgetMin, _BudgetMax, _Employee,  _project);
-                 dBcommunicator.AddBudgetToDatabase(budget);
-                 return "Budget er oprettet!";
-             }
+            }
+            else return 2;
 
-         }*/
+        }
+
 
         public string Tryinputs(string name, string min, string max, string startdate, string Finishdate)
         {

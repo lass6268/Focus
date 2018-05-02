@@ -325,5 +325,40 @@ namespace Model
             
         }
 
+        public string UpdateBudget(List<Budget> budgets)
+        {
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                
+                try
+                {   con.Open();
+                    foreach (var budget in budgets)
+                    {
+                       
+
+                        SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+
+
+                        cmd.Parameters.Add(new SqlParameter("@ProjektID", budget.Project.ProjectID));
+                        cmd.Parameters.Add(new SqlParameter("@Min", budget.MinBudget));
+                        cmd.Parameters.Add(new SqlParameter("@Max", budget.MinBudget));
+                        cmd.Parameters.Add(new SqlParameter("@EmployeeID", budget.Employee.ID));
+                        cmd.Parameters.Add(new SqlParameter("@Current", budget.CurrentBudget));
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    
+                }
+                catch (SqlException e)
+                {
+
+                    return e.Message;
+                }
+            }
+            return "Budgets has been updated";
+        }
+
     }
 }

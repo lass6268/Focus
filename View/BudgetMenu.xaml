@@ -9,15 +9,15 @@
     <Grid>
         <DataGrid Name="BudgetDataGrid" HorizontalAlignment="Left" Height="375" VerticalAlignment="Top" Width="518" ItemsSource="{Binding Budgets, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Medarbejder Navn" Binding="{Binding Employee.Name}" IsReadOnly="False"/>
-                <DataGridTextColumn Header="Min Budget" Binding="{Binding MinBudget,Mode=TwoWay}" IsReadOnly="False"/>
-                <DataGridTextColumn Header="Mix Budget" Binding="{Binding MaxBudget,Mode=TwoWay}" IsReadOnly="False"/>
-                <DataGridTextColumn Header="Current" Binding="{Binding CurrentBudget, Mode=TwoWay}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Medarbejder Navn" Binding="{Binding Employee.Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Min Budget" Binding="{Binding MinBudget,Mode=TwoWay}" IsReadOnly="False" />
+                <DataGridTextColumn Header="Max Budget" Binding="{Binding MaxBudget,Mode=TwoWay}" IsReadOnly="False" />
+                <DataGridTextColumn Header="Current" Binding="{Binding CurrentBudget, Mode=TwoWay}" IsReadOnly="False" />
 
             </DataGrid.Columns>
             
         </DataGrid>
-        <Button Name="UpdateBudget_Button" Content="Update" HorizontalAlignment="Left" Margin="674,323,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="UpdateBudget_Button" Content="Update" HorizontalAlignment="Left" Margin="674,323,0,0" VerticalAlignment="Top" Width="75" Click="UpdateBudget_Button_Click"/>
         <Button Name="Back_Button" Content="Back" HorizontalAlignment="Left" Margin="682,205,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="629,63,0,0" VerticalAlignment="Top" Width="120" Name="Project_ComboBox" ItemsSource="{Binding Projekts}"  SelectedValue="{Binding SelectedItem, Mode=TwoWay}" DisplayMemberPath="ProjectName" SelectionChanged="Project_ComboBox_SelectionChanged" />
 
