@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="ProjectOverviewMenu" Height="450" Width="800">
-    <Grid>
+        Title="ProjectOverviewMenu" WindowState="Maximized" ShowInTaskbar="True" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" >
+    <Grid Height="493" VerticalAlignment="Top">
 
-        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,10,73" SelectionChanged="Projektview_SelectionChanged"  >
+        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged"  >
 
             <ListView.View>
 
                 <GridView>
-                   
+
                     <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
                     <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
                     <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
@@ -38,11 +38,13 @@
 
 
         </ListView>
-        <Button Name="Projekt_btn" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,0" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
-        <Button Name="Archived_Projekt_btn" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,0" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click"/>
-        <Button Name="Budget_btn" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,0" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click"/>
-        <ProgressBar  Name="TotalBudgetbar" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="137" Margin="29,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
-        <TextBlock Margin="65,438,655,-52">
+
+        
+            <Button Name="Projekt_btn" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="31"/>
+            <Button Name="Archived_Projekt_btn" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="31"/>
+            <Button Name="Budget_btn" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="31"/>
+            <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="137" Margin="29,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
+        <TextBlock Margin="63,446,657,-60">
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0} - {1}">
                     <Binding ElementName="TotalBudgetbar" Path="Value"/>
@@ -50,7 +52,6 @@
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
-
 
     </Grid>
 </Window>
