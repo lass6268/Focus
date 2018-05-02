@@ -26,8 +26,8 @@ namespace View
             InitializeComponent();
             DataContext = ProjektCollection._instance;
             ProjektCollection._instance.UpdateProjekts();
-            TotalBudgetbar.DataContext = ProjektCollection._instance;
-            
+            TotalBudgetbar.DataContext = ProjektCollection._instance;   
+
         }
 
         private void Return_btn_Click(object sender, RoutedEventArgs e)
