@@ -36,7 +36,7 @@ namespace View
 
             if (oprettetprojekt == true)
             {
-                openotherwindow();
+                Openotherwindow();
             }
             
             
@@ -44,7 +44,7 @@ namespace View
           
         }
 
-        private void openotherwindow()
+        private void Openotherwindow()
         {
             ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
             
@@ -66,6 +66,7 @@ namespace View
             e.Handled = regex.IsMatch(e.Text);
 
         }
+        //Skal i viewmodel
         private bool Tryinputs()
         {
             bool Returnvalue = false;
@@ -90,7 +91,7 @@ namespace View
                     else
                     {
                     s = checks.Display;
-                    Returnvalue = true;
+                    Returnvalue = true;  
                     }
                
                 }

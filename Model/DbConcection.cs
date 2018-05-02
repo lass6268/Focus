@@ -140,7 +140,7 @@ namespace Model
         public List<Budget> GetBudgetForProjekt(Project project)
         {
             List<Budget> budgets = new List<Budget>();
-            int Budgetid, EmployeeID, CurrentBudget;
+            int EmployeeID, CurrentBudget, Minbudget, Maxbudget;
             string EmployeeName;
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -160,12 +160,39 @@ namespace Model
                     {
                         while (showProjects.Read())
                         {
-                            Budgetid = int.Parse(showProjects["CurrentBudgetID"].ToString());
-                            EmployeeID = int.Parse(showProjects["EmployeeID"].ToString());
-                            CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
-                            EmployeeName = showProjects["EmployeeName"].ToString();
-                            Employee employee = new Employee(EmployeeName,EmployeeID);
-                            Budget budget = new Budget(employee,project,CurrentBudget);
+
+                          
+                                
+                                EmployeeID = int.Parse(showProjects["EmployeeID"].ToString());
+                            if (showProjects["CurrentBudget"] == DBNull.Value)
+                            {
+                                CurrentBudget = 0;
+                            }
+                            else
+                            {
+                                CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
+                            }
+                                
+                                EmployeeName = showProjects["EmployeeName"].ToString();
+                            if (showProjects["BudgetMin"] == DBNull.Value)
+                            {
+                                Minbudget = 0;
+                            }
+                            else
+                            {
+                                Minbudget = int.Parse(showProjects["BudgetMin"].ToString());
+                            }
+                            if (showProjects["BudgetMax"] == DBNull.Value)
+                            {
+                                Maxbudget = 0;
+                            }
+                            else
+                            {
+                                Maxbudget = int.Parse(showProjects["BudgetMax"].ToString());
+                            }
+                               
+                                Employee employee = new Employee(EmployeeName, EmployeeID);
+                                Budget budget = new Budget(employee, project, CurrentBudget, Minbudget, Maxbudget);
                             budgets.Add(budget);
 
 
