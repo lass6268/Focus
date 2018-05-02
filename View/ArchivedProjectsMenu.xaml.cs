@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -22,6 +23,18 @@ namespace View
         public ArchivedProjectsMenu()
         {
             InitializeComponent();
+            DataContext = ProjektCollection._instance;
+            ProjektCollection._instance.ShowArchivedProjects();
+        }
+
+        private void Archived_Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();         
         }
     }
 }

@@ -105,6 +105,12 @@ namespace ViewModel
 
         }
 
+        public void ShowArchivedProjects()
+        {
+            Projekts = dbConcection.GetArchivedProjects();
+            Projekts.Sort();
+        }
+
       
 
     }
