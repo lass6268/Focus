@@ -26,10 +26,11 @@ namespace View
         public BudgetMenu()
         {
             InitializeComponent();
-           
-            BudgetDataGrid.DataContext = budgetContrainer;
+            DataContext = budgetContrainer;
+            //BudgetDataGrid.DataContext = budgetContrainer;
             Project_ComboBox.DataContext = ProjektCollection._instance;
             Selected_item_Maxbudget.DataContext = ProjektCollection._instance;
+
             
         }
 
@@ -45,7 +46,8 @@ namespace View
             budgetContrainer = new BudgetContrainer();
 
             budgetContrainer.UpdateBudgetList();
-            BudgetDataGrid.DataContext = budgetContrainer;
+            DataContext = budgetContrainer;
+           
             
         }
 
@@ -55,7 +57,8 @@ namespace View
             MessageBox.Show(budgetContrainer.UpdateDb());
                 
         }
+
        
-        
+       
     }
 }

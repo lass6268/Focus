@@ -133,7 +133,14 @@ namespace FocusTest
             Assert.AreEqual(1,dbConcection.GetBudgetForProjekt(project8).Count);
 
         }
+        [TestMethod]
 
+        public void TestSumafMax()
+        {
+            BudgetContrainer budgetContrainer = new BudgetContrainer();
+            Assert.AreEqual(budgetContrainer.SumMaxBudget,1);
+
+        }
 
 
 
