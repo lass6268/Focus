@@ -5,32 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="ProjectOverviewMenu" WindowState="Maximized" ShowInTaskbar="True" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" >
+        Title="ProjectOverviewMenu" WindowState="Maximized" ShowInTaskbar="True" >
     <Grid Height="493" VerticalAlignment="Top">
 
-        <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged"  >
+            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged"  >
 
             <ListView.View>
 
                 <GridView>
-
                     <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
-                    <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
-                    <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
-                    <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE }"/>
-                    <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE}"/>
-                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
-                    <GridViewColumn Header="Progress">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ProgressBar Name="fremgang" Value="{Binding Optainedbudget, Mode=OneWay}" Minimum="0" Maximum="{Binding MaxBudget}" Width="100" Height="10"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-
-
-
+                        <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
+                        <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
+                        <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE }"/>
+                        <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE}"/>
+                        <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
+                        <GridViewColumn Header="Progress">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ProgressBar Name="fremgang" Value="{Binding Optainedbudget, Mode=OneWay}" Minimum="0" Maximum="{Binding MaxBudget}" Width="100" Height="10"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                 </GridView>
 
             </ListView.View>
@@ -38,21 +33,22 @@
 
 
         </ListView>
-
-        
-            <Button Name="Projekt_btn" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="31"/>
-            <Button Name="Archived_Projekt_btn" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="31"/>
-            <Button Name="Budget_btn" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="31"/>
-            <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="137" Margin="29,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
-        <TextBlock Margin="63,446,657,-60">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="{}{0} - {1}">
-                    <Binding ElementName="TotalBudgetbar" Path="Value"/>
-                    <Binding ElementName="TotalBudgetbar" Path="Maximum"/>
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
-
+        <Viewbox Stretch="Uniform">
+            <Grid>
+                <Button Name="Projekt_btn" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="31"/>
+                <Button Name="Archived_Projekt_btn" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="31"/>
+                <Button Name="Budget_btn" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="31"/>
+                <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="137" Margin="29,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
+                <TextBlock Margin="63,446,657,-60">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} - {1}">
+                            <Binding ElementName="TotalBudgetbar" Path="Value"/>
+                            <Binding ElementName="TotalBudgetbar" Path="Maximum"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>
 
