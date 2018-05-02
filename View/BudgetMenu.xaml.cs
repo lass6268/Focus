@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,10 +21,12 @@ namespace View
     /// </summary>
     public partial class BudgetMenu : Window
     {
+
+        BudgetContrainer budgetContrainer = new BudgetContrainer();
         public BudgetMenu()
         {
             InitializeComponent();
-            BudgetContrainer budgetContrainer = new BudgetContrainer();
+           
             BudgetDataGrid.DataContext = budgetContrainer;
             Project_ComboBox.DataContext = ProjektCollection._instance;
         }
@@ -37,11 +40,20 @@ namespace View
 
         private void Project_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BudgetContrainer budgetContrainer = new BudgetContrainer();
+            budgetContrainer = new BudgetContrainer();
 
             budgetContrainer.UpdateBudgetList();
             BudgetDataGrid.DataContext = budgetContrainer;
             
         }
+
+        private void UpdateBudget_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show(budgetContrainer.UpdateDb());
+                
+        }
+       
+        
     }
 }
