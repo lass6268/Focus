@@ -75,7 +75,7 @@ namespace Model
                             StartDate = DateTime.Parse(showProjects["StartDate_Archived"].ToString());
                             FinishDate = DateTime.Parse(showProjects["FinishDate_Archived"].ToString());
                             BudgetObtained = int.Parse(showProjects["BudgetObtained"].ToString());
-                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate,BudgetObtained);
 
                             archivedProjects.Add(project);
                         }
