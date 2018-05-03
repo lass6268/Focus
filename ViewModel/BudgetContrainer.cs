@@ -11,7 +11,8 @@ namespace ViewModel
     {
         DbConcection dbConcection = new DbConcection();
         public List<Budget> Budgets { get; private set; }
-        
+        public int SumMaxBudget { get { return Budgets.Sum(x => x.MaxBudget); } }
+
 
         public BudgetContrainer()
         {
