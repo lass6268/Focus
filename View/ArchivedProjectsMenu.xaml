@@ -18,14 +18,7 @@
                     <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
                     <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE }"/>
                     <GridViewColumn Header="Slut Dato" DisplayMemberBinding="{Binding FinishDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE}"/>
-                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding Optainedbudget}"/>
-                    <GridViewColumn Header="Progress">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ProgressBar Name="fremgang" Value="{Binding Optainedbudget, Mode=OneWay}" Minimum="0" Maximum="{Binding MaxBudget}" Width="100" Height="10"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Opnået Budget" DisplayMemberBinding="{Binding BudgetObtained}"/>
 
                 </GridView>
 
