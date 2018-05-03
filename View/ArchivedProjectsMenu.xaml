@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="ArchivedProjectsMenu" Height="450" Width="800">
-    <Grid>
+    <DockPanel Margin="10">
+        <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
         <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62">
 
             <ListView.View>
@@ -26,6 +27,6 @@
         </ListView>
         <Button Name="Back_btn" Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="655,380,0,0" Click="Back_btn_Click"/>
 
-    </Grid>
+    </DockPanel>
 </Window>
 
