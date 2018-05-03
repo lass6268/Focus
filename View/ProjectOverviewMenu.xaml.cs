@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +24,17 @@ namespace View
     /// </summary>
     public partial class ProjectOverviewMenu : Window
     {
+        public IEnumerable ItemsSource { get; set; }
+
         public ProjectOverviewMenu()
         {
             InitializeComponent();
             DataContext = ProjektCollection._instance;
             ProjektCollection._instance.UpdateProjekts();
-            TotalBudgetbar.DataContext = ProjektCollection._instance;   
+            TotalBudgetbar.DataContext = ProjektCollection._instance;
+            Projektview.ItemsSource = ProjektCollection._instance.Projekts;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Projektview.ItemsSource);
+            view.Filter = UserFilter;
 
         }
 
@@ -64,6 +71,20 @@ namespace View
             ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
             archivedProjectsMenu.Show();
             archivedProjectsMenu.Topmost = true;
+        }
+
+
+        private bool UserFilter(object item)
+        {
+            if(String.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            else
+                return ((item as Project).ProjectName.IndexOf(txtFilter.Text,StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void txtFilter_TextChanged(object sender,TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Projektview.ItemsSource).Refresh();
         }
     }
 }

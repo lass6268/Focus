@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="ProjectOverviewMenu" WindowState="Maximized" WindowStyle="ToolWindow" ShowInTaskbar="True" Height="736" >
     <Grid Height="493" VerticalAlignment="Top">
+        <DockPanel Margin="10">
+            <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
+            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,-0.2,0,61.8" SelectionChanged="Projektview_SelectionChanged" Width="740"  >
 
-            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged"  >
+                <ListView.View>
 
-            <ListView.View>
-
-                <GridView>
-                    <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
+                    <GridView>
+                        <GridViewColumn Header="Projekt Navn" DisplayMemberBinding="{Binding ProjectName, Mode=TwoWay}"/>
                         <GridViewColumn Header="Min Budget" DisplayMemberBinding="{Binding MinBudget, Mode=TwoWay}"/>
                         <GridViewColumn Header="Max Budget" DisplayMemberBinding="{Binding MaxBudget, Mode=TwoWay}"/>
                         <GridViewColumn Header="Start Dato" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay,StringFormat=dd-MM-yyyy, ConverterCulture=de-DE }"/>
@@ -26,29 +27,30 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                </GridView>
+                    </GridView>
 
-            </ListView.View>
+                </ListView.View>
 
 
 
-        </ListView>
-        <Viewbox Stretch="Uniform" Margin="0,0,0,-177">
-            <Grid>
-                <Button Name="Projekt_btn" FontSize="8" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="20"/>
-                <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="20"/>
-                <Button Name="Budget_btn" FontSize="8" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="20"/>
-                <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="137" Margin="10,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
-                <TextBlock Margin="63,442,640,-2" FontSize="8">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0} - {1}">
-                            <Binding ElementName="TotalBudgetbar" Path="Value"/>
-                            <Binding ElementName="TotalBudgetbar" Path="Maximum"/>
-                        </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
-            </Grid>
-        </Viewbox>
+            </ListView>
+            <Viewbox Stretch="Uniform" Margin="0,0,0,-177">
+                <Grid>
+                    <Button Name="Projekt_btn" FontSize="8" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="20"/>
+                    <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="20"/>
+                    <Button Name="Budget_btn" FontSize="8" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="20"/>
+                    <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="137" Margin="10,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
+                    <TextBlock Margin="63,442,640,-2" FontSize="8">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} - {1}">
+                                <Binding ElementName="TotalBudgetbar" Path="Value"/>
+                                <Binding ElementName="TotalBudgetbar" Path="Maximum"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </Viewbox>
+        </DockPanel>
     </Grid>
 </Window>
 
