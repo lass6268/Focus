@@ -9,7 +9,7 @@
     <Grid Height="493" VerticalAlignment="Top">
         <DockPanel Margin="10">
             <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
-            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,-0.2,0,61.8" SelectionChanged="Projektview_SelectionChanged" Width="740"  >
+            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged" Width="470"  >
 
                 <ListView.View>
 
