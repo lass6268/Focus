@@ -33,7 +33,16 @@ namespace View
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Projektview.ItemsSource);
             view.Filter = UserFilter;
         }
+        private void Projektview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+            int index = Projektview.SelectedIndex;
+            ProjektCollection._instance.FindProjekt(index);
+            SelectedArchivedProject selectedArchivedProject = new SelectedArchivedProject();
+            selectedArchivedProject.Show();
+            selectedArchivedProject.Topmost = true;
+
+        }
         private bool UserFilter(object item)
         {
             if (String.IsNullOrEmpty(txtFilter.Text))
@@ -58,5 +67,6 @@ namespace View
         {
             this.Close();         
         }
+
     }
 }
