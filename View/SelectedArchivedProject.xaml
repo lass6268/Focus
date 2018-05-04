@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SelectedArchivedProject" Height="450" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding Projekts}">
+        <StackPanel HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="223" Margin="137,104,0,0" DataContext="{Binding SelectedItem}">
             <TextBox Text="{Binding ProjectID}" />
             <TextBox Text="{Binding ProjectName, Mode=OneWay}" Name="Sel_Name_txtbox"/>
             <TextBox Text="{Binding MinBudget, Mode=OneWay}" Name="Sel_Min_txtbox"  />

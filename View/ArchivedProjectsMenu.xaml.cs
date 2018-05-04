@@ -35,7 +35,7 @@ namespace View
         private void Projektview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            int index = Projektview.SelectedIndex;
+            
             ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedArchivedProject selectedArchivedProject = new SelectedArchivedProject();
             selectedArchivedProject.Show();
