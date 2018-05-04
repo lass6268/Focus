@@ -95,9 +95,15 @@ namespace ViewModel
             dbConcection.ArchiveProject(SelectedItem.ProjectID);
 
             return SelectedItem.ProjectName + " er nu arkiveret";
-
-
         }
+        public string RecoverArchivedProject()
+        {
+            DbConcection dbConcection = new DbConcection();
+            dbConcection.RecoverArchivedProject(SelectedItem.ProjectID);
+
+            return SelectedItem.ProjectName + " er nu gendannet";
+        }
+
         public void UpdateProjekts()
         {
             Projekts = dbConcection.OverviewOverProjects();

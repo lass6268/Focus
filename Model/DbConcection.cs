@@ -111,6 +111,27 @@ namespace Model
 
             }
         }
+        public void RecoverArchivedProject(int projectID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_RecoverArchivedProjekts", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@projId", projectID));
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                    throw e;
+                }
+
+            }
+        }
 
         public bool CreateBudget( int CurrentBudget, int ProjektID, int EmployeeID)
         {
