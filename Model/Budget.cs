@@ -9,11 +9,57 @@ namespace Model
     public class Budget 
     {
         DbConcection dbConcection = new DbConcection();
-        public int CurrentBudget { get; set; }
+        private int _CurrentBudget;
+        public int CurrentBudget { get { return _CurrentBudget; } set {
+                try
+                {
+                    _CurrentBudget = value;
+                }
+                catch (Exception)
+                {
+                    _CurrentBudget = 0;
+                   
+                }
+                
+            }  }
         public Employee Employee { get; set; }
         public Project Project { get; set; }
-        public int MinBudget { get; set; }
-        public int MaxBudget { get; set; }
+        private int _MinBudget;
+        public int MinBudget
+        {
+            get { return _MinBudget; }
+            set
+            {
+                try
+                {
+                    _MinBudget = value;
+                }
+                catch (Exception)
+                {
+                    _MinBudget = 0;
+
+                }
+
+            }
+        }
+        private int _MaxBudget;
+        public int MaxBudget
+        {
+            get { return _MaxBudget; }
+            set
+            {
+                try
+                {
+                    _MaxBudget = value;
+                }
+                catch (Exception)
+                {
+                    _MaxBudget = 0;
+
+                }
+
+            }
+        }
 
 
 

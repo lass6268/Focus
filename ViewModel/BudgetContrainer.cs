@@ -18,14 +18,14 @@ namespace ViewModel
         {
             if (ProjektCollection._instance.SelectedItem == null)
             {
-                Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.Projekts[0]);
-            }
-            else
-            {
+                ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[0];
 
+                
+            }
+           
 
                 Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
-            }
+            
         }
         public void UpdateBudgetList()
         {
