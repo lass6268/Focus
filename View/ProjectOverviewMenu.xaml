@@ -8,7 +8,7 @@
         Title="ProjectOverviewMenu" WindowState="Maximized" WindowStyle="ToolWindow" ShowInTaskbar="True" Height="736" >
     <Grid Height="493" VerticalAlignment="Top">
         <DockPanel Margin="10">
-            <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
+            <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="TxtFilter_TextChanged" />
             <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged" Width="470"  >
 
                 <ListView.View>
