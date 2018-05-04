@@ -64,9 +64,9 @@ namespace ViewModel
             archivedProjects.Sort();
 
         }*/
-        public void FindProjekt(int index)
+        public void FindProjekt(object item)
         {
-            SelectedItem = Projekts[index];
+            SelectedItem = item as Project;
         }
 
        public string EditProjekt()
@@ -111,7 +111,14 @@ namespace ViewModel
             Projekts.Sort();
         }
 
-      
+        public bool UserFilter(object item, string txtFilter)
+        {
+
+            if(String.IsNullOrEmpty(txtFilter))
+                return true;
+            else
+                return ((item as Project).ProjectName.IndexOf(txtFilter,StringComparison.OrdinalIgnoreCase) >= 0);
+        }
 
     }
 }

@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,21 +36,19 @@ namespace View
         {
 
             int index = Projektview.SelectedIndex;
-            ProjektCollection._instance.FindProjekt(index);
+            ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedArchivedProject selectedArchivedProject = new SelectedArchivedProject();
             selectedArchivedProject.Show();
             selectedArchivedProject.Topmost = true;
 
         }
-        private bool UserFilter(object item)
+        public bool UserFilter(object item)
         {
-            if (String.IsNullOrEmpty(txtFilter.Text))
-                return true;
-            else
-                return ((item as Project).ProjectName.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            return ProjektCollection._instance.UserFilter(item,txtFilter.Text);
         }
 
-        private void TxtFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TxtFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(Projektview.ItemsSource).Refresh();
         }
