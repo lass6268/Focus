@@ -9,7 +9,7 @@
     <Grid Height="493" VerticalAlignment="Top">
         <DockPanel Margin="10">
             <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="TxtFilter_TextChanged" />
-            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged" Width="470"  >
+            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" Margin="0,0,0,62" SelectionChanged="Projektview_SelectionChanged" Width="850"  >
 
                 <ListView.View>
 
@@ -34,7 +34,7 @@
 
 
             </ListView>
-            <Viewbox Stretch="Uniform" Margin="0,0,0,-177">
+            <Viewbox DockPanel.Dock="Bottom" Stretch="Uniform" Margin="-704,0,0,-177">
                 <Grid>
                     <Button Name="Projekt_btn" FontSize="8" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="20"/>
                     <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="20"/>
