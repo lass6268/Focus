@@ -38,7 +38,7 @@ namespace View
         private void Recover_btn_Click(object sender, RoutedEventArgs e)
         {
             string recoverArchivedProject = ProjektCollection._instance.RecoverArchivedProject();
-            if (MessageBox.Show("Arkiver projekt", "Vil du gendanne dette projekt?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show("Gendan projekt", "Vil du gendanne dette projekt?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 MessageBox.Show("Projektet blev ikke gendannet");
 
