@@ -11,6 +11,8 @@ namespace Model
 
         public String Name { get; set; }
         public int ID { get; set; }
+        public int TotalCurrent { get; set; }
+        public int AvgCurrent { get; set; }
 
         public Employee(string _name,int _id)
         {
