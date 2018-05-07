@@ -83,5 +83,13 @@ namespace View
         {
             CollectionViewSource.GetDefaultView(Projektview.ItemsSource).Refresh();
         }
+
+        private void Leaderboard_btn_Click(object sender,RoutedEventArgs e)
+        {
+            DataManagementOverview dataManagementOverview = new DataManagementOverview();
+            dataManagementOverview.Show();
+            dataManagementOverview.Topmost = true;
+            this.Close();
+        }
     }
 }

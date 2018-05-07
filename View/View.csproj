@@ -60,6 +60,9 @@
     <Compile Include="BudgetMenu.xaml.cs">
       <DependentUpon>BudgetMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataManagementOverview.xaml.cs">
+      <DependentUpon>DataManagementOverview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectedArchivedProject.xaml.cs">
       <DependentUpon>SelectedArchivedProject.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BudgetMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManagementOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
