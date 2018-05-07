@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="ProjectOverviewMenu" WindowStyle="ToolWindow" ShowInTaskbar="True" Height="720" >
+        Title="ProjectOverviewMenu" WindowState="Maximized" WindowStyle="ToolWindow" ShowInTaskbar="True" Height="720" >
     <Grid Height="493" VerticalAlignment="Top">
-        <DockPanel Margin="10">
+        <DockPanel Margin="10" Grid.RowSpan="4">
             <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="TxtFilter_TextChanged" />
-            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" SelectionChanged="Projektview_SelectionChanged" Width="850"  >
+            <ListView Name="Projektview" ItemsSource="{Binding Projekts}" SelectionChanged="Projektview_SelectionChanged" Width="926" Margin="0,0,0,-144"  >
 
                 <ListView.View>
 
@@ -27,6 +27,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <GridViewColumn Header="Medarbejdere på projektet" DisplayMemberBinding="{Binding Employee}"/>
                     </GridView>
 
                 </ListView.View>
@@ -37,7 +38,7 @@
             <Viewbox DockPanel.Dock="Bottom" Stretch="Uniform" Margin="-704,0,0,-177">
                 <Grid>
                     <Button Name="Projekt_btn" FontSize="8" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="20"/>
-                    <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,-18" VerticalAlignment="Top" Width="75" Click="Archived_Projekt_btn_Click" Height="20"/>
+                    <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,0" VerticalAlignment="Top" Width="95" Click="Archived_Projekt_btn_Click" Height="20"/>
                     <Button Name="Budget_btn" FontSize="8" Content="Budgetter" HorizontalAlignment="Left" Margin="475,438,0,-18" VerticalAlignment="Top" Width="75" Click="Budget_btn_Click" Height="20"/>
                     <ProgressBar Name="TotalBudgetbar" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="137" Margin="10,438,0,0" Minimum="0" Maximum="{Binding TotalMax}" Value="{Binding TotalCurrent}"/>
                     <TextBlock Margin="63,442,640,-2" FontSize="8">
