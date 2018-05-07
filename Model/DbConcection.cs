@@ -79,18 +79,19 @@ namespace Model
 
                             archivedProjects.Add(project);
                         }
-                    }return archivedProjects;
+                    }
+                    return archivedProjects;
                 }
                 catch(SqlException e)
                 {
 
                     throw e;
                 }
-                
+
             }
-           
+
         }
-        public void ArchiveProject(int projectID)
+        public void ArchiveProject(Project project)
         {
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -100,7 +101,9 @@ namespace Model
 
                     SqlCommand cmd = new SqlCommand("Spu_Focus_ArchiveProject",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@projId",projectID));
+                    cmd.Parameters.Add(new SqlParameter("@projId",project.ProjectID));
+                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget",project.Optainedbudget));
+
                     cmd.ExecuteNonQuery();
                 }
                 catch(SqlException e)
@@ -113,18 +116,18 @@ namespace Model
         }
         public void RecoverArchivedProject(int projectID)
         {
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("Spu_Focus_RecoverArchivedProjekts", con);
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_RecoverArchivedProjekts",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@projId", projectID));
+                    cmd.Parameters.Add(new SqlParameter("@projId",projectID));
                     cmd.ExecuteNonQuery();
                 }
-                catch (SqlException e)
+                catch(SqlException e)
                 {
 
                     throw e;
@@ -133,25 +136,25 @@ namespace Model
             }
         }
 
-        public bool CreateBudget( int CurrentBudget, int ProjektID, int EmployeeID)
+        public bool CreateBudget(int CurrentBudget,int ProjektID,int EmployeeID)
         {
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget", CurrentBudget ));
-                    cmd.Parameters.Add(new SqlParameter("@ProjektID", ProjektID));
-                    cmd.Parameters.Add(new SqlParameter("@EmployeeID", EmployeeID));
+                    cmd.Parameters.Add(new SqlParameter("@CurrentBudget",CurrentBudget));
+                    cmd.Parameters.Add(new SqlParameter("@ProjektID",ProjektID));
+                    cmd.Parameters.Add(new SqlParameter("@EmployeeID",EmployeeID));
 
                     cmd.ExecuteNonQuery();
 
                     return true;
                 }
-                catch (SqlException)
+                catch(SqlException)
                 {
 
                     return false;
@@ -163,29 +166,29 @@ namespace Model
             List<Budget> budgets = new List<Budget>();
             int EmployeeID, CurrentBudget, Minbudget, Maxbudget;
             string EmployeeName;
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
-                   
+
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("Spu_Focus_GetBudgetForPID", con);
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_GetBudgetForPID",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjectID", project.ProjectID));
+                    cmd.Parameters.Add(new SqlParameter("@ProjectID",project.ProjectID));
                     SqlDataReader showProjects = cmd.ExecuteReader();
 
 
-                   
 
-                    if (showProjects.HasRows)
+
+                    if(showProjects.HasRows)
                     {
-                        while (showProjects.Read())
+                        while(showProjects.Read())
                         {
 
-                          
-                                
-                                EmployeeID = int.Parse(showProjects["EmployeeID"].ToString());
-                            if (showProjects["CurrentBudget"] == DBNull.Value)
+
+
+                            EmployeeID = int.Parse(showProjects["EmployeeID"].ToString());
+                            if(showProjects["CurrentBudget"] == DBNull.Value)
                             {
                                 CurrentBudget = 0;
                             }
@@ -193,9 +196,9 @@ namespace Model
                             {
                                 CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
                             }
-                                
-                                EmployeeName = showProjects["EmployeeName"].ToString();
-                            if (showProjects["BudgetMin"] == DBNull.Value)
+
+                            EmployeeName = showProjects["EmployeeName"].ToString();
+                            if(showProjects["BudgetMin"] == DBNull.Value)
                             {
                                 Minbudget = 0;
                             }
@@ -203,7 +206,7 @@ namespace Model
                             {
                                 Minbudget = int.Parse(showProjects["BudgetMin"].ToString());
                             }
-                            if (showProjects["BudgetMax"] == DBNull.Value)
+                            if(showProjects["BudgetMax"] == DBNull.Value)
                             {
                                 Maxbudget = 0;
                             }
@@ -211,9 +214,9 @@ namespace Model
                             {
                                 Maxbudget = int.Parse(showProjects["BudgetMax"].ToString());
                             }
-                               
-                                Employee employee = new Employee(EmployeeName, EmployeeID);
-                                Budget budget = new Budget(employee, project, CurrentBudget, Minbudget, Maxbudget);
+
+                            Employee employee = new Employee(EmployeeName,EmployeeID);
+                            Budget budget = new Budget(employee,project,CurrentBudget,Minbudget,Maxbudget);
                             budgets.Add(budget);
 
 
@@ -222,7 +225,7 @@ namespace Model
                     }
                 }
 
-                catch (SqlException e)
+                catch(SqlException e)
                 {
                     throw e;
 
@@ -238,25 +241,25 @@ namespace Model
             List<Project> projectList = new List<Project>();
             int ProjektID, minBudget, maxBudget;
             string ProjektName;
-            DateTime StartDate, FinishDate; 
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            DateTime StartDate, FinishDate;
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
 
-                    SqlCommand ProjectOverview = new SqlCommand("Spu_Focus_ProjectOverview", con);
+                    SqlCommand ProjectOverview = new SqlCommand("Spu_Focus_ProjectOverview",con);
                     ProjectOverview.CommandType = CommandType.StoredProcedure;
                     SqlDataReader showProjects = ProjectOverview.ExecuteReader();
 
-                    if (showProjects.HasRows)
+                    if(showProjects.HasRows)
                     {
-                        while (showProjects.Read())
+                        while(showProjects.Read())
                         {
                             ProjektID = int.Parse(showProjects["ProjektID"].ToString());
                             ProjektName = showProjects["ProjektName"].ToString();
                             minBudget = int.Parse(showProjects["minBudget"].ToString());
-                            
+
 
                             maxBudget = int.Parse(showProjects["maxBudget"].ToString());
                             StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
@@ -264,29 +267,29 @@ namespace Model
                             Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
                             //IsArchived = showProjects["IsArchived"].ToString();
                             projectList.Add(project);
-                           
+
                         }
-                    } 
+                    }
                 }
-                catch (SqlException e)
+                catch(SqlException e)
                 {
-                    throw e; 
+                    throw e;
                 }
-               
+
             }
             return projectList;
         }
         public int GetObtainedBudget(int projectID)
         {
             int CurrentBudget = 0;
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("[Spu_Focus_TotalBudget]",con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@ProjektID", projectID));
+                    cmd.Parameters.Add(new SqlParameter("@ProjektID",projectID));
                     SqlDataReader showProjects = cmd.ExecuteReader();
 
                     if(showProjects.HasRows)
@@ -294,18 +297,18 @@ namespace Model
                         while(showProjects.Read())
                         {
 
-                             
-                           
-                                int budget = int.Parse((showProjects["CurrentBudget"].ToString()));
-                                CurrentBudget += budget;
-                            
-                          
+
+
+                            int budget = int.Parse((showProjects["CurrentBudget"].ToString()));
+                            CurrentBudget += budget;
+
+
 
                         }
 
                     }
                     return CurrentBudget;
-                } 
+                }
                 catch(SqlException e)
                 {
 
@@ -317,68 +320,171 @@ namespace Model
         }
         public string UpdateProject(Project updateProject)
         {
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
-                    
 
-                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UpdateProject", con);
+
+                    SqlCommand updatesEmployee = new SqlCommand("Spu_Focus_UpdateProject",con);
                     updatesEmployee.CommandType = CommandType.StoredProcedure;
-                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektName", updateProject.ProjectName));
-                    updatesEmployee.Parameters.Add(new SqlParameter("@minBudget", updateProject.MinBudget));
-                    updatesEmployee.Parameters.Add(new SqlParameter("@maxBudget", updateProject.MaxBudget));
-                    updatesEmployee.Parameters.Add(new SqlParameter("@Startdate", updateProject.StartDate));
-                    updatesEmployee.Parameters.Add(new SqlParameter("@Finishdate", updateProject.FinishDate));
-                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID", updateProject.ProjectID));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektName",updateProject.ProjectName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@minBudget",updateProject.MinBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@maxBudget",updateProject.MaxBudget));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Startdate",updateProject.StartDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Finishdate",updateProject.FinishDate));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@ProjektID",updateProject.ProjectID));
 
                     updatesEmployee.ExecuteNonQuery();
                     return updateProject.ProjectName + " Er nu opdateret";
                 }
-                catch (SqlException e)
+                catch(SqlException e)
                 {
                     return e.Message;
-                    
+
                 }
-                
+
             }
-            
+
         }
 
         public string UpdateBudget(List<Budget> budgets)
         {
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            using(SqlConnection con = new SqlConnection(connectionstring))
             {
-                
-                try
-                {   con.Open();
-                    foreach (var budget in budgets)
-                    {
-                       
 
-                        SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget", con);
+                try
+                {
+                    con.Open();
+                    foreach(var budget in budgets)
+                    {
+
+
+                        SqlCommand cmd = new SqlCommand("Spu_Focus_CreateBudget",con);
                         cmd.CommandType = CommandType.StoredProcedure;
 
 
 
-                        cmd.Parameters.Add(new SqlParameter("@ProjektID", budget.Project.ProjectID));
-                        cmd.Parameters.Add(new SqlParameter("@Min", budget.MinBudget));
-                        cmd.Parameters.Add(new SqlParameter("@Max", budget.MinBudget));
-                        cmd.Parameters.Add(new SqlParameter("@EmployeeID", budget.Employee.ID));
-                        cmd.Parameters.Add(new SqlParameter("@Current", budget.CurrentBudget));
+                        cmd.Parameters.Add(new SqlParameter("@ProjektID",budget.Project.ProjectID));
+                        cmd.Parameters.Add(new SqlParameter("@Min",budget.MinBudget));
+                        cmd.Parameters.Add(new SqlParameter("@Max",budget.MinBudget));
+                        cmd.Parameters.Add(new SqlParameter("@EmployeeID",budget.Employee.ID));
+                        cmd.Parameters.Add(new SqlParameter("@Current",budget.CurrentBudget));
 
                         cmd.ExecuteNonQuery();
                     }
-                    
+
                 }
-                catch (SqlException e)
+                catch(SqlException e)
                 {
 
                     return e.Message;
                 }
             }
             return "Budgets has been updated";
+        }
+        public List<Employee> GetEmployeesList()
+        {
+            List<Employee> employees = new List<Employee>();
+            int EmployeeID;
+            string EmployeeName;
+            using(SqlConnection con = new SqlConnection(connectionstring))
+
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_GetAllEmployees",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader showEmployees = cmd.ExecuteReader();
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+
+                    if(showEmployees.HasRows)
+                    {
+                        while(showEmployees.Read())
+                        {
+
+                            EmployeeID = int.Parse(showEmployees["EmployeeID"].ToString());
+                            EmployeeName = showEmployees["EmployeeName"].ToString();
+                            Employee employee = new Employee(EmployeeName,EmployeeID);
+                            employees.Add(employee);
+                        }
+
+
+                    }
+
+                }
+                catch(SqlException e)
+                {
+
+                    throw e;
+                }
+            return employees;
+        }
+        public List<Employee> GetCurrentBudgetForEmployees()
+        {
+            List<Employee> employees = GetEmployeesList();
+            int CurrentBudget;
+            int counter = 0;
+            using(SqlConnection connect = new SqlConnection(connectionstring))
+            {
+
+
+                try
+                {
+
+                    foreach(var item in employees)
+                    {
+                        connect.Open();
+                        counter = 0;
+
+                        SqlCommand cmd = new SqlCommand("Spu_Focus_GetEmployeesCurrentBudget",connect);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@EmployeeID",item.ID));
+                        SqlDataReader showEmployees = cmd.ExecuteReader();
+
+
+
+
+                        if(showEmployees.HasRows)
+                        {
+                            while(showEmployees.Read())
+                            {
+
+                                CurrentBudget = int.Parse(showEmployees["CurrentBudget"].ToString());
+                                item.TotalCurrent += CurrentBudget;
+                                counter++;
+
+                            }
+
+
+                        }
+                        if(counter == 0)
+                        {
+                            item.AvgCurrent = 0;
+                        }
+                        else
+                        {
+                            item.AvgCurrent = item.TotalCurrent / counter;
+                        }
+                       
+
+                        connect.Close();
+                    }
+
+                }
+                catch(SqlException e)
+                {
+
+                    throw e;
+                }
+            }
+
+
+            return employees;
         }
 
     }

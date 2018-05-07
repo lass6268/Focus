@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 using ViewModel;
@@ -18,6 +19,7 @@ namespace FocusTest
         Employee medarbejder;
         DBcommunicator dBcommunicator;
         ProjektCollection projektCollection;
+        DataManegment dataManegment;
         [TestInitialize]
         public void TestInitialize()
         {
@@ -29,7 +31,7 @@ namespace FocusTest
 
             finaldate = new DateTime(2018, 05, 01);
             medarbejder = new Employee("Erik",2);
-
+            dataManegment = new DataManegment();
 
         }
 
@@ -99,13 +101,13 @@ namespace FocusTest
 
            
          }
-        [TestMethod]
-        public void TestArchiveProject()
-        {
-            dbConcection.ArchiveProject(12);
-            List<Project> list = dbConcection.GetArchivedProjects();
-            Assert.AreEqual(list[0].ProjectID,11);
-        }
+        //[TestMethod]
+        //public void TestArchiveProject()
+        //{
+        //    dbConcection.ArchiveProject();
+        //    List<Project> list = dbConcection.GetArchivedProjects();
+        //    Assert.AreEqual(list[0].ProjectID,11);
+        //}
 
         [TestMethod]
         public void TestOverviewOverArchivedProjects()
@@ -142,7 +144,41 @@ namespace FocusTest
 
         }
 
+        [TestMethod]
+        public void GetEmployeeListTest()
+        {
+
+            Employee employee = new Employee("Karl", 4);
+            Assert.AreEqual(dbConcection.GetEmployeesList().Count,17);
+        }
+
+        [TestMethod]
+        public void GetTotalCurrentBudgetForEmployeesTest()
+        {
+
+            Employee employee = new Employee("Karl",4);
+            List<Employee> list = dbConcection.GetCurrentBudgetForEmployees();
+            Assert.AreEqual(list[1].TotalCurrent,49);
+            Assert.AreEqual(list[1].ID,2);
+
+            list = list.OrderByDescending(o => o.TotalCurrent).ToList();
+            Assert.AreEqual(list[1].ID,5);
+            Assert.AreEqual(list[0].TotalCurrent >= list[1].TotalCurrent,true);
+        }
+        [TestMethod]
+        public void LeaderboardTest()
+        {
+
+            Assert.AreEqual(dataManegment.Leaderboard[0].TotalCurrent >= dataManegment.Leaderboard[1].TotalCurrent,true);
+            Assert.AreEqual(dataManegment.Leaderboard[1].TotalCurrent >= dataManegment.Leaderboard[2].TotalCurrent,true);
 
 
+        }
+        [TestMethod]
+        public void AverageCurrentBudgetTest()
+        {
+            Assert.AreEqual(dataManegment.AvgCurrent[0].AvgCurrent >= dataManegment.AvgCurrent[1].AvgCurrent,true);
+            Assert.AreEqual(dataManegment.AvgCurrent[1].AvgCurrent >= dataManegment.AvgCurrent[2].AvgCurrent,true);
+        }
     }
 }

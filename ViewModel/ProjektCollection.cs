@@ -92,7 +92,7 @@ namespace ViewModel
         public string ArchiveProject()
         {
             DbConcection dbConcection = new DbConcection();
-            dbConcection.ArchiveProject(SelectedItem.ProjectID);
+            dbConcection.ArchiveProject(SelectedItem);
 
             return SelectedItem.ProjectName + " er nu arkiveret";
         }
@@ -125,6 +125,7 @@ namespace ViewModel
             else
                 return ((item as Project).ProjectName.IndexOf(txtFilter,StringComparison.OrdinalIgnoreCase) >= 0);
         }
+
 
     }
 }
