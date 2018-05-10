@@ -53,8 +53,8 @@ namespace View
             ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedProjekt selectedProjekt = new SelectedProjekt();
             selectedProjekt.Show();
-          
-            selectedProjekt.Topmost = true;
+
+            this.Close();
   
         }
 
@@ -70,6 +70,7 @@ namespace View
         {
             ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
             archivedProjectsMenu.Show();
+            this.Close();
         }
 
         public bool UserFilter(object item)

@@ -48,10 +48,12 @@ namespace View
 
             }
             else
-            {
+            {  
                 MessageBox.Show(archiveProject);
-                
+                ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
+                projectOverviewMenu.Show();
                 this.Close();
+                
 
             }
 
@@ -59,9 +61,9 @@ namespace View
 
         private void Selected_Return_btn_Click(object sender, RoutedEventArgs e)
         {
-          
-            
             this.Close();
+            ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
+            projectOverviewMenu.Show();
         }
         //Skal i Viewmodel
         private void Tryinputs(string name,string min, string max,string startdate, string Finishdate)

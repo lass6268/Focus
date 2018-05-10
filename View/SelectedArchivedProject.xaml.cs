@@ -33,6 +33,9 @@ namespace View
         private void Selected_Return_btn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
+            archivedProjectsMenu.Show();
+
         }
 
         private void Recover_btn_Click(object sender, RoutedEventArgs e)
@@ -46,8 +49,10 @@ namespace View
             else
             {
                 MessageBox.Show(recoverArchivedProject);
-
+                ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
+                archivedProjectsMenu.Show();
                 this.Close();
+
 
             }
         }

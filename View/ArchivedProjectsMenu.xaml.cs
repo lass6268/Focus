@@ -39,7 +39,7 @@ namespace View
             ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedArchivedProject selectedArchivedProject = new SelectedArchivedProject();
             selectedArchivedProject.Show();
-            selectedArchivedProject.Topmost = true;
+            this.Close();
 
         }
         public bool UserFilter(object item)
@@ -54,14 +54,10 @@ namespace View
         }
 
 
-
-        private void Archived_Return_btn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
+            ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
+            projectOverviewMenu.Show();
             this.Close();         
         }
 
