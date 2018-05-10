@@ -55,7 +55,7 @@ namespace ViewModel
                         case 0:
                             break;
                         case 1:
-                            return "Felj, Databasen blev ikke opdateret da der er en felj i indtastningen";
+                            return "Fejl, Databasen blev ikke opdateret da der er en felj i indtastningen";
                         case 2:
                             dblist.Add(budget);
                             break;

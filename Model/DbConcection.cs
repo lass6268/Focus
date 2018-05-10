@@ -368,7 +368,7 @@ namespace Model
 
                         cmd.Parameters.Add(new SqlParameter("@ProjektID",budget.Project.ProjectID));
                         cmd.Parameters.Add(new SqlParameter("@Min",budget.MinBudget));
-                        cmd.Parameters.Add(new SqlParameter("@Max",budget.MinBudget));
+                        cmd.Parameters.Add(new SqlParameter("@Max",budget.MaxBudget));
                         cmd.Parameters.Add(new SqlParameter("@EmployeeID",budget.Employee.ID));
                         cmd.Parameters.Add(new SqlParameter("@Current",budget.CurrentBudget));
 
