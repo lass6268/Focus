@@ -36,7 +36,7 @@ namespace View
         {
 
             
-            ProjektCollection._instance.FindArchivedProjekt(Projektview.SelectedItem);
+            ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedArchivedProject selectedArchivedProject = new SelectedArchivedProject();
             selectedArchivedProject.Show();
             this.Close();
