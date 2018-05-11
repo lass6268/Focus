@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="ProjectOverviewMenu" WindowState="Maximized" WindowStyle="ToolWindow" ShowInTaskbar="True" Height="720" >
+        Title="ProjectOverviewMenu" ShowInTaskbar="True" Height="720" >
     <Grid Height="493" VerticalAlignment="Top">
         <DockPanel Margin="10" Grid.RowSpan="4">
             <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="TxtFilter_TextChanged" />

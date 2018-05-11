@@ -40,6 +40,10 @@ namespace View
         private void Return_btn_Click(object sender, RoutedEventArgs e)
         {
             OpretProjektMenu opretProjekt = new OpretProjektMenu();
+
+            opretProjekt.Top = 160;
+            opretProjekt.Left = 400;
+
             opretProjekt.Show();
             opretProjekt.Topmost = true;
             this.Close();
@@ -52,6 +56,10 @@ namespace View
            
             ProjektCollection._instance.FindProjekt(Projektview.SelectedItem);
             SelectedProjekt selectedProjekt = new SelectedProjekt();
+
+            selectedProjekt.Top = 160;
+            selectedProjekt.Left = 400;
+
             selectedProjekt.Show();
 
             this.Close();
@@ -61,6 +69,10 @@ namespace View
         private void Budget_btn_Click(object sender, RoutedEventArgs e)
         {
             BudgetMenu budgetMenu = new BudgetMenu();
+
+            budgetMenu.Top = 160;
+            budgetMenu.Left = 400;
+
             budgetMenu.Show();
             budgetMenu.Topmost = true;
             this.Close();
@@ -69,6 +81,10 @@ namespace View
         private void Archived_Projekt_btn_Click(object sender, RoutedEventArgs e)
         {
             ArchivedProjectsMenu archivedProjectsMenu = new ArchivedProjectsMenu();
+
+            archivedProjectsMenu.Top = 160;
+            archivedProjectsMenu.Left = 400;
+
             archivedProjectsMenu.Show();
             this.Close();
         }
@@ -88,6 +104,10 @@ namespace View
         private void Leaderboard_btn_Click(object sender,RoutedEventArgs e)
         {
             DataManagementOverview dataManagementOverview = new DataManagementOverview();
+
+            dataManagementOverview.Top = 160;
+            dataManagementOverview.Left = 400;
+
             dataManagementOverview.Show();
             dataManagementOverview.Topmost = true;
             this.Close();
