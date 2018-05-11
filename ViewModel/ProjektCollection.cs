@@ -14,7 +14,10 @@ namespace ViewModel
         private int i = 0;   
         public List<Project> Projekts { get; private set; }
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
+        public Project SelectedArchivedItem { get { return _selectedArchivedItem; } set { _selectedArchivedItem = value; } }
         private Project _selectedItem { get; set; }
+        private Project _selectedArchivedItem { get; set; }
+
         public static readonly ProjektCollection _instance = new ProjektCollection();
         DbConcection dbConcection = new DbConcection();
         private int _totalCurrent = 0;
@@ -68,8 +71,12 @@ namespace ViewModel
         {
             SelectedItem = item as Project;
         }
+        public void FindArchivedProjekt(object item)
+        {
+            SelectedArchivedItem = item as Project;
+        }
 
-       public string EditProjekt()
+        public string EditProjekt()
        {
             Checks checks = new Checks();
             string connected = string.Empty;
@@ -99,9 +106,9 @@ namespace ViewModel
         public string RecoverArchivedProject()
         {
             DbConcection dbConcection = new DbConcection();
-            dbConcection.RecoverArchivedProject(SelectedItem.ProjectID);
+            dbConcection.RecoverArchivedProject(SelectedArchivedItem.ProjectID);
 
-            return SelectedItem.ProjectName + " er nu gendannet";
+            return SelectedArchivedItem.ProjectName + " er nu gendannet";
         }
 
         public void UpdateProjekts()
