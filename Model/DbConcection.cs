@@ -487,5 +487,108 @@ namespace Model
             return employees;
         }
 
+        public object[,] GetBudgetForEMP(Employee emp)
+        {
+            object[,] EmpBudget = new object[101,4];
+            int CurrentBudget, Minbudget, Maxbudget;
+            string Projektname;
+            int Index = 0;
+            int Deapth = 0;
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                try
+                {
+
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Spu_Focus_GetBudgetForEID", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@PID", emp.ID));
+                    SqlDataReader showProjects = cmd.ExecuteReader();
+
+
+
+
+                    if (showProjects.HasRows)
+                    {
+                        while (showProjects.Read())
+                        {
+
+
+                             Projektname = showProjects["ProjektName"].ToString();
+                            EmpBudget[Index, Deapth] = Projektname;
+                            Deapth++;
+                            if (showProjects["BudgetMin"] == DBNull.Value)
+                            {
+                                Minbudget = 0;
+                            }
+                            else
+                            {
+                                Minbudget = int.Parse(showProjects["BudgetMin"].ToString());
+                            }
+
+
+                            EmpBudget[Index, Deapth] = Minbudget;
+                            Deapth++;
+                           
+                           
+                            if (showProjects["BudgetMax"] == DBNull.Value)
+                            {
+                                Maxbudget = 0;
+                            }
+                            else
+                            {
+                                Maxbudget = int.Parse(showProjects["BudgetMax"].ToString());
+                            }
+                          
+
+                            if (showProjects["CurrentBudget"] == DBNull.Value)
+                            {
+                                CurrentBudget = 0;
+                            }
+                            else
+                            {
+                                CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
+                            }
+
+                             EmpBudget[Index, Deapth] = CurrentBudget;
+                            Deapth = 0 ;
+
+                            Index++;
+
+
+                        }
+
+                    }
+                   // Array.Resize(ref EmpBudget, EmpBudget.Length);
+                    
+                    object[,] array = new object[Index, 4];
+
+                    for (int i = 0; i < Index; i++)
+                    {
+
+                        for (int x = 0; x < 4; x++)
+                        {
+                            array[i, x] = EmpBudget[i, x];
+
+
+                        }
+
+                    }
+
+                    return array;
+                }
+
+                catch (SqlException e)
+                {
+                    throw e;
+
+                }
+
+
+            }
+            
+        }
+
+
     }
 }
