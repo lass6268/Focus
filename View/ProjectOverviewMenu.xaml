@@ -27,7 +27,15 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Medarbejdere på projektet" DisplayMemberBinding="{Binding Employee}"/>
+                        <GridViewColumn Header="Medarbejdere på projektet">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Employee.Name}" />
+
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!--<GridViewColumn Header="Medarbejdere på projektet" DisplayMemberBinding="{Binding Employee.Name}"/>-->
                     </GridView>
 
                 </ListView.View>
@@ -53,7 +61,7 @@
                 </Grid>
             </Viewbox>
         </DockPanel>
-        <Button Content="Medarbjeder budget" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="618,589,0,-116" Click="Button_Click"/>
+        
 
     </Grid>
 </Window>

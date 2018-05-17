@@ -240,21 +240,21 @@ namespace Model
         {
             List<Project> projectList = new List<Project>();
             int ProjektID, minBudget, maxBudget;
-            string ProjektName;
+            string ProjektName, EmployeeName;
             DateTime StartDate, FinishDate;
-            using(SqlConnection con = new SqlConnection(connectionstring))
+            using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
                 {
                     con.Open();
 
-                    SqlCommand ProjectOverview = new SqlCommand("Spu_Focus_ProjectOverview",con);
+                    SqlCommand ProjectOverview = new SqlCommand("Spu_Focus_OverviewFrontPage", con);
                     ProjectOverview.CommandType = CommandType.StoredProcedure;
                     SqlDataReader showProjects = ProjectOverview.ExecuteReader();
 
-                    if(showProjects.HasRows)
+                    if (showProjects.HasRows)
                     {
-                        while(showProjects.Read())
+                        while (showProjects.Read())
                         {
                             ProjektID = int.Parse(showProjects["ProjektID"].ToString());
                             ProjektName = showProjects["ProjektName"].ToString();
@@ -264,14 +264,16 @@ namespace Model
                             maxBudget = int.Parse(showProjects["maxBudget"].ToString());
                             StartDate = DateTime.Parse(showProjects["StartDate"].ToString());
                             FinishDate = DateTime.Parse(showProjects["FinishDate"].ToString());
-                            Project project = new Project(ProjektID,ProjektName,minBudget,maxBudget,StartDate,FinishDate);
+                            EmployeeName = showProjects["EmployeeName"].ToString();
+                            Employee employee = new Employee(EmployeeName);
+                            Project project = new Project(ProjektID, ProjektName, minBudget, maxBudget, StartDate, FinishDate, employee);
                             //IsArchived = showProjects["IsArchived"].ToString();
                             projectList.Add(project);
 
                         }
                     }
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     throw e;
                 }

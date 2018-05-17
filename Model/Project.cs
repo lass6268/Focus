@@ -19,6 +19,19 @@ namespace Model
         public DateTime FinishDate { get; set; }
         public int BudgetObtained { get; set; }
         public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); } }
+        public Employee Employee { get; set; }
+
+
+        public Project(int _projektid, string _name, int _min, int _max, DateTime _start, DateTime _finish, Employee _employee)
+        {
+            ProjectID = _projektid;
+            ProjectName = _name;
+            MinBudget = _min;
+            MaxBudget = _max;
+            StartDate = _start;
+            FinishDate = _finish;
+            Employee = _employee;
+        }
 
         public Project(string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {

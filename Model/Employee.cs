@@ -20,5 +20,9 @@ namespace Model
             ID = _id;
 
         }
+        public Employee(string _name)
+        {
+            Name = _name;
+        }
     }
 }
