@@ -27,15 +27,8 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Medarbejdere på projektet">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Employee.Name}" />
 
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <!--<GridViewColumn Header="Medarbejdere på projektet" DisplayMemberBinding="{Binding Employee.Name}"/>-->
+                        <GridViewColumn Header="Medarbejdere på projektet" DisplayMemberBinding="{Binding Employee.Name}"/>
                     </GridView>
 
                 </ListView.View>
@@ -45,6 +38,7 @@
             </ListView>
             <Viewbox DockPanel.Dock="Bottom" Stretch="Uniform" Margin="-704,0,0,-177">
                 <Grid>
+                    <Button Name="BudgetEmp" Click="Button_Click" Content="Medarbejder budget" HorizontalAlignment="Left" FontSize="8" Height="20" VerticalAlignment="Top" Width="70" Margin="700,438,0,-18"/>
                     <Button Name="Leaderboard_btn" FontSize="8" Content="Rangliste" HorizontalAlignment="Left" Height="20" Margin="589,438,0,-0.4" VerticalAlignment="Top" Width="70" Click="Leaderboard_btn_Click"/>
                     <Button Name="Projekt_btn" FontSize="8" Content="Opret Projekt" HorizontalAlignment="Left" Margin="353,438,0,-18" VerticalAlignment="Top" Width="75" Click="Return_btn_Click" Height="20"/>
                     <Button Name="Archived_Projekt_btn" FontSize="8" Content="Arkiverede Projekter" HorizontalAlignment="Left" Margin="214,438,0,0" VerticalAlignment="Top" Width="95" Click="Archived_Projekt_btn_Click" Height="20"/>
