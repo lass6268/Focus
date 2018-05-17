@@ -47,6 +47,13 @@ namespace Model
             FinishDate = _finish;
             BudgetObtained = _budgetObtained;
         }
+        public Project(string _name, int id)
+        {
+            ProjectName = _name;
+            ProjectID = id;
+            
+
+        }
 
 
 

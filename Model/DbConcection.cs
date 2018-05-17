@@ -487,13 +487,12 @@ namespace Model
             return employees;
         }
 
-        public object[,] GetBudgetForEMP(Employee emp)
+        public List<Budget> GetBudgetForEMP(Employee emp)
         {
-            object[,] EmpBudget = new object[101,4];
-            int CurrentBudget, Minbudget, Maxbudget;
+            List<Budget> budgets = new List<Budget>();
+            int CurrentBudget, Minbudget, Maxbudget, projektid;
             string Projektname;
-            int Index = 0;
-            int Deapth = 0;
+          
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 try
@@ -502,7 +501,7 @@ namespace Model
                     con.Open();
                     SqlCommand cmd = new SqlCommand("Spu_Focus_GetBudgetForEID", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@PID", emp.ID));
+                    cmd.Parameters.Add(new SqlParameter("@EID", emp.ID));
                     SqlDataReader showProjects = cmd.ExecuteReader();
 
 
@@ -515,8 +514,8 @@ namespace Model
 
 
                              Projektname = showProjects["ProjektName"].ToString();
-                            EmpBudget[Index, Deapth] = Projektname;
-                            Deapth++;
+                             projektid = int.Parse(showProjects["ProjektID"].ToString());
+                            
                             if (showProjects["BudgetMin"] == DBNull.Value)
                             {
                                 Minbudget = 0;
@@ -527,8 +526,7 @@ namespace Model
                             }
 
 
-                            EmpBudget[Index, Deapth] = Minbudget;
-                            Deapth++;
+                          
                            
                            
                             if (showProjects["BudgetMax"] == DBNull.Value)
@@ -550,32 +548,18 @@ namespace Model
                                 CurrentBudget = int.Parse(showProjects["CurrentBudget"].ToString());
                             }
 
-                             EmpBudget[Index, Deapth] = CurrentBudget;
-                            Deapth = 0 ;
-
-                            Index++;
-
-
-                        }
-
-                    }
-                   // Array.Resize(ref EmpBudget, EmpBudget.Length);
-                    
-                    object[,] array = new object[Index, 4];
-
-                    for (int i = 0; i < Index; i++)
-                    {
-
-                        for (int x = 0; x < 4; x++)
-                        {
-                            array[i, x] = EmpBudget[i, x];
+                            Project project = new Project(Projektname,projektid);
+                            Budget budget = new Budget(emp, project, CurrentBudget, Minbudget, Maxbudget);
+                            budgets.Add(budget);
+                               
 
 
                         }
 
                     }
+                    // Array.Resize(ref EmpBudget, EmpBudget.Length);
 
-                    return array;
+                    return budgets;
                 }
 
                 catch (SqlException e)

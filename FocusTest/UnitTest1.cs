@@ -20,6 +20,7 @@ namespace FocusTest
         DBcommunicator dBcommunicator;
         ProjektCollection projektCollection;
         DataManegment dataManegment;
+        BudgetContrainer budgetContrainer;
         [TestInitialize]
         public void TestInitialize()
         {
@@ -32,6 +33,7 @@ namespace FocusTest
             finaldate = new DateTime(2018, 05, 01);
             medarbejder = new Employee("Erik",2);
             dataManegment = new DataManegment();
+            budgetContrainer = new BudgetContrainer();
 
         }
 
@@ -179,6 +181,24 @@ namespace FocusTest
         {
             Assert.AreEqual(dataManegment.AvgCurrent[0].AvgCurrent >= dataManegment.AvgCurrent[1].AvgCurrent,true);
             Assert.AreEqual(dataManegment.AvgCurrent[1].AvgCurrent >= dataManegment.AvgCurrent[2].AvgCurrent,true);
+        }
+        [TestMethod]
+        public void emparray()
+        {
+            
+            Assert.AreEqual(budgetContrainer.Employees[0].Name,"TEST");
+            Assert.AreEqual(budgetContrainer.BudgetforEMP[0].Project.ProjectName, "hej");
+
+            
+        }
+        [TestMethod]
+        public void EmpList()
+        {
+
+            Assert.AreEqual(1, budgetContrainer.Employees[0].ID);
+            Assert.AreEqual(1, budgetContrainer.SelectedEmpolyee.ID);
+
+
         }
     }
 }

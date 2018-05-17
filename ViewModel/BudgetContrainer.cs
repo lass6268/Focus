@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,12 @@ namespace ViewModel
         public int SumMaxBudget { get { return Budgets.Sum(x => x.MaxBudget); } }
         public int SumMinBudget { get { return Budgets.Sum(x => x.MinBudget); } }
         public int SumCurrentBudget { get { return Budgets.Sum(x => x.CurrentBudget); } }
+        public Employee SelectedEmpolyee { get { return _selectedEmpolyee; } set { _selectedEmpolyee = value; } }
+        private Employee _selectedEmpolyee { get; set; }
+
+        public List<Employee> Employees { get; set; }
+        
+        public List<Budget> BudgetforEMP { get; private set; }
 
 
 
@@ -26,14 +33,33 @@ namespace ViewModel
                 
             }
             Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
-            
+
+            Employees = dbConcection.GetEmployeesList();
+            if (SelectedEmpolyee == null)
+            {
+               SelectedEmpolyee = Employees[0];
+            }
+            BudgetforEMP = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
         }
+        public BudgetContrainer(Employee emp)
+        {
+            Employees = dbConcection.GetEmployeesList();
+            BudgetforEMP = dbConcection.GetBudgetForEMP(emp);
+
+        }
+
+       
         public void UpdateBudgetList()
         {
             Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
         }
+        public void UpdateEmpList()
+        {
+            BudgetforEMP = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
 
-        public string UpdateDb()
+        }
+
+        public string UpdateDb(List<Budget> _Budgets)
         {
             
             Checks checks = new Checks();
@@ -48,7 +74,7 @@ namespace ViewModel
             {
 
 
-                foreach (Budget budget in Budgets)
+                foreach (Budget budget in _Budgets)
                 {
                     switch (checks.Checkbudgets(budget))
                     {
