@@ -41,7 +41,7 @@ namespace View
 
         private void ArchiveProject_btn_Click(object sender,RoutedEventArgs e)
         {
-            string archiveProject = ProjektCollection._instance.ArchiveProject();
+           
             if(MessageBox.Show("Arkiver projekt", "Vil du arkivere dette projekt?", MessageBoxButton.YesNo, MessageBoxImage.Warning)==MessageBoxResult.No)
             {
                 MessageBox.Show("Projektet blev ikke arkiveret");
@@ -49,6 +49,7 @@ namespace View
             }
             else
             {  
+                string archiveProject = ProjektCollection._instance.ArchiveProject();
                 MessageBox.Show(archiveProject);
                 ProjectOverviewMenu projectOverviewMenu = new ProjectOverviewMenu();
                 projectOverviewMenu.Show();
