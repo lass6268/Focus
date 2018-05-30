@@ -112,5 +112,13 @@ namespace View
             dataManagementOverview.Topmost = true;
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Employeebudget employeebudget = new Employeebudget();
+            employeebudget.Show();
+            employeebudget.Topmost = true;
+            
+        }
     }
 }

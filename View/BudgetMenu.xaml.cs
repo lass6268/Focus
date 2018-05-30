@@ -55,7 +55,7 @@ namespace View
         private void UpdateBudget_Button_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBox.Show(budgetContrainer.UpdateDb());
+            MessageBox.Show(budgetContrainer.UpdateDb(budgetContrainer.Budgets));
                 
         }
 

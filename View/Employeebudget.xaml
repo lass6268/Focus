@@ -1,0 +1,24 @@
+﻿<Window x:Class="View.Employeebudget"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="Employeebudget" Height="450" Width="800">
+    <Grid>
+        <DataGrid HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="508" Name="empDatagrid" ItemsSource="{Binding BudgetforEMP}" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Projekt Navn Navn" Binding="{Binding Project.ProjectName}" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Min Budget" Binding="{Binding MinBudget,Mode=TwoWay}" IsReadOnly="False" />
+            <DataGridTextColumn Header="Max Budget" Binding="{Binding MaxBudget,Mode=TwoWay}" IsReadOnly="False" />
+            <DataGridTextColumn Header="Nuværende Budget" Binding="{Binding CurrentBudget, Mode=TwoWay}" IsReadOnly="False" />
+             </DataGrid.Columns>
+
+        </DataGrid>
+        <ComboBox HorizontalAlignment="Left" Margin="560,58,0,0" VerticalAlignment="Top" Width="120" Name="Emp_ComboBox" ItemsSource="{Binding Employees}"  SelectedValue="{Binding SelectedEmpolyee, Mode=TwoWay}" DisplayMemberPath="Name" SelectionChanged="Emp_ComboBox_SelectionChanged" />
+        <Button Content="Update" HorizontalAlignment="Left" Margin="611,143,0,0" VerticalAlignment="Top" Width="75" Name="UpdateBudget" Click="UpdateBudget_Click"/>
+
+    </Grid>
+</Window>
