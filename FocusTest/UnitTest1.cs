@@ -17,7 +17,6 @@ namespace FocusTest
         DateTime startdate;
         DateTime finaldate;
         Employee medarbejder;
-        DBcommunicator dBcommunicator;
         ProjektCollection projektCollection;
         DataManegment dataManegment;
         BudgetContrainer budgetContrainer;
@@ -26,7 +25,7 @@ namespace FocusTest
         {
             dbConcection = new DbConcection();
             checks = new Checks();
-            dBcommunicator = new DBcommunicator();
+           
             projektCollection = new ProjektCollection();
             startdate = new DateTime(2018, 01, 01);
 
@@ -37,22 +36,12 @@ namespace FocusTest
 
         }
 
-        
-      
-
-        [TestMethod]
-        public void TestCreateBudget()
-        {
-            
-            Assert.AreEqual(false, dbConcection.CreateBudget(1, 1, 100));
-            Assert.AreEqual(false, dbConcection.CreateBudget(1, 1, 100));
-
-        }
+       
         [TestMethod]
         public void TestBudgetListforProjekt()
         {
             
-            Project project8 = new Project(8,"Virksomhed",1,1000,startdate,finaldate);
+            Project project8 = new Project(167,"Virksomhed",1,1000,startdate,finaldate);
             List<Budget> budgets = dbConcection.GetBudgetForProjekt(project8);
             Assert.AreEqual(12, budgets.Count);
             Assert.AreEqual(0,budgets[1].CurrentBudget);
@@ -93,9 +82,9 @@ namespace FocusTest
             Assert.AreEqual(10, testlist.Count);
             Assert.AreEqual(date, testlist[8].StartDate);
 
-            Assert.AreEqual(date, ProjektCollection._instance.Projekts[9].StartDate);
-            Assert.AreEqual(1, ProjektCollection._instance.Projekts[9].StartDate.Day);
-            ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[9];
+            Assert.AreEqual(date, ProjektCollection._instance.Projects[9].StartDate);
+            Assert.AreEqual(1, ProjektCollection._instance.Projects[9].StartDate.Day);
+            ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projects[9];
             Assert.AreEqual(date, ProjektCollection._instance.SelectedItem.StartDate);
             Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Day);
             Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Month);
@@ -187,7 +176,7 @@ namespace FocusTest
         {
             
             Assert.AreEqual(budgetContrainer.Employees[0].Name,"TEST");
-            Assert.AreEqual(budgetContrainer.BudgetforEMP[0].Project.ProjectName, "Virksomhed1");
+            Assert.AreEqual(budgetContrainer.BudgetforEmployee[0].Project.ProjectName, "Virksomhed1");
 
             
         }

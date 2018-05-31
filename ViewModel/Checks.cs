@@ -9,12 +9,13 @@ namespace ViewModel
 {
     public class Checks
     {
-        DBcommunicator dBcommunicator = new DBcommunicator();
+        
+        DbConcection dbConcection = new DbConcection();
         public string Display { get; set; }
-        public bool Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newprojekt)
+        public bool Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newproject)
         {
             
-            bool ProjektGoneToDB = false;
+            bool ProjectGoneToDB = false;
             int result = DateTime.Compare(_start, _final);
             int result1 = DateTime.Compare(_final, DateTime.Now);
            
@@ -51,21 +52,21 @@ namespace ViewModel
                
             }
 
-            else if(newprojekt == true)
+            else if(newproject == true)
             {
 
                 Project projekt = new Project(_name, _min, _max, _start, _final);
 
-                Display =  dBcommunicator.AddProjectToDatabase(projekt);
-                ProjektGoneToDB = true;
+                Display = dbConcection.AddProject(projekt); 
+                ProjectGoneToDB = true;
 
             }
-            else if (newprojekt == false)
+            else if (newproject == false)
             {
-                ProjektGoneToDB = true;
+                ProjectGoneToDB = true;
                
             }
-            return ProjektGoneToDB;
+            return ProjectGoneToDB;
         }
 
       public int Checkbudgets(Budget budget)
@@ -85,48 +86,10 @@ namespace ViewModel
             }
             else return 2;
 
-        }
+        
 
 
-        public string Tryinputs(string name, string min, string max, string startdate, string Finishdate)
-        {
-
-
-            string s = string.Empty;
-            
-
-            try
-            {
-
-                string projectName = name;
-                int minimum = int.Parse(min);
-                int maximum = int.Parse(max);
-                DateTime startDate = DateTime.Parse(startdate);
-                DateTime finishDate = DateTime.Parse(Finishdate);
-                bool checker = Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
-
-
-                if (checker == false)
-                {
-                    throw new Exception(Display);
-
-                }
-                else
-                {
-
-                    s = ProjektCollection._instance.EditProjekt();
-
-                }
-            }
-            catch (Exception e)
-            {
-
-                s = e.Message;
-
-            }
-            return s;
-
-
+       
         }
     }
 }

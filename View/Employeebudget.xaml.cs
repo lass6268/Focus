@@ -43,7 +43,7 @@ namespace View
 
         private void UpdateBudget_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(budgetContrainer.UpdateDb(budgetContrainer1.BudgetforEMP));
+            MessageBox.Show(budgetContrainer.UpdateDb(budgetContrainer1.BudgetforEmployee));
         }
     }
 }

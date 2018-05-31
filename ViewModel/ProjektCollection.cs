@@ -11,8 +11,8 @@ namespace ViewModel
 {
     public class ProjektCollection
     {
-        private int i = 0;   
-        public List<Project> Projekts { get; private set; }
+        private int counter = 0;   
+        public List<Project> Projects { get; private set; }
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }
         public static readonly ProjektCollection _instance = new ProjektCollection();
@@ -23,7 +23,7 @@ namespace ViewModel
             get
             {
                 _totalCurrent = 0;
-                foreach (var item in Projekts)
+                foreach (var item in Projects)
                 {
                     _totalCurrent += item.Optainedbudget;
 
@@ -32,7 +32,7 @@ namespace ViewModel
             }
                 set {
 
-                foreach (var item in Projekts)
+                foreach (var item in Projects)
                 {
                     _totalCurrent += item.Optainedbudget;
 
@@ -40,30 +40,23 @@ namespace ViewModel
             } }
 
         public int TotalMax { get {
-                i = 0;
-                foreach (var item in Projekts)
+                counter = 0;
+                foreach (var item in Projects)
                 {
-                    i += item.MaxBudget;
+                    counter += item.MaxBudget;
                 }
-                return i;
+                return counter;
                     } }
         public ProjektCollection()
         {
             List<Project> projects = new List<Project>();
             
-            Projekts = dbConcection.OverviewOverProjects();
-            Projekts.Sort();
+            Projects = dbConcection.OverviewOverProjects();
+            Projects.Sort();
             
         }
 
-        /*public ArchivedProjektCollection()
-        {
-            List<Project> archivedProjects = new List<Project>();
-
-            archivedProjects = dbConcection.GetArchivedProjects();
-            archivedProjects.Sort();
-
-        }*/
+      
         public void FindProjekt(object item)
         {
             SelectedItem = item as Project;
@@ -74,7 +67,7 @@ namespace ViewModel
             Checks checks = new Checks();
             string connected = string.Empty;
             
-            //checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate,false);
+           
             DbConcection dbConcection = new DbConcection();
             
             if (checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
@@ -106,15 +99,15 @@ namespace ViewModel
 
         public void UpdateProjekts()
         {
-            Projekts = dbConcection.OverviewOverProjects();
-            Projekts.Sort();
+            Projects = dbConcection.OverviewOverProjects();
+            Projects.Sort();
 
         }
 
         public void ShowArchivedProjects()
         {
-            Projekts = dbConcection.GetArchivedProjects();
-            Projekts.Sort();
+            Projects = dbConcection.GetArchivedProjects();
+            Projects.Sort();
         }
 
         public bool UserFilter(object item, string txtFilter)

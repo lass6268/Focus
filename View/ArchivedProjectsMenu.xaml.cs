@@ -27,7 +27,7 @@ namespace View
             InitializeComponent();
             DataContext = ProjektCollection._instance;
             ProjektCollection._instance.ShowArchivedProjects();
-            Projektview.ItemsSource = ProjektCollection._instance.Projekts;
+            Projektview.ItemsSource = ProjektCollection._instance.Projects;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Projektview.ItemsSource);
             view.Filter = UserFilter;

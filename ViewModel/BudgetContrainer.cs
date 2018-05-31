@@ -20,7 +20,7 @@ namespace ViewModel
 
         public List<Employee> Employees { get; set; }
         
-        public List<Budget> BudgetforEMP { get; private set; }
+        public List<Budget> BudgetforEmployee { get; private set; }
 
 
 
@@ -28,7 +28,7 @@ namespace ViewModel
         {
             if (ProjektCollection._instance.SelectedItem == null)
             {
-                ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[0];
+                ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projects[0];
 
                 
             }
@@ -39,12 +39,12 @@ namespace ViewModel
             {
                SelectedEmpolyee = Employees[0];
             }
-            BudgetforEMP = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
+            BudgetforEmployee = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
         }
-        public BudgetContrainer(Employee emp)
+        public BudgetContrainer(Employee employee)
         {
             Employees = dbConcection.GetEmployeesList();
-            BudgetforEMP = dbConcection.GetBudgetForEMP(emp);
+            BudgetforEmployee = dbConcection.GetBudgetForEMP(employee);
 
         }
 
@@ -55,7 +55,7 @@ namespace ViewModel
         }
         public void UpdateEmpList()
         {
-            BudgetforEMP = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
+            BudgetforEmployee = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
 
         }
 
@@ -63,7 +63,7 @@ namespace ViewModel
         {
             
             Checks checks = new Checks();
-            string s = string.Empty;
+            string returnstring = string.Empty;
             List<Budget> dblist = new List<Budget>();
             if (Currenttotal() > ProjektCollection._instance.SelectedItem.MaxBudget)
             {
@@ -92,8 +92,8 @@ namespace ViewModel
 
                 }
                 dbConcection.UpdateBudget(dblist);
-                s = dbConcection.UpdateBudget(dblist);
-                return s;
+                returnstring = dbConcection.UpdateBudget(dblist);
+                return returnstring;
             }
         }
         int Currenttotal()

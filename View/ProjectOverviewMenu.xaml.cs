@@ -31,7 +31,7 @@ namespace View
             DataContext = ProjektCollection._instance;
             ProjektCollection._instance.UpdateProjekts();
             TotalBudgetbar.DataContext = ProjektCollection._instance;
-            Projektview.ItemsSource = ProjektCollection._instance.Projekts;
+            Projektview.ItemsSource = ProjektCollection._instance.Projects;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Projektview.ItemsSource);
             view.Filter = UserFilter;
 
