@@ -70,7 +70,7 @@ namespace ViewModel
         }
 
       public int Checkbudgets(Budget budget)
-        {
+      {
             if (budget.MinBudget == 0 && budget.MaxBudget == 0)
             {
                 return 0;
@@ -84,12 +84,7 @@ namespace ViewModel
                 return 1;
 
             }
-            else return 2;
-
-        
-
-
-       
-        }
+            else return 2;     
+      }
     }
 }

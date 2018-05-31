@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Employeebudget" Height="450" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="508" Name="empDatagrid" ItemsSource="{Binding BudgetforEMP}" AutoGenerateColumns="False">
+        <DataGrid HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="508" Name="empDatagrid" ItemsSource="{Binding BudgetforEmployee}" AutoGenerateColumns="False">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Projekt Navn Navn" Binding="{Binding Project.ProjectName}" IsReadOnly="True"/>
