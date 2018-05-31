@@ -54,8 +54,8 @@ namespace FocusTest
             
             Project project8 = new Project(8,"Virksomhed",1,1000,startdate,finaldate);
             List<Budget> budgets = dbConcection.GetBudgetForProjekt(project8);
-            Assert.AreEqual(7, budgets.Count);
-            Assert.AreEqual(1,budgets[1].CurrentBudget);
+            Assert.AreEqual(12, budgets.Count);
+            Assert.AreEqual(0,budgets[1].CurrentBudget);
 
         }
 
@@ -88,17 +88,17 @@ namespace FocusTest
         public void TestOverviewOverProjects()
         {
 
-            DateTime date = DateTime.Parse("30 - 01 - 2018 00:00:00");
+            DateTime date = DateTime.Parse("01 - 01 - 2018 00:00:00");
             List<Project> testlist = dbConcection.OverviewOverProjects();
-            Assert.AreEqual(20, testlist.Count);
-            Assert.AreEqual(date, testlist[16].StartDate);
+            Assert.AreEqual(10, testlist.Count);
+            Assert.AreEqual(date, testlist[8].StartDate);
 
-            Assert.AreEqual(date, ProjektCollection._instance.Projekts[20].StartDate);
-            Assert.AreEqual(30, ProjektCollection._instance.Projekts[20].StartDate.Day);
-            ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[20];
+            Assert.AreEqual(date, ProjektCollection._instance.Projekts[9].StartDate);
+            Assert.AreEqual(1, ProjektCollection._instance.Projekts[9].StartDate.Day);
+            ProjektCollection._instance.SelectedItem = ProjektCollection._instance.Projekts[9];
             Assert.AreEqual(date, ProjektCollection._instance.SelectedItem.StartDate);
-            Assert.AreEqual(30, ProjektCollection._instance.SelectedItem.StartDate.Day);
-            Assert.AreEqual(10, ProjektCollection._instance.SelectedItem.StartDate.Month);
+            Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Day);
+            Assert.AreEqual(1, ProjektCollection._instance.SelectedItem.StartDate.Month);
                        
 
            
@@ -117,24 +117,24 @@ namespace FocusTest
 
             List<Project> archivedTestlist = dbConcection.GetArchivedProjects();
                 
-            Assert.AreEqual(6, archivedTestlist.Count);
-            Assert.AreEqual("Ikea", archivedTestlist[2].ProjectName);
-            Assert.AreEqual(0, archivedTestlist[3].MinBudget);
+            Assert.AreEqual(1, archivedTestlist.Count);
+            Assert.AreEqual("Mælk", archivedTestlist[0].ProjectName);
+            Assert.AreEqual(10, archivedTestlist[0].MinBudget);
         }
 
         [TestMethod]
         public void Totalcurrent()
         {
 
-            Assert.AreEqual(ProjektCollection._instance.TotalCurrent, 227);
-            Assert.AreEqual(ProjektCollection._instance.TotalMax, 996);
+            Assert.AreEqual(ProjektCollection._instance.TotalCurrent, 351);
+            Assert.AreEqual(ProjektCollection._instance.TotalMax, 717);
         }
 
         [TestMethod]
         public void BudgetList()
         {
             Project project8 = new Project(8, "Virksomhed", 1, 1000, startdate, finaldate);
-            Assert.AreEqual(1,dbConcection.GetBudgetForProjekt(project8).Count);
+            Assert.AreEqual(12,dbConcection.GetBudgetForProjekt(project8).Count);
 
         }
         [TestMethod]
@@ -142,7 +142,7 @@ namespace FocusTest
         public void TestSumafMax()
         {
             BudgetContrainer budgetContrainer = new BudgetContrainer();
-            Assert.AreEqual(budgetContrainer.SumMaxBudget,1);
+            Assert.AreEqual(budgetContrainer.SumMaxBudget,12);
 
         }
 
@@ -151,7 +151,7 @@ namespace FocusTest
         {
 
             Employee employee = new Employee("Karl", 4);
-            Assert.AreEqual(dbConcection.GetEmployeesList().Count,17);
+            Assert.AreEqual(dbConcection.GetEmployeesList().Count,12);
         }
 
         [TestMethod]
@@ -160,7 +160,7 @@ namespace FocusTest
 
             Employee employee = new Employee("Karl",4);
             List<Employee> list = dbConcection.GetCurrentBudgetForEmployees();
-            Assert.AreEqual(list[1].TotalCurrent,49);
+            Assert.AreEqual(list[1].TotalCurrent,5);
             Assert.AreEqual(list[1].ID,2);
 
             list = list.OrderByDescending(o => o.TotalCurrent).ToList();
@@ -187,7 +187,7 @@ namespace FocusTest
         {
             
             Assert.AreEqual(budgetContrainer.Employees[0].Name,"TEST");
-            Assert.AreEqual(budgetContrainer.BudgetforEMP[0].Project.ProjectName, "hej");
+            Assert.AreEqual(budgetContrainer.BudgetforEMP[0].Project.ProjectName, "Virksomhed1");
 
             
         }
