@@ -13,7 +13,7 @@ namespace FocusTest
     public class UnitTest1
     {
         Checks checks;
-        DbConcection dbConcection;
+        DbConnection dbConnection;
         DateTime startdate;
         DateTime finaldate;
         Employee medarbejder;
@@ -23,7 +23,7 @@ namespace FocusTest
         [TestInitialize]
         public void TestInitialize()
         {
-            dbConcection = new DbConcection();
+            dbConnection = new DbConnection();
             checks = new Checks();
            
             projektCollection = new ProjektCollection();
@@ -42,7 +42,7 @@ namespace FocusTest
         {
             
             Project project8 = new Project(167,"Virksomhed",1,1000,startdate,finaldate);
-            List<Budget> budgets = dbConcection.GetBudgetForProjekt(project8);
+            List<Budget> budgets = dbConnection.GetBudgetForProjekt(project8);
             Assert.AreEqual(12, budgets.Count);
             Assert.AreEqual(0,budgets[1].CurrentBudget);
 
@@ -78,7 +78,7 @@ namespace FocusTest
         {
 
             DateTime date = DateTime.Parse("01 - 01 - 2018 00:00:00");
-            List<Project> testlist = dbConcection.OverviewOverProjects();
+            List<Project> testlist = dbConnection.OverviewOverProjects();
             Assert.AreEqual(10, testlist.Count);
             Assert.AreEqual(date, testlist[8].StartDate);
 
@@ -104,7 +104,7 @@ namespace FocusTest
         public void TestOverviewOverArchivedProjects()
         {
 
-            List<Project> archivedTestlist = dbConcection.GetArchivedProjects();
+            List<Project> archivedTestlist = dbConnection.GetArchivedProjects();
                 
             Assert.AreEqual(1, archivedTestlist.Count);
             Assert.AreEqual("Mælk", archivedTestlist[0].ProjectName);
@@ -123,7 +123,7 @@ namespace FocusTest
         public void BudgetList()
         {
             Project project8 = new Project(8, "Virksomhed", 1, 1000, startdate, finaldate);
-            Assert.AreEqual(12,dbConcection.GetBudgetForProjekt(project8).Count);
+            Assert.AreEqual(12,dbConnection.GetBudgetForProjekt(project8).Count);
 
         }
         [TestMethod]
@@ -140,7 +140,7 @@ namespace FocusTest
         {
 
             Employee employee = new Employee("Karl", 4);
-            Assert.AreEqual(dbConcection.GetEmployeesList().Count,12);
+            Assert.AreEqual(dbConnection.GetEmployeesList().Count,12);
         }
 
         [TestMethod]
@@ -148,7 +148,7 @@ namespace FocusTest
         {
 
             Employee employee = new Employee("Karl",4);
-            List<Employee> list = dbConcection.GetCurrentBudgetForEmployees();
+            List<Employee> list = dbConnection.GetCurrentBudgetForEmployees();
             Assert.AreEqual(list[1].TotalCurrent,5);
             Assert.AreEqual(list[1].ID,2);
 
