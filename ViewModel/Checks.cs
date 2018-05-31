@@ -10,7 +10,7 @@ namespace ViewModel
     public class Checks
     {
         
-        DbConcection dbConcection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         public string Display { get; set; }
         public bool Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newproject)
         {
@@ -57,7 +57,7 @@ namespace ViewModel
 
                 Project projekt = new Project(_name, _min, _max, _start, _final);
 
-                Display = dbConcection.AddProject(projekt); 
+                Display = dbConnection.AddProject(projekt); 
                 ProjectGoneToDB = true;
 
             }

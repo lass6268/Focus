@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Model
 {
-    public class DbConcection
+    public class DbConnection
     {
         private static string connectionstring =
                "Server=EALSQL1.eal.local; Database = DB2017_C09; User Id = user_C09; PassWord=SesamLukOp_09;";

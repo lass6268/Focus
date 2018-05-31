@@ -16,7 +16,7 @@ namespace ViewModel
         public Project SelectedItem { get { return _selectedItem; } set { _selectedItem = value; } }
         private Project _selectedItem { get; set; }
         public static readonly ProjektCollection _instance = new ProjektCollection();
-        DbConcection dbConcection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         private int _totalCurrent = 0;
         public int TotalCurrent
         {
@@ -51,7 +51,7 @@ namespace ViewModel
         {
             List<Project> projects = new List<Project>();
             
-            Projects = dbConcection.OverviewOverProjects();
+            Projects = dbConnection.OverviewOverProjects();
             Projects.Sort();
             
         }
@@ -68,11 +68,11 @@ namespace ViewModel
             string connected = string.Empty;
             
            
-            DbConcection dbConcection = new DbConcection();
+            
             
             if (checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
             {
-                 connected = dbConcection.UpdateProject(SelectedItem);
+                 connected = dbConnection.UpdateProject(SelectedItem);
             }
             
             else
@@ -84,29 +84,29 @@ namespace ViewModel
        }
         public string ArchiveProject()
         {
-            DbConcection dbConcection = new DbConcection();
-            dbConcection.ArchiveProject(SelectedItem);
+           dbConnection.ArchiveProject(SelectedItem);
+            
 
             return SelectedItem.ProjectName + " er nu arkiveret";
         }
         public string RecoverArchivedProject()
         {
-            DbConcection dbConcection = new DbConcection();
-            dbConcection.RecoverArchivedProject(SelectedItem.ProjectID);
+            
+            dbConnection.RecoverArchivedProject(SelectedItem.ProjectID);
 
             return SelectedItem.ProjectName + " er nu gendannet";
         }
 
         public void UpdateProjekts()
         {
-            Projects = dbConcection.OverviewOverProjects();
+            Projects = dbConnection.OverviewOverProjects();
             Projects.Sort();
 
         }
 
         public void ShowArchivedProjects()
         {
-            Projects = dbConcection.GetArchivedProjects();
+            Projects = dbConnection.GetArchivedProjects();
             Projects.Sort();
         }
 

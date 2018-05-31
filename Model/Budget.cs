@@ -8,7 +8,7 @@ namespace Model
 {
     public class Budget 
     {
-        DbConcection dbConcection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         private int _CurrentBudget;
         public int CurrentBudget { get { return _CurrentBudget; } set {
                 try

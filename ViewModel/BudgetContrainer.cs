@@ -10,7 +10,7 @@ namespace ViewModel
 {
     public class BudgetContrainer
     {
-        DbConcection dbConcection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         public List<Budget> Budgets { get; private set; }
         public int SumMaxBudget { get { return Budgets.Sum(x => x.MaxBudget); } }
         public int SumMinBudget { get { return Budgets.Sum(x => x.MinBudget); } }
@@ -32,30 +32,30 @@ namespace ViewModel
 
                 
             }
-            Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
+            Budgets = dbConnection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
 
-            Employees = dbConcection.GetEmployeesList();
+            Employees = dbConnection.GetEmployeesList();
             if (SelectedEmpolyee == null)
             {
                SelectedEmpolyee = Employees[0];
             }
-            BudgetforEmployee = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
+            BudgetforEmployee = dbConnection.GetBudgetForEMP(SelectedEmpolyee);
         }
         public BudgetContrainer(Employee employee)
         {
-            Employees = dbConcection.GetEmployeesList();
-            BudgetforEmployee = dbConcection.GetBudgetForEMP(employee);
+            Employees = dbConnection.GetEmployeesList();
+            BudgetforEmployee = dbConnection.GetBudgetForEMP(employee);
 
         }
 
        
         public void UpdateBudgetList()
         {
-            Budgets = dbConcection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
+            Budgets = dbConnection.GetBudgetForProjekt(ProjektCollection._instance.SelectedItem);
         }
         public void UpdateEmpList()
         {
-            BudgetforEmployee = dbConcection.GetBudgetForEMP(SelectedEmpolyee);
+            BudgetforEmployee = dbConnection.GetBudgetForEMP(SelectedEmpolyee);
 
         }
 
@@ -91,8 +91,8 @@ namespace ViewModel
                     }
 
                 }
-                dbConcection.UpdateBudget(dblist);
-                returnstring = dbConcection.UpdateBudget(dblist);
+                dbConnection.UpdateBudget(dblist);
+                returnstring = dbConnection.UpdateBudget(dblist);
                 return returnstring;
             }
         }

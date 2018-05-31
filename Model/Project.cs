@@ -10,7 +10,7 @@ namespace Model
 {
     public class Project : IComparable<Project>
     {
-        DbConcection dbConection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         public int ProjectID { get; set; }
         public string ProjectName { get; set; }
         public int MinBudget { get; set; }
@@ -18,7 +18,7 @@ namespace Model
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public int BudgetObtained { get; set; }
-        public int Optainedbudget { get { return dbConection.GetObtainedBudget(ProjectID); } }
+        public int Optainedbudget { get { return dbConnection.GetObtainedBudget(ProjectID); } }
         public Employee Employee { get; set; }
 
 
@@ -70,13 +70,7 @@ namespace Model
 
 
 
-        public class TestClass
-        {
-            static void Main(string[] args)
-            {
-            
-            }
-        }
+       
 
         public int CompareTo(Project other)
         {
@@ -90,6 +84,13 @@ namespace Model
                 return this.ProjectID.CompareTo(other.ProjectID);
             }
                 
+        }
+        public class TestClass
+        {
+            static void Main(string[] args)
+            {
+            
+            }
         }
     }
 }

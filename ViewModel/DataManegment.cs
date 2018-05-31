@@ -9,12 +9,12 @@ namespace ViewModel
 {
     public class DataManegment
     {
-        DbConcection dbConcection = new DbConcection();
+        DbConnection dbConnection = new DbConnection();
         
-        public List<Employee> Leaderboard { get { return dbConcection.GetCurrentBudgetForEmployees().OrderByDescending(o => o.TotalCurrent).ToList(); }
+        public List<Employee> Leaderboard { get { return dbConnection.GetCurrentBudgetForEmployees().OrderByDescending(o => o.TotalCurrent).ToList(); }
         
         }
-        public List<Employee> AvgCurrent { get { return dbConcection.GetCurrentBudgetForEmployees().OrderByDescending(o => o.AvgCurrent).ToList(); } }
+        public List<Employee> AvgCurrent { get { return dbConnection.GetCurrentBudgetForEmployees().OrderByDescending(o => o.AvgCurrent).ToList(); } }
 
     }
 }
