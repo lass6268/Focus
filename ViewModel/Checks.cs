@@ -12,7 +12,7 @@ namespace ViewModel
         
         DbConnection dbConnection = new DbConnection();
         public string Display { get; set; }
-        public bool Makeprojekt(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newproject)
+        public bool Makeproject(string _name, int _min, int _max, DateTime _start, DateTime _final,bool newproject)
         {
             
             bool ProjectGoneToDB = false;

@@ -47,7 +47,7 @@ namespace ViewModel
                 }
                 return counter;
                     } }
-        public ProjektCollection()
+        private ProjektCollection()
         {
             List<Project> projects = new List<Project>();
             
@@ -70,7 +70,7 @@ namespace ViewModel
            
             
             
-            if (checks.Makeprojekt(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
+            if (checks.Makeproject(SelectedItem.ProjectName, SelectedItem.MinBudget, SelectedItem.MinBudget, SelectedItem.StartDate, SelectedItem.FinishDate, false) == true)
             {
                  connected = dbConnection.UpdateProject(SelectedItem);
             }

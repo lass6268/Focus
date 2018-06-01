@@ -84,7 +84,7 @@ namespace View
 
 
                     
-                    if (checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, true) == false)
+                    if (checks.Makeproject(projectName, minimum, maximum, startDate, finishDate, true) == false)
                     {
                         throw new Exception(checks.Display); 
                     }

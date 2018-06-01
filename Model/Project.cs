@@ -41,18 +41,18 @@ namespace Model
             StartDate = _start;
             FinishDate = _finish;
         }
-        public Project(int _projektid, string _name, int _min, int _max, DateTime _start, DateTime _finish)
+        public Project(int _projectid, string _name, int _min, int _max, DateTime _start, DateTime _finish)
         {
-            ProjectID = _projektid;
+            ProjectID = _projectid;
             ProjectName = _name;
             MinBudget = _min;
             MaxBudget = _max;
             StartDate = _start;
             FinishDate = _finish;
         }
-        public Project(int _projektid, string _name, int _min, int _max, DateTime _start, DateTime _finish, int _budgetObtained)
+        public Project(int _projectid, string _name, int _min, int _max, DateTime _start, DateTime _finish, int _budgetObtained)
         {
-            ProjectID = _projektid;
+            ProjectID = _projectid;
             ProjectName = _name;
             MinBudget = _min;
             MaxBudget = _max;
