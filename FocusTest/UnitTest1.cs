@@ -25,8 +25,8 @@ namespace FocusTest
         {
             dbConnection = new DbConnection();
             checks = new Checks();
-           
-            projektCollection = new ProjektCollection();
+
+            projektCollection = ProjektCollection._instance;
             startdate = new DateTime(2018, 01, 01);
 
             finaldate = new DateTime(2018, 05, 01);
@@ -115,6 +115,24 @@ namespace FocusTest
             
         }
 
+        [TestMethod]
+        public void TestChecksbudget()
+        {
+            Employee employee = new Employee("Martin", 1);
+            Project project = new Project("Virksomhed 1", 1);
+            Budget budget = new Budget(employee, project, 100, 1, 100);
+            Budget budget1 = new Budget(employee, project, 0, 0, 0);
+            Budget budget2 = new Budget(employee, project, 100, 100, 1);
+            Budget budget3 = new Budget(employee, project, 100, 0, 1);
+
+            Assert.AreEqual(2, checks.Checkbudgets(budget));
+            Assert.AreEqual(0, checks.Checkbudgets(budget1));
+            Assert.AreEqual(1, checks.Checkbudgets(budget2));
+            Assert.AreEqual(2, checks.Checkbudgets(budget3));
+
+
+
+        }
         [TestMethod]
         public void Totalcurrent()
         {

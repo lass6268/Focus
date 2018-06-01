@@ -82,7 +82,7 @@ namespace View
                 int maximum = int.Parse(max);
                 DateTime startDate = DateTime.Parse(startdate);
                 DateTime finishDate = DateTime.Parse(Finishdate);
-                bool checker = checks.Makeprojekt(projectName, minimum, maximum, startDate, finishDate, false);
+                bool checker = checks.Makeproject(projectName, minimum, maximum, startDate, finishDate, false);
                 
 
                 if (checker == false)
