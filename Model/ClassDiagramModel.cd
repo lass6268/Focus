@@ -1,37 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Model.Budget">
-    <Position X="2.25" Y="4.5" Width="1.5" />
+    <Position X="1.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAAAAAACAEACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>YAAAAAAAAAAAAAAAAAAACAEgCAgAAAAAgAAAAACAAAA=</HashCode>
       <FileName>Budget.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Model.DbConcection">
-    <Position X="6" Y="3.5" Width="2.25" />
+  <Class Name="Model.DbConnection">
+    <Position X="9.75" Y="1.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>ACIAAAAAAAAAACAAAAAAABAQIAAAAACAAAAIAAABgAA=</HashCode>
+      <HashCode>ACIAAAAAAAAAACAQAAAAQBAQIAQAAAAAAAAMAAABgAA=</HashCode>
       <FileName>DbConcection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Employee">
-    <Position X="4" Y="5" Width="1.5" />
+    <Position X="3.5" Y="2.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAABAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Project">
-    <Position X="8.75" Y="3.25" Width="2" />
+    <Position X="6" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
-      <Class Name="Model.Project.TestClass" Collapsed="true">
+      <Class Name="Model.Project.TestClass">
         <TypeIdentifier>
           <NewMemberFileName>Project.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAQACgAAAAAABAAAAAAEgAAAAECAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAACAAQACAAIAAAADAAAAAAEgAAAAECAAAA=</HashCode>
       <FileName>Project.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
